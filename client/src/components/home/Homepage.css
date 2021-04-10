@@ -1,0 +1,22 @@
+.main-homepage {
+    padding: 25px;
+    text-align: center;
+}
+
+.about {
+    color: #dde8e2;
+    font-size: 2rem;
+    font-style: bold;
+}
+
+.gamer {
+    width: 25%;
+    margin: auto;
+}
+
+@media (max-width: 1600px) {
+    .gamer {
+        width: 50%;
+        margin: auto;
+    }
+}

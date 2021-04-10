@@ -1,0 +1,8 @@
+.nav-bar {
+    background-color: #2c3531;
+    box-shadow: 0 2px 4px 0 #222222;
+}
+
+.nav-bar-brand {
+    color: #dde8e2 !important;
+}

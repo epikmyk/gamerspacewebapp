@@ -1,0 +1,23 @@
+@media all and (min-width: 480px) {
+    .create-an-account {
+        color: #dde8e2;
+        font-size: 2rem;
+        padding-bottom: 20px;
+    }
+    .signup {
+        padding: 40px;
+    }
+    .signup-form {
+        background-color: #273545;
+        padding: 50px;
+        margin: 0 auto;
+        max-width: 400px;
+        border-radius: 4px;
+        box-shadow: 0px 0px 3px 1px #222222;
+    }
+    .signup-button {
+        background-color: #5a7ba0 !important;
+        border: #2c3531 !important;
+
+    }
+}

@@ -1,0 +1,44 @@
+.chat-container {
+    /*background-color: green;*/
+    color: #dde8e2;
+    
+}
+.chat-content {
+    max-height: 80vh;
+    /*background-color: orange;*/
+    min-height: 89.2vh;
+    max-height: 89.2vh;
+}
+.chat {
+    width: 100%;
+    height: 100%;
+    /*background-color: red;*/
+    display: flex;
+}
+
+.chat-form {
+    width: 100%;
+    padding: 15px;
+}
+.chat-textarea {
+    border-radius: 60px;
+    overflow-x: auto;
+    float: left;
+    height: auto;
+    resize: none;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.chat-textarea:hover {
+    border-radius: 60px;
+}
+
+.chat-textarea:focus {
+    outline: none;
+}
+
+.send-message-button {
+    float: right;
+}
