@@ -12,7 +12,7 @@ const UserController = {
                 return UserModel.emailExists(email);
             }
             else {
-                throw new Error('Username already exists.')
+                throw new Error("Username already exists.")
             }
         })
         .then((emailDoesNotExist) => {
@@ -20,7 +20,7 @@ const UserController = {
                 return password;
             }
             else {
-                throw new Error('Email already exists.')
+                throw new Error("Email already exists.")
             }
         })
         .then((hashedPassword) => {
@@ -31,15 +31,55 @@ const UserController = {
                 res.json({ status: "OK", message: "User registration successful", "redirect": '/'});
             }
             else {
-                throw new Error('User account could not be created')
+                throw new Error("User account could not be created")
             }
         })
         .catch((error) => {
             if(error instanceof Error) {
                 res.json({status: "OK", message: error.message, "redirect": '/' });
             }
-            next(err);
+            else {
+                next(err);
+            }
         });
+    },
+    logIn: function (req, res, next) {
+        let username = req.body.username;
+        let password = req.body.password;
+
+        UserModel.authenticate(username, password)
+        .then((userData) => {
+            console.log("login successful")
+            if(username) {
+                req.session.username = userData.user;
+                req.session.userID = userData.uid;
+                res.json({ status: "OK", message: "login successful", "redirect": "/" })
+            }
+            else {
+                throw new Error("Username or password is incorrect", "/login", 200)
+            }
+        })
+        .catch((err) => {
+            if(error instanceof Error) {
+                res.json({status: "OK", message: error.message, "redirect": '/' });
+            }
+            else {
+                next(err);
+            }
+        })
+    },
+    logOut: function (req, res, next) {
+        req.session.destroy((err) => {
+            if (err) {
+                console.log("Session could not be destroyed");
+                next(err);
+            }
+            else {
+                console.log("Session destroyed")
+                res.clearCookie('csid');
+                res.redirect("/");
+            }
+        })
     }
 }
 
