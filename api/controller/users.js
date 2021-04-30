@@ -77,7 +77,7 @@ const UserController = {
             }
             else {
                 console.log("Session destroyed")
-                res.clearCookie('csid');
+                res.clearCookie('cookieKey');
                 res.redirect("/");
             }
         })
