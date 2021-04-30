@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Homepage from './components/home/Homepage';
 import Chat from './components/chat/Chat';
 import Profile from './components/profile/Profile';
+import Login from './components/common/Login';
 
 function App() {
   /*
@@ -39,6 +40,7 @@ function App() {
         <Route path='/' component={Homepage} exact/>
         <Route path='/chat' component={Chat} exact/>
         <Route path='/profile' component={Profile} exact/>
+        <Route path='/login' component={Login} exact/>
       </Switch>
     </main>
   )
