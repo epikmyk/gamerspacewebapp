@@ -28,15 +28,15 @@ const UserController = {
         })
         .then((userCreated) => {
             if(userCreated) {
-                res.json({ status: "OK", message: "User registration successful", "redirect": '/'});
+                res.json({ status: "OK", message: "User registration successful", "redirect": '/login'});
             }
             else {
                 throw new Error("User account could not be created")
             }
         })
-        .catch((error) => {
-            if(error instanceof Error) {
-                res.json({status: "OK", message: error.message, "redirect": '/' });
+        .catch((err) => {
+            if(err instanceof Error) {
+                res.json({status: "OK", message: err.message, "redirect": '/' });
             }
             else {
                 next(err);
@@ -60,8 +60,9 @@ const UserController = {
             }
         })
         .catch((err) => {
-            if(error instanceof Error) {
-                res.json({status: "OK", message: error.message, "redirect": '/' });
+            console.log("not successful")
+            if(err instanceof Error) {
+                res.json({status: "OK", message: err.message, "redirect": '/' });
             }
             else {
                 next(err);
