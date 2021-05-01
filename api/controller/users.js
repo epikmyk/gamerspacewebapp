@@ -81,6 +81,11 @@ const UserController = {
                 res.redirect("/");
             }
         })
+    },
+    getLoggedInUsername: function (req, res, next) {
+        if(req.session.username) {
+            res.json({username: req.session.username});
+        }
     }
 }
 
