@@ -21,7 +21,7 @@ const PostController = {
     },
     getRecentPostsToUserId: function (req, res, next) {
         let _id = req.session.userID;
-
+        console.log(req.session.userID)
         return PostModal.retrieveRecentPostsToUserId(_id)
         .then(([results]) => {
             res.json({post: results});
