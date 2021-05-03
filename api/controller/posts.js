@@ -24,7 +24,7 @@ const PostController = {
 
         return PostModal.retrieveRecentPostsToUserId(_id)
         .then(([results]) => {
-            res.json(results);
+            res.json({post: results});
         })
         .catch((err) => { next(err)})
     }
