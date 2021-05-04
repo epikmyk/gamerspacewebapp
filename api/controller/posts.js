@@ -24,7 +24,7 @@ const PostController = {
         console.log(req.session.userID)
         return PostModal.retrieveRecentPostsToUserId(_id)
         .then(([results]) => {
-            res.json({post: results});
+            res.json(results);
         })
         .catch((err) => { next(err)})
     },
@@ -34,7 +34,7 @@ const PostController = {
         return PostModal.retrieveUserPostsAndFriendsPostsByUserId(_id)
         .then(([results]) => {
             if(results.length > 0) {
-                res.json({post: results});
+                res.json(results);
             }
             else {
                 return PostModal.retrieveRecentPostsToUserId(_id)
@@ -42,7 +42,7 @@ const PostController = {
             
         })
         .then(([results])=> {
-            res.json({post: results});
+            res.json(results);
         })
         .catch((err) => { next(err)})
     }
