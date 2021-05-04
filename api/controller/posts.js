@@ -33,6 +33,15 @@ const PostController = {
         console.log(req.session.userID)
         return PostModal.retrieveUserPostsAndFriendsPostsByUserId(_id)
         .then(([results]) => {
+            if(results.length > 0) {
+                res.json({post: results});
+            }
+            else {
+                return PostModal.retrieveRecentPostsToUserId(_id)
+            }
+            
+        })
+        .then(([results])=> {
             res.json({post: results});
         })
         .catch((err) => { next(err)})
