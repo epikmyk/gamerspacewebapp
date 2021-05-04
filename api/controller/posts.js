@@ -27,6 +27,15 @@ const PostController = {
             res.json({post: results});
         })
         .catch((err) => { next(err)})
+    },
+    getUserPostsAndFriendsPostsByUserId: function (req, res, next) {
+        let _id = req.session.userID;
+        console.log(req.session.userID)
+        return PostModal.retrieveUserPostsAndFriendsPostsByUserId(_id)
+        .then(([results]) => {
+            res.json({post: results});
+        })
+        .catch((err) => { next(err)})
     }
 }
 
