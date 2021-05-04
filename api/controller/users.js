@@ -82,10 +82,22 @@ const UserController = {
             }
         })
     },
-    getLoggedInUsername: function (req, res, next) {
+    getLoggedInUser: function (req, res, next) {
+        let _id = req.session.userID;
+        UserModel.retrieveLoggedInUserByUserId(_id)
+        .then(([userData]) => {
+            if (userData.length == 1) {
+                res.json(userData[0])
+            }
+            else {
+                res.json({message: "user is not logged in"})
+            }
+            
+        })
+        /*
         if (req.session.username) {
             res.json({ username: req.session.username });
-        }
+        }*/
     }
 }
 

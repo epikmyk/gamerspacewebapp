@@ -63,6 +63,13 @@ const UserModel = {
             next(err);*/
             throw err;
         });
+    },
+    retrieveLoggedInUserByUserId: function (_id) {
+        let baseSQL = 'SELECT u.username, u.email, u.created\
+        FROM users u \
+        WHERE u.user_id=?';
+
+        return db.query(baseSQL, [_id])
     }
 }
 
