@@ -43,15 +43,15 @@ const UserModel = {
                 return bcrypt.compare(password, results[0].password);
             } 
             else {
-                console.log('wrong username')
-                throw new Error("Username")
+                //console.log('wrong username')
+                throw new Error("Username or password is incorrect")
             }
         })
         .then((hashesMatch) => {
             if(hashesMatch) {
                 return Promise.resolve({user: username, uid: userID});
             } else {
-                console.log('wrong password')
+                //console.log('wrong password')
                 return Promise.resolve(false)
             }
         })
