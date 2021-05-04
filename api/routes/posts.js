@@ -8,11 +8,11 @@ router.post('/createPost', (req, res, next) => {
     PostController.createPost(req, res, next);
 })
 
-router.get('/getRecentPostsToUserId', (req, res, next) => {
+router.get('/getRecentPostsToUser', (req, res, next) => {
     PostController.getRecentPostsToUserId(req, res, next);
 })
 
-router.get('/getUserPostsAndFriendsPostsByUserId', (req, res, next) => {
+router.get('/getUserPostsAndFriendsPosts', (req, res, next) => {
     PostController.getUserPostsAndFriendsPostsByUserId(req, res, next);
 })
 
