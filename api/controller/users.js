@@ -78,7 +78,8 @@ const UserController = {
             else {
                 console.log("Session destroyed")
                 res.clearCookie('cookieKey');
-                res.redirect("/");
+                res.json({ status: "OK", message: "Logout Successful", "redirect": '/' });
+               // res.redirect("/");
             }
         })
     },
