@@ -14,8 +14,8 @@ router.post('/logout', (req, res, next) => {
   UserController.logOut(req, res, next);
 })
 
-router.get('/getLoggedInUsername', (req, res, next) => {
-  UserController.getLoggedInUsername(req, res, next);
+router.get('/getLoggedInUser', (req, res, next) => {
+  UserController.getLoggedInUser(req, res, next);
 })
 
 module.exports = router;
