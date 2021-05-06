@@ -31,6 +31,7 @@ const PostController = {
     },
     getUserPostsAndFriendsPostsByUserId: function (req, res, next) {
         let _id = req.session.userID;
+        let username = req.session.username
         console.log(req.session.userID)
         return PostModal.retrieveUserPostsAndFriendsPostsByUserId(_id)
         .then(([results]) => {
@@ -38,7 +39,7 @@ const PostController = {
                 res.json(results);
             }
             else {
-                return PostModal.retrieveRecentPostsToUserId(_id)
+                return PostModal.retrieveRecentPostsToUser(username)
             }
             
         })
