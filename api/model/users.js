@@ -70,6 +70,13 @@ const UserModel = {
         WHERE u.user_id=?';
 
         return db.query(baseSQL, [_id])
+    },
+    retrieveUserByUsername: function (username) {
+        let baseSQL = 'SELECT u.user_id, u.username, u.email, u.created\
+        FROM users u \
+        WHERE u.username=?';
+
+        return db.query(baseSQL, [username])
     }
 }
 

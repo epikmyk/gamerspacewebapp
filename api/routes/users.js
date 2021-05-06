@@ -18,4 +18,8 @@ router.get('/getLoggedInUser', (req, res, next) => {
   UserController.getLoggedInUser(req, res, next);
 })
 
+router.get('/getUser/:username', (req, res, next) => {
+  UserController.getUser(req, res, next);
+})
+
 module.exports = router;

@@ -14,7 +14,7 @@ router.post('/declineFriendRequest', (req, res, next) => {
   UserController.logOut(req, res, next);
 })
 
-router.get('/getFriendStatus', (req, res, next) => {
+router.get('/getFriendStatus/:username/:friendUsername', (req, res, next) => {
   FriendsController.getFriendStatus(req, res, next);
 })
 

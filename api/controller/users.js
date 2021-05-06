@@ -99,6 +99,19 @@ const UserController = {
         if (req.session.username) {
             res.json({ username: req.session.username });
         }*/
+    },
+    getUser: function (req, res, next) {
+        let username = req.params.username;
+        UserModel.retrieveUserByUsername(username)
+        .then(([userData]) => {
+            if (userData.length == 1) {
+                res.json(userData[0])
+            }
+            else {
+                res.json({message: "could not find user"})
+            }
+            
+        })
     }
 }
 
