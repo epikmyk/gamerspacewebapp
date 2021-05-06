@@ -65,7 +65,7 @@ const UserModel = {
         });
     },
     retrieveLoggedInUserByUserId: function (_id) {
-        let baseSQL = 'SELECT u.username, u.email, u.created\
+        let baseSQL = 'SELECT u.user_id, u.username, u.email, u.created\
         FROM users u \
         WHERE u.user_id=?';
 
