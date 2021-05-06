@@ -46,7 +46,14 @@ const PostController = {
         .then(([results])=> {
             res.json(results);
         })
-        .catch((err) => { next(err)})
+        .catch((err) => { 
+            if(err instanceof Error) {
+                res.json({ status: "OK", message: err.message, "redirect": '/' });
+            }
+            else {
+                next(err) 
+            }
+        })
     }
 }
 
