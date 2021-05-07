@@ -22,4 +22,7 @@ router.get('/getUser/:username', (req, res, next) => {
   UserController.getUser(req, res, next);
 })
 
+router.get('/search/:searchTerm', (req, res, next) => {
+  UserController.searchUsers(req, res, next);
+})
 module.exports = router;

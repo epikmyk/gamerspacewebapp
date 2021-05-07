@@ -77,7 +77,15 @@ const UserModel = {
         WHERE u.username=?';
 
         return db.query(baseSQL, [username])
+    },
+    search: function (searchTerm) {
+        let baseSQL = 'SELECT user_id, username, email, created \
+        FROM users \
+        WHERE username LIKE ?';
+
+        return db.query(baseSQL, [searchTerm])
     }
+
 }
 
 module.exports = UserModel;

@@ -112,6 +112,14 @@ const UserController = {
             }
             
         })
+    },
+    searchUsers: function (req, res, next) {
+        let searchTerm = "%" + req.params.searchTerm + "%";
+        UserModel.search(searchTerm)
+        .then(([results]) => {
+            res.json(results);
+        })
+        .catch((err) => next(err))
     }
 }
 
