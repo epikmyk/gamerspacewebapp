@@ -3,7 +3,7 @@ var router = express.Router();
 var FriendsController = require('../controller/friends');
 
 router.post('/addFriend', (req, res, next) => {
-  UserController.createUser(req, res, next);
+  FriendsController.addFriend(req, res, next);
 })
 
 router.post('/acceptFriendRequest', (req, res, next) => {
