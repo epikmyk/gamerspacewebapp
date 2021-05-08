@@ -65,6 +65,16 @@ const FriendsController = {
                 next(err) 
             }
         })
+    },
+    getFriendRequests: function (req, res, next) {
+        let user_id = req.session.userID
+
+        return FriendsModel.retrieveFriendRequests(user_id)
+        .then(([results]) => {
+            res.json(results)
+        })
+        .catch((err) => { next(err) })
+        
     }
 }
 
