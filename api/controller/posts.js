@@ -36,22 +36,36 @@ const PostController = {
         return PostModal.retrieveUserPostsAndFriendsPostsByUserId(_id)
         .then(([results]) => {
             if(results.length > 0) {
+                console.log("throwing")
                 res.json(results);
             }
             else {
                 return PostModal.retrieveRecentPostsToUser(username)
+                .then(([results]) => {
+                    if(results) {
+                        res.json(results);
+                    }
+                    else {
+                        throw Error("could not get posts")
+                    }
+                })
+                .catch((err) => { 
+                    if(err instanceof Error) {
+                        res.json({ status: "OK", message: err.message, "redirect": '/' });
+                    }
+                    else {
+                        res.json({ status: "OK", message: "err", "redirect": '/' });
+                    }
+                })
             }
-            
-        })
-        .then(([results])=> {
-            res.json(results);
         })
         .catch((err) => { 
+            console.log("HEREEEEE")
             if(err instanceof Error) {
                 res.json({ status: "OK", message: err.message, "redirect": '/' });
             }
             else {
-                next(err) 
+                res.json({ status: "OK", message: "err", "redirect": '/' });
             }
         })
     }

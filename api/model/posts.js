@@ -15,7 +15,7 @@ const PostModal = {
         return db.query(baseSQL, [username])
     },
     retrieveUserPostsAndFriendsPostsByUserId: function (_id) {
-        let baseSQL = 'SELECT p.post_id, p.post, p.created, p.user_poster_id, p.user_receiver_id, u.username\
+        let baseSQL = 'SELECT DISTINCT p.post_id, p.post, p.created, p.user_poster_id, p.user_receiver_id, u.username\
         FROM posts p \
         JOIN friends f on p.user_poster_id=f.user_id or p.user_poster_id=f.friend_id \
         JOIN users u on p.user_poster_id=u.user_id\
