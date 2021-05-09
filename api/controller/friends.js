@@ -19,7 +19,7 @@ const FriendsController = {
     },
     deleteFriend: function (req, res, next) {
         let user_id = req.body.user_id;
-        let friend_id = req.body.user_id;
+        let friend_id = req.body.friend_id;
 
         return FriendsModel.deleteFriend(user_id, friend_id)
             .then(([results]) => {
