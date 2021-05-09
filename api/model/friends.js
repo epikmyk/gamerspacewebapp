@@ -34,7 +34,7 @@ const FriendsModel = {
         let baseSQL = 'DELETE FROM friends f\
         WHERE (f.friend_id = ? AND f.user_id = ?) OR (f.user_id = ? AND f.friend_id = ?)';
 
-        return db.execute(baseSQL, [user_id, friend_id, user_id, friend_id])
+        return db.query(baseSQL, [user_id, friend_id, user_id, friend_id])
     }
 
 }
