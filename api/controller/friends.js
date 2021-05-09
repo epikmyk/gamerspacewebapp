@@ -18,8 +18,8 @@ const FriendsController = {
             .catch((err) => { next(err) })
     },
     deleteFriend: function (req, res, next) {
-        let user_id = req.body.user_id;
-        let friend_id = req.body.friend_id;
+        let user_id = req.params.user_id;
+        let friend_id = req.params.friend_id;
 
         return FriendsModel.deleteFriend(user_id, friend_id)
             .then(([results]) => {

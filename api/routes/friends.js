@@ -11,7 +11,7 @@ router.post('/acceptFriendRequest', (req, res, next) => {
   UserController.logIn(req, res, next);
 })
 
-router.delete('/declineFriendRequest', (req, res, next) => {
+router.delete('/declineFriendRequest/:user_id/:friend_id', (req, res, next) => {
   FriendsController.deleteFriend(req, res, next);
 })
 
