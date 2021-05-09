@@ -36,10 +36,10 @@ const FriendsController = {
         let user_id = req.body.user_id;
         let friend_id = req.body.friend_id;
 
-        return FriendsModel.updateStatus(1, user_id, friend_id)
+        return FriendsModel.updateStatus(1, friend_id, user_id)
         .then(([results]) => {
             if(results && results.affectedRows) {
-                return FriendsModel.create(1, user_id, friend_id)
+                return FriendsModel.create(1, friend_id , user_id)
             }
             else {
                 throw Error("Could not update friend request")
