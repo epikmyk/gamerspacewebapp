@@ -11,8 +11,8 @@ router.post('/acceptFriendRequest', (req, res, next) => {
   UserController.logIn(req, res, next);
 })
 
-router.post('/declineFriendRequest', (req, res, next) => {
-  UserController.logOut(req, res, next);
+router.delete('/declineFriendRequest', (req, res, next) => {
+  FriendsController.deleteFriend(req, res, next);
 })
 
 router.get('/getFriendStatus/:username/:friendUsername', (req, res, next) => {

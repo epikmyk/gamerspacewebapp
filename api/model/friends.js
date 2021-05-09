@@ -29,8 +29,14 @@ const FriendsModel = {
             WHERE u.user_id = f.user_id) '
 
         return db.query(baseSql, [user_id])
+    },
+    deleteFriend: function (user_id, friend_id) {
+        let baseSQL = 'DELETE FROM friends f\
+        WHERE (f.user_id = ? AND f.friend_id = ?) AND (f.friend_id = ? AND f.user_id = ?)'
+
+        return db.execute(baseSQL, [user_id, friend_id, user_id, friend_id])
     }
-    
+
 }
 
 module.exports = FriendsModel;
