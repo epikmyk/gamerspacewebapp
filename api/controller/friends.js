@@ -32,6 +32,36 @@ const FriendsController = {
             })
             .catch((err) => { next(err) })
     },
+    acceptFriendRequest: function (req, res, next) {
+        let user_id = req.body.user_id;
+        let friend_id = req.body.friend_id;
+
+        return FriendsModel.updateStatus(1, user_id, friend_id)
+        .then(([results]) => {
+            if(results && results.affectedRows) {
+                return FriendsModel.create(1, user_id, friend_id)
+            }
+            else {
+                throw Error("Could not update friend request")
+            }
+        })
+        .then(([results]) => {
+            if (results && results.affectedRows) {
+                res.json({ status: "OK", message: "Friend request was successful", "redirect": "/" })
+            }
+            else {
+                throw Error("Could not accept friend request")
+            }
+        })
+        .catch((err) => {
+            if (err instanceof Error) {
+                res.json({ status: "OK", message: err.message, "redirect": '/' });
+            }
+            else {
+                next(err);
+            }
+        });
+    },
     getFriendStatus: function (req, res, next) {
         let username = req.params.username
         let friendUsername = req.params.friendUsername

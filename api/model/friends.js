@@ -5,17 +5,17 @@ const FriendsModel = {
         let baseSQL = 'INSERT INTO friends (status, user_id, friend_id, created) VALUE (?, ?, ?, now())';
         return db.execute(baseSQL, [status, user_id, friend_id])
     },
-    updateStatus: function (status, user_id) {
+    updateStatus: function (status, user_id, friend_id) {
         let baseSQL = 'UPDATE friends\
         SET status = ?, created = now()\
-        WHERE user_id = ?';
-        return db.execute(baseSQL, [status, user_id])
+        WHERE user_id = ? AND friend_id = ?';
+        return db.execute(baseSQL, [status, user_id, friend_id])
     },
     retrieveFriendStatus: function (user_id, friend_id) {
         let baseSql = 'SELECT f.status \
         FROM friends f\
         JOIN users u on f.user_id = u.user_id \
-        WHERE f.user_id = ? AND f.friend_id = ?;'
+        WHERE f.friend_id = ? AND f.user_id = ?;'
 
         return db.query(baseSql, [user_id, friend_id])
     },
