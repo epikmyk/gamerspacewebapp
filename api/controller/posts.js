@@ -4,7 +4,7 @@ const PostController = {
     createPost: function (req, res, next) {
         let post = req.body.post;
         let user_poster_id = req.session.userID;
-        let user_receiver_id = user_poster_id; //change this later to receiver id, make a get userid api from users table
+        let user_receiver_id = req.body.user_receiver_id; 
 
         return PostModal.create(post, user_poster_id, user_receiver_id)
             .then(([results]) => {
