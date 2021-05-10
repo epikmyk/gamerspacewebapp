@@ -75,7 +75,7 @@ const FriendsController = {
                     return friends;
                 }
                 else {
-                    throw Error("No friend match found")
+                    throw Error("No friend match found 1")
                 }
             })
             .then((friend) => {
@@ -87,7 +87,7 @@ const FriendsController = {
                     return friends;
                 }
                 else {
-                    throw Error("No friend match found")
+                    throw Error("No friend match found 2")
                 }
             })
             .then((friends) => {
@@ -99,12 +99,12 @@ const FriendsController = {
                     res.json(results[0])
                 }
                 else {
-                    res.json({ status: "No friend match found" })
+                    res.json({ status: 2 })
                 }
             })
             .catch((err) => {
                 if (err instanceof Error) {
-                    res.json({ status: 2, message: err.message, "redirect": '/' });
+                    res.json({ status: "ok", message: err.message, "redirect": '/' });
                 }
                 else {
                     next(err)
