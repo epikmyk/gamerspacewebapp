@@ -26,7 +26,8 @@ const FriendsModel = {
             (SELECT f.status, f.user_id, f.friend_id, u.username, f.created \
             FROM users u \
             JOIN FriendRequests f on u.user_id = f.user_id\
-            WHERE u.user_id = f.user_id) '
+            WHERE u.user_id = f.user_id \
+            ORDER BY f.created DESC) '
 
         return db.query(baseSql, [user_id])
     },
