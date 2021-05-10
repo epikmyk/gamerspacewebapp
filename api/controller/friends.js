@@ -104,7 +104,7 @@ const FriendsController = {
             })
             .catch((err) => {
                 if (err instanceof Error) {
-                    res.json({ status: "OK", message: err.message, "redirect": '/' });
+                    res.json({ status: 2, message: err.message, "redirect": '/' });
                 }
                 else {
                     next(err)
