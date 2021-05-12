@@ -10,11 +10,25 @@ const GameModal = {
         return db.execute(baseSQL, [game_id, user_id])
     },
     retrieveGameByName: function (game) {
-        let baseSQL = 'SELECT name \
+        let baseSQL = 'SELECT name, game_id \
         from games \
         WHERE slug = ?';
 
         return db.query(baseSQL, [game])
+    },
+    retrieveLatestInsertion: function () {
+        let baseSQL = 'SELECT * FROM games WHERE game_id= LAST_INSERT_ID()'
+
+        return db.query(baseSQL)
+    },
+    retrieveGamesByUserId: function (user_id) {
+        let baseSQL = 'SELECT g.name, g.image \
+        FROM games g \
+        JOIN UserGames f on g.game_id = f.game_id \
+        JOIN users u on f.user_id=u.user_id \
+        WHERE u.user_id = ?' 
+
+        return db.query(baseSQL, [user_id]);
     }
 }
 

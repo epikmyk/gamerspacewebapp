@@ -9,16 +9,16 @@ router.post('/addGame', (req, res, next) => {
 })
 
 router.get('/getGame/:game', (req, res, next) => {
-    console.log("made it to get game api")
-    GameController.getGame(req, res, next);
+  console.log("made it to get game api")
+  GameController.getGame(req, res, next);
 })
 
 router.post('/addUserGame', (req, res, next) => {
-    GameController.createUserGame(req, res, next);
+  GameController.createUserGame(req, res, next);
 })
 
-router.get('/getUserGames', (req, res, next) => {
-  FriendsController.acceptFriendRequest(req, res, next);
+router.get('/getFavoriteGames/:user_id', (req, res, next) => {
+  GameController.getFavoriteGames(req, res, next);
 })
 
 module.exports = router;
