@@ -17,8 +17,8 @@ const GameController = {
                     //game_id = results[0].game_id
                     console.log(results[0])
                     return GameModal.create(slug, name, image)
-                        .then(([results]) => {
-                            if (results && results.affectedRows) {
+                        .then((results) => {
+                            if (results) {
                                 return GameModal.retrieveLatestInsertion()
                                     .then(([results]) => {
                                         return GameModal.createUserGame(results[0].game_id, user_id)
