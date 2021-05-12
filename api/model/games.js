@@ -32,7 +32,7 @@ const GameModal = {
         return db.query(baseSQL, [user_id]);
     }*/
     retrieveGamesByUserId: function (user_id) {
-        let baseSQL = 'SELECT DISTINCT f.name, f.image \
+        let baseSQL = 'SELECT DISTINCT f.slug, f.name, f.image \
         FROM FavoriteGames f \
         JOIN users u on f.user_id = u.user_id\
         WHERE u.user_id = ?' 
