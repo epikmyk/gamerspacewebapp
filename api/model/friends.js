@@ -36,6 +36,14 @@ const FriendsModel = {
         WHERE (f.friend_id = ? AND f.user_id = ?) OR (f.user_id = ? AND f.friend_id = ?)';
 
         return db.query(baseSQL, [user_id, friend_id, user_id, friend_id])
+    },
+    retrieveFriends: function (user_id) {
+        let baseSQL = 'SELECT u.user_id, u.username\
+        FROM users u\
+        JOIN friends f on f.friend_id = u.user_id\
+        WHERE f.user_id = ?'
+
+        return db.query(baseSQL, [user_id])
     }
 
 }

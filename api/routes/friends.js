@@ -23,4 +23,8 @@ router.get('/getFriendRequests', (req, res, next) => {
   FriendsController.getFriendRequests(req, res, next);
 })
 
+router.get('/getFriends', (req, res, next) => {
+  FriendsController.getFriends(req, res, next);
+})
+
 module.exports = router;
