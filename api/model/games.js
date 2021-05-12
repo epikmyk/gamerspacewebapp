@@ -1,15 +1,9 @@
 var db = require('../conf/database');
 
 const GameModal = {
-    create: function (slug, name, image) {
-        let baseSQL = 'INSERT INTO games (slug, name, image) VALUE (?, ?, ?)';
-        return db.execute(baseSQL, [slug, name, image])
-        .then(([results, fields]) => {
-            return Promise.resolve(results && results.affectedRows);
-        })
-        .catch((err) => {
-            throw err;
-        });
+    create: function (slug, name, image, user_id) {
+        let baseSQL = 'INSERT INTO FavoriteGames (slug, name, image, user_id) VALUE (?, ?, ?, ?)';
+        return db.execute(baseSQL, [slug, name, image, user_id])
     },
     createUserGame: function (game_id, user_id) {
         let baseSQL = 'INSERT INTO UserGames (game_id, user_id) VALUE (?, ?)';
@@ -27,6 +21,7 @@ const GameModal = {
 
         return db.query(baseSQL)
     },
+    /*
     retrieveGamesByUserId: function (user_id) {
         let baseSQL = 'SELECT g.name, g.image \
         FROM games g \
@@ -35,7 +30,17 @@ const GameModal = {
         WHERE u.user_id = ?' 
 
         return db.query(baseSQL, [user_id]);
+    }*/
+    retrieveGamesByUserId: function (user_id) {
+        let baseSQL = 'SELECT DISTINCT f.name, f.image \
+        FROM FavoriteGames f \
+        JOIN users u on f.user_id = u.user_id\
+        WHERE u.user_id = ?' 
+
+        return db.query(baseSQL, [user_id]);
     }
+    
+
 }
 
 module.exports = GameModal

@@ -11,6 +11,20 @@ const GameController = {
         let user_id = req.session.userID;
         let game_id = 0;
 
+        return GameModal.create(slug, name, image, user_id)
+            .then(([results]) => {
+                if (results && results.affectedRows) {
+                    console.log("Post successful")
+                    res.json({ status: "OK", message: "Post was created", "redirect": "/" })
+                }
+                else {
+                    console.log("Post unsuccessful")
+                    res.json({ status: "OK", message: "Post was not created", "redirect": "/" })
+                }
+            })
+            .catch((err) => { next(err)})
+
+        /*
         return GameModal.retrieveGameByName(name)
             .then(([results]) => {
                 if (results.length == 0) {
@@ -58,7 +72,11 @@ const GameController = {
                         .catch((err) => { next(err) })
                 }
             })
-            .catch((err) => { next(err) })
+            .catch((err) => { next(err) })*/
+
+            
+
+
 
     },
     createUserGame: function (req, res, next) {
