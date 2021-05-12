@@ -2,7 +2,7 @@ var db = require('../conf/database');
 
 const GameModal = {
     create: function (slug, name, image, user_id) {
-        let baseSQL = 'INSERT INTO FavoriteGames (slug, name, image, user_id) VALUE (?, ?, ?, ?)';
+        let baseSQL = 'INSERT INTO FavoriteGames (slug, name, background_image, user_id) VALUE (?, ?, ?, ?)';
         return db.execute(baseSQL, [slug, name, image, user_id])
     },
     createUserGame: function (game_id, user_id) {
@@ -32,7 +32,7 @@ const GameModal = {
         return db.query(baseSQL, [user_id]);
     }*/
     retrieveGamesByUserId: function (user_id) {
-        let baseSQL = 'SELECT DISTINCT f.slug, f.name, f.image \
+        let baseSQL = 'SELECT DISTINCT f.slug, f.name, f.background_image \
         FROM FavoriteGames f \
         JOIN users u on f.user_id = u.user_id\
         WHERE u.user_id = ?' 
