@@ -108,9 +108,9 @@ const GameController = {
     },
 
     getFavoriteGames: function (req, res, next) {
-        let user_id = req.params.user_id;
+        let username = req.params.username;
 
-        return GameModal.retrieveGamesByUserId(user_id)
+        return GameModal.retrieveGamesByUserId(username)
             .then(([results]) => {
                 res.json(results);
             })

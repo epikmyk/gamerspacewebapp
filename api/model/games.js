@@ -31,13 +31,13 @@ const GameModal = {
 
         return db.query(baseSQL, [user_id]);
     }*/
-    retrieveGamesByUserId: function (user_id) {
+    retrieveGamesByUserId: function (username) {
         let baseSQL = 'SELECT DISTINCT f.slug, f.name, f.background_image \
         FROM FavoriteGames f \
         JOIN users u on f.user_id = u.user_id\
-        WHERE u.user_id = ?' 
+        WHERE u.username = ?' 
 
-        return db.query(baseSQL, [user_id]);
+        return db.query(baseSQL, [username]);
     }
     
 

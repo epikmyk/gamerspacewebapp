@@ -17,7 +17,7 @@ router.post('/addUserGame', (req, res, next) => {
   GameController.createUserGame(req, res, next);
 })
 
-router.get('/getFavoriteGames/:user_id', (req, res, next) => {
+router.get('/getFavoriteGames/:username', (req, res, next) => {
   GameController.getFavoriteGames(req, res, next);
 })
 
