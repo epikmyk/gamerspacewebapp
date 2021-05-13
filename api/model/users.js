@@ -79,7 +79,7 @@ const UserModel = {
         return db.query(baseSQL, [username])
     },
     search: function (searchTerm) {
-        let baseSQL = 'SELECT u.user_id, u.username, u.email, u.created, f.name \
+        let baseSQL = 'SELECT DISTINCT u.user_id, u.username, u.email, u.created \
         FROM users u\
         JOIN FavoriteGames f on f.user_id = u.user_id \
         WHERE u.username LIKE ? OR f.name LIKE ?';
