@@ -62,7 +62,7 @@
     background-color: #293e4a !important;
     border: #2c3531 !important;
     border-radius: 5px !important;
-    height: 40px !important;
+    height: 45px !important;
 }
 
 .signup-right {
@@ -79,7 +79,7 @@
 .form-control {
     background-color: #eeeeef !important;
     margin-bottom: 40px;
-    height: 40px !important;
+    height: 45px !important;
 }
 
 @media screen and (min-width: 900px) {

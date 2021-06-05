@@ -26,7 +26,7 @@ const Signup = props => {
                         </Form.Group>
                         <Button className="signup-button" variant="primary" type="submit">Sign Up</Button>
                     </Form>
-                    <p className="sign-in">Already have an account? <a href="#">Sign In</a></p>
+                    <p className="sign-in">Already have an account? <a href="/login">Sign In</a></p>
                 </div>
             </div>
         </>

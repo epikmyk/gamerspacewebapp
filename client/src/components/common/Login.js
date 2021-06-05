@@ -7,9 +7,13 @@ const Login = props => {
 
     return (
         <>
-            <NavBar />
-            <div className="main-login">
-                <div className="login">
+            <div className="login">
+                <div className="login-left">
+                    <h1>Login</h1>
+                    <p className="welcome">Welcome back.</p>
+                    <p className="logo"><img src={"images/gamerspace-logo.png"}></img> Gamerspace</p>
+                </div>
+                <div className="login-right">
                     <Form className="login-form" method="POST" action="api/users/login" enctype="application/x-www-form-urlencoded">
                         <Form.Text className="login-header">Log In</Form.Text>
                         <Form.Group controlId="form-username" size="lg">
@@ -20,6 +24,7 @@ const Login = props => {
                         </Form.Group>
                         <Button className="login-button" variant="primary" type="submit">Log In</Button>
                     </Form>
+                    <p className="sign-up">Don't have an account? <a href="/">Sign Up</a></p>
                 </div>
             </div>
         </>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../common/NavBar';
-import Signup from '../common/Signup';
+import Login from '../common/Login';
 import '../startup/StartupPage.css'
 
-const StartupPage = props => {
+const LoginPage = props => {
 
     return (
         <div>
@@ -11,10 +11,10 @@ const StartupPage = props => {
                 <div className="main-homepage">
                     <div className="navbar">
                         <div className="title"><img src={"images/gamerspace-logo.png"}></img> Gamerspace</div>
-                        <div className="navbar-sign-in"><a href="/login">Sign In</a></div>
+                        <div className="navbar-sign-in"><a href="/">Sign Up</a></div>
                     </div>
                     <div className="about">
-                        <Signup />
+                        <Login />
                     </div>
                 </div>
             </div>
@@ -22,4 +22,4 @@ const StartupPage = props => {
     )
 }
 
-export default StartupPage;
+export default LoginPage;
