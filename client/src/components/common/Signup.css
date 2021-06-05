@@ -1,23 +1,157 @@
-@media all and (min-width: 480px) {
+@font-face {
+    font-family: "San Francisco";
+    font-weight: 400;
+    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+  }
+
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'); 
+
+
+.signup {
+    margin:auto;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, .25);
+    font-family: 'Poppins', sans-serif;
+    background-color: blue;
+}
+
+.signup a {
+    color: #293e4a;
+}
+
+.signup a:visited {
+    color: #293e4a;
+}
+
+.signup a:hover {
+    color: #4f768f;
+    text-decoration: none;
+}
+
+.signup h1 {
+    margin-top: 50px;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.slogan {
+    margin-top: 30px;
+    font-weight: 500;
+    width: 350px;
+}
+
+.get-started {
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+.logo {
+    margin-top: 120px;
+    font-weight: bold;
+}
+
+.signup-form {
+    font-family: 'Poppins', sans-serif;
+    background-color: #eeeeef;
+    padding: 50px;
+    margin: 0 auto;
+    border-radius: 0px 5px 5px 0;
+}
+
+.signup-button {
+    font-family: 'Poppins', sans-serif;
+    background-color: #293e4a !important;
+    border: #2c3531 !important;
+    border-radius: 5px !important;
+    height: 40px !important;
+}
+
+.signup-right {
+    color: #555555 !important;
+    padding-bottom: 50px;
+}
+
+.signup-left {
+    background-image: url("../../images/gamerspace-logo-background.png");
+    background-size: 922px 540px;
+    background-position: left;
+}
+
+.form-control {
+    background-color: #eeeeef !important;
+    margin-bottom: 40px;
+    height: 40px !important;
+}
+
+@media screen and (min-width: 900px) {
     .create-an-account {
-        color: #dde8e2;
+        color: #555555;
         font-size: 2rem;
         padding-bottom: 20px;
     }
     .signup {
-        padding: 40px;
+        width: 1000px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 5px 5px 5px 5px;
     }
+    .signup {
+        flex-direction: row;
+    }
+    .signup-left {
+        font-family: 'Poppins', sans-serif;
+        background-color: #293e4a;
+        display: flex;
+        flex-direction: column;
+        width: 48%;
+        height: auto;
+        text-align: left;
+        padding-left: 60px;
+        border-radius: 5px 0px 0px 5px;
+    }
+    .signup-right {
+        background-color: #eeeeef;
+        display: flex;
+        flex-direction: column;
+        width: 52%;
+        height: auto;
+        border-radius: 0px 5px 5px 0;
+    }
+    
     .signup-form {
-        background-color: #273545;
-        padding: 50px;
-        margin: 0 auto;
-        max-width: 400px;
-        border-radius: 4px;
-        box-shadow: 0px 0px 3px 1px #222222;
+        width: 100%;
     }
-    .signup-button {
-        background-color: #5a7ba0 !important;
-        border: #2c3531 !important;
 
+    .signup-button {
+        width: 420px;
     }
 }
+
+@media screen and (max-width: 899px) {
+    
+    .signup-left {
+        background-color: #293e4a;
+        border-radius: 5px 0px 0px 5px;
+    }
+    .signup-left, .signup-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .signup-right {
+        background-color: #eeeeef;
+        display: flex;
+        flex-direction: column;
+        border-radius: 0px 0px 5px 5px;
+    }
+    .signup-button {
+        width: 300px;
+    }
+}
+
+
+
+
+
+
+
