@@ -28,7 +28,7 @@ const NavBar = props => {
 
     return (
         <>
-            <Navbar className="nav-bar" expand="lg" >
+            <Navbar className="nav-bar" expand="lg" sticky="top" >
                 <Navbar.Brand className="nav-bar-brand" href="/home"><img src={"images/navbar-gamerspace-logo.png"}></img> GamerSpace</Navbar.Brand>
                 <Navbar.Toggle aria-controla="basic-navbar-nav" />
                 <Navbar.Collapse id="nav-bar-collapse">
@@ -79,12 +79,9 @@ const NavBar = props => {
                         </Form>
                     </Nav>
                 </Navbar.Collapse>
-
-
             </Navbar>
         </>
     )
-
 }
 
 export default NavBar;
