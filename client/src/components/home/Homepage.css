@@ -1,11 +1,45 @@
-.main-homepage {
-    padding: 25px;
-    text-align: center;
+@font-face {
+    font-family: "San Francisco";
+    font-weight: 400;
+    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+  }
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+
+.main-homepage-root-container {
+    background-color: #eeeeee;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    
 }
 
-.about {
-    color: #dde8e2;
-    font-size: 2rem;
+.main-homepage-content-container {
+    display: flex;
+    justify-content: center;
+}
+
+.homepage-feed {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    width: 700px; 
+}
+
+/*
+.main-startup-page {
+    padding: 25px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #eeeeee;
+}*/
+
+/*
+.title {
+    font-family: 'Poppins', sans-serif;
+    color: #eeeeee;
+    text-align: left;
+    font-size: 1.8rem;
     font-style: bold;
 }
 
@@ -19,4 +53,4 @@
         width: 50%;
         margin: auto;
     }
-}
+}*/

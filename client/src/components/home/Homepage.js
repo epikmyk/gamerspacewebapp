@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../common/NavBar';
-import Signup from '../common/Signup';
 import '../home/Homepage.css'
+import '../displayposts/HomeWallPosts'
+import HomeWallPosts from '../displayposts/HomeWallPosts';
 
 const Homepage = props => {
 
     return (
         <div>
-            <div className='main'>
+            <div className='main-homepage-root-container'>
                 <NavBar />
-                <div className="main-homepage">
-                    <div className='about'>
-                        <div>
-                            Find and make new friends who play the same games you play.
-                        </div>
+                <div className="main-homepage-content-container">
+                    <div className="homepage-feed">
+                        <HomeWallPosts />
                     </div>
-                    <Signup />
                 </div>
             </div>
         </div>
