@@ -3,10 +3,11 @@ const PostModal = require('../model/posts');
 const PostController = {
     createPost: function (req, res, next) {
         let post = req.body.post;
+        let image = req.body.image;
         let user_poster_id = req.session.userID;
         let user_receiver_id = req.body.user_receiver_id; 
 
-        return PostModal.create(post, user_poster_id, user_receiver_id)
+        return PostModal.create(post, image, user_poster_id, user_receiver_id)
             .then(([results]) => {
                 if (results && results.affectedRows) {
                     console.log("Post successful")

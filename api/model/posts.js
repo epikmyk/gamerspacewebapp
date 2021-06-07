@@ -1,9 +1,9 @@
 var db = require('../conf/database');
 
 const PostModal = {
-    create: function (post, user_poster_id, user_receiver_id) {
-        let baseSQL = 'INSERT INTO posts (post, created, user_poster_id, user_receiver_id) VALUE (?, now(), ?, ?)';
-        return db.execute(baseSQL, [post, user_poster_id, user_receiver_id])
+    create: function (post, image, user_poster_id, user_receiver_id) {
+        let baseSQL = 'INSERT INTO posts (post, image, created, user_poster_id, user_receiver_id) VALUE (?, ?, now(), ?, ?)';
+        return db.execute(baseSQL, [post, image, user_poster_id, user_receiver_id])
     },
     retrieveRecentPostsToUser: function (username) {
         /*
