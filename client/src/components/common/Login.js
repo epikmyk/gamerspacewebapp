@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Button, Form, FormControl, NavDropdown } from 'react-bootstrap';
-import NavBar from '../common/NavBar';
 import '../common/Login.css';
 
 const Login = props => {
