@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useEffect } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import Homepage from './components/home/Homepage';
 import Chat from './components/chat/Chat';
@@ -17,7 +17,7 @@ function App() {
 
   return (
     <main>
-      <style>{'body { height: 100%; margin: 0; background-color: #13547a'}</style>
+      <style>{'body { height: 100%; margin: 0;'}</style>
       <Switch>
         <Route path='/' component={StartupPage} exact/>
         <Route path='/home' component={Homepage} exact/>
