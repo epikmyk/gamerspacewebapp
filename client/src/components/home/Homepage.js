@@ -3,6 +3,7 @@ import NavBar from '../common/NavBar';
 import '../home/Homepage.css'
 import '../displayposts/HomeWallPosts'
 import HomeWallPosts from '../displayposts/HomeWallPosts';
+import WritePost from '../home/WritePost';
 
 const Homepage = props => {
 
@@ -12,6 +13,7 @@ const Homepage = props => {
                 <NavBar />
                 <div className="main-homepage-content-container">
                     <div className="homepage-feed">
+                        <WritePost />
                         <HomeWallPosts />
                     </div>
                 </div>
