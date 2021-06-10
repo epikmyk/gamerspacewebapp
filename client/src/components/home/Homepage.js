@@ -5,7 +5,20 @@ import '../displayposts/HomeWallPosts'
 import HomeWallPosts from '../displayposts/HomeWallPosts';
 import WritePost from '../home/WritePost';
 
+
 const Homepage = props => {
+
+    const [user, setUser] = useState({})
+    const getLoggedInUser = () => {
+        fetch('/api/users/getLoggedInUser')
+            .then(res => res.json())
+            .then(res => setUser(res))
+            .catch(err => err)
+    }
+
+    useEffect(() => {
+        getLoggedInUser();
+    }, [])
 
     return (
         <div>
@@ -13,8 +26,7 @@ const Homepage = props => {
                 <NavBar />
                 <div className="main-homepage-content-container">
                     <div className="homepage-feed">
-                        <WritePost />
-                        <HomeWallPosts />
+                        <WritePost user={user}/>
                     </div>
                 </div>
             </div>

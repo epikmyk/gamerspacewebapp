@@ -2,38 +2,76 @@ import React, { useState, useEffect } from 'react';
 import './WritePost.css';
 import { Button, Form, FormControl } from 'react-bootstrap';
 import { FaUserCircle } from 'react-icons/fa'
+import HomeWallPosts from '../displayposts/HomeWallPosts';
+var isPosted = false;
 
 const WritePost = props => {
 
-    const [scrollHeight, setScrollHeight] = useState(0)
-    const [textAreaHeight, setTextAreaHeight] = useState(0)
-    const [image, setImage] = useState(" ")
-    const [listOfWords, setListOfWords] = useState([]);
-    const [word, setWord] = useState("")
+    const [image, setImage] = useState(" ");
+    const [postText, setPostText] = useState("");
+    const [user, setUser] = useState({});
+    const [listOfHomeWallPosts, setListOfHomeWallPosts] = useState([]);
 
     let textAreaRef = React.createRef;
 
+    const getHomeWallPosts = () => {
+        fetch('/api/posts/getUserPostsAndFriendsPosts')
+            .then(res => res.json())
+            .then(res => setListOfHomeWallPosts(res))
+            .catch(err => err);
+    }
+
+    useEffect(() => {
+        setUser(props.user);
+    })
+
+    useEffect(() => {
+        getHomeWallPosts();
+    }, [])
 
     const handleTextAreaChange = (e) => {
-
-        setTextAreaHeight(300)
         e.style.height = "auto";
         e.style.height = e.scrollHeight + "px";
-
         checkForImage(e.value)
     }
 
     const checkForImage = (postString) => {
         let checkString = postString.match(/\.(gif|jpg|jpeg|tiff|png)/g) != null;
 
-        console.log("STRING IS " + checkString)
         if (checkString) {
             let postWords = postString.split("http");
-            let lastWord = "http" + postWords[postWords.length - 1];
-            setImage(lastWord);
+            setPostText(postWords[0])
+            setImage("http" + postWords[postWords.length - 1]);
         } else {
+            setPostText(postString)
             setImage(" ")
         }
+    }
+
+    const submitPost = (e) => {
+        const data = {
+            post: postText,
+            image: image,
+            user_receiver_id: user.user_id
+        }
+        fetch('/api/posts/createPost', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+            .then(data => {
+                console.log(data);
+                return fetch('/api/posts/getUserPostsAndFriendsPosts')
+            })
+            .then(res => res.json())
+            .then(res => setListOfHomeWallPosts(res))
+            .catch((err) => {
+                console.log(err);
+            })
+
+        document.getElementById("post-text-area").value = "";
     }
 
     return (
@@ -59,10 +97,11 @@ const WritePost = props => {
                         : null}
                 </div>
                 <div className="write-post-bottom-container">
-                    <Button className="post-button" variant="primary" type="submit">Post</Button>
+                    <Button className="post-button" variant="primary" type="submit" onClick={e => submitPost(e)}>Post</Button>
                 </div>
             </div>
             <hr className="write-post-seperator"></hr>
+            <div><HomeWallPosts listOfHomeWallPosts={listOfHomeWallPosts} /></div>
         </div>
     )
 }

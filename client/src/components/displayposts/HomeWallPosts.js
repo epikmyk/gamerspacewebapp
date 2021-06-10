@@ -18,7 +18,7 @@ const HomeWallPosts = props => {
     return (
         <>
             <div className="posts">
-                <PostCards listOfPosts={listOfHomeWallPosts} />
+                <PostCards listOfPosts={props.listOfHomeWallPosts} />
             </div>
         </>
     )
