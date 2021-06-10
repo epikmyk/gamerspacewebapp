@@ -72,6 +72,7 @@ const WritePost = props => {
             })
 
         document.getElementById("post-text-area").value = "";
+        setImage(" ");
     }
 
     return (
