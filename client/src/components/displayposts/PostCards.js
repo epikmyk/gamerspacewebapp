@@ -13,7 +13,9 @@ const PostCards = props => {
 
         <div>
             <div className="post-username">
-                <FaUserCircle size={32} color={"#293E4A"}></FaUserCircle> {post.username}
+                <a href={"/profile/" + post.username}>
+                    <FaUserCircle size={32} color={"#293E4A"}></FaUserCircle> {post.username}
+                </a>
             </div>
             <div className="post-container">
                 <a href="#">
@@ -24,7 +26,6 @@ const PostCards = props => {
                         <div className="post-image"><img src={post.image} width="360"></img></div>
                         : null}
                 </a>
-
             </div>
             <div className="post-stats-container">
                 <div className="num-of-comments">
