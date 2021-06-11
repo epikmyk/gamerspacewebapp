@@ -9,6 +9,8 @@ import WritePost from '../home/WritePost';
 const Homepage = props => {
 
     const [user, setUser] = useState({})
+    const wallPostUrl = "/api/posts/getUserPostsAndFriendsPosts"
+
     const getLoggedInUser = () => {
         fetch('/api/users/getLoggedInUser')
             .then(res => res.json())
@@ -26,7 +28,7 @@ const Homepage = props => {
                 <NavBar />
                 <div className="main-homepage-content-container">
                     <div className="homepage-feed">
-                        <WritePost user={user}/>
+                        <WritePost user={user} wallPostUrl={wallPostUrl}/>
                     </div>
                 </div>
             </div>

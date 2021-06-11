@@ -10,24 +10,27 @@ const WritePost = props => {
     const [image, setImage] = useState(" ");
     const [postText, setPostText] = useState("");
     const [user, setUser] = useState({});
-    const [listOfHomeWallPosts, setListOfHomeWallPosts] = useState([]);
+    const [listOfWallPosts, setListOfWallPosts] = useState([]);
+    const [wallPostUrl, setWallPostUrl] = useState("");
 
     let textAreaRef = React.createRef;
 
     const getHomeWallPosts = () => {
-        fetch('/api/posts/getUserPostsAndFriendsPosts')
+        fetch(wallPostUrl)
             .then(res => res.json())
-            .then(res => setListOfHomeWallPosts(res))
+            .then(res => setListOfWallPosts(res))
             .catch(err => err);
     }
 
     useEffect(() => {
         setUser(props.user);
+        setWallPostUrl(props.wallPostUrl);
+        console.log(wallPostUrl)
     })
 
     useEffect(() => {
         getHomeWallPosts();
-    }, [])
+    }, [wallPostUrl])
 
     const handleTextAreaChange = (e) => {
         e.style.height = "auto";
@@ -63,10 +66,10 @@ const WritePost = props => {
         })
             .then(data => {
                 console.log(data);
-                return fetch('/api/posts/getUserPostsAndFriendsPosts')
+                return fetch(wallPostUrl)
             })
             .then(res => res.json())
-            .then(res => setListOfHomeWallPosts(res))
+            .then(res => setListOfWallPosts(res))
             .catch((err) => {
                 console.log(err);
             })
@@ -102,7 +105,7 @@ const WritePost = props => {
                 </div>
             </div>
             <hr className="write-post-seperator"></hr>
-            <div><HomeWallPosts listOfHomeWallPosts={listOfHomeWallPosts} /></div>
+            <div><HomeWallPosts listOfHomeWallPosts={listOfWallPosts} /></div>
         </div>
     )
 }
