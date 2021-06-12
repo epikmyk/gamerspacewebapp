@@ -6,14 +6,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
 
-
 .main-profile-root-container {
     color: #555555;
     background-color: #eeeeee;
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    
 }
 
 .main-profile-content-container {
@@ -39,11 +37,50 @@
 }
 
 .profile-header-username {
+    margin-left: 20px;
     font-size: x-large;
     font-weight: 500;
 }
 
+.favorite-games-header {
+
+    font-weight: 500;
+    margin: 25px 0px 10px 25px;
+}
 .favorite-games-slider-container {
-    
-    padding: 0px 40px 0px 40px;
+    padding: 0px 20px 0px 20px;
+}
+
+.see-all-favorite-games {
+    font-weight: 500;
+    margin: 10px 0px 10px 25px;
+}
+
+.bottom-header-container {
+    margin-left: 25px;
+    display: flex;
+}
+
+.bottom-header-container a {
+    display: flex;
+    font-weight: 500;
+    color: #555555;
+}
+
+.bottom-header-container a:hover {
+    font-weight: 500;
+    color: #555555;
+}
+
+.bottom-header-container a:focus {
+    font-weight: 500;
+    color: #555555;
+}
+
+.friend-count {
+    font-weight: normal;
+}
+
+.select-friends {
+    margin-left: 10px;
 }

@@ -10,8 +10,10 @@ import { Carousel } from 'react-bootstrap';
 const Profile = props => {
 
     const [user, setUser] = useState({})
-    const [username, setUsername] = useState("")
-    const wallPostUrl = "/api/posts/getRecentPostsToUser/" + username
+    const [username, setUsername] = useState("");
+    const [showPosts, setShowPosts] = useState(true);
+    const [showFriends, setShowFriends] = useState(false);
+    const wallPostUrl = "/api/posts/getRecentPostsToUser/" + username;
 
     const getUser = () => {
         fetch('/api/users/getUser/' + username)
@@ -28,6 +30,16 @@ const Profile = props => {
         return url;
     }
 
+    const handlePostClick = () => {
+        setShowPosts(true);
+        setShowFriends(false);
+    }
+
+    const handleFriendsClick = () => {
+        setShowPosts(false);
+        setShowFriends(true);
+    }
+
     useEffect(() => {
         setUsername(getUsernameFromUrl)
         getUser();
@@ -40,9 +52,29 @@ const Profile = props => {
                 <div className="main-profile-content-container">
                     <div className="profile-header-container">
                         <div className="profile-header-username"><FaUserCircle size={65} color={"#293E4A"}></FaUserCircle> {user.username}</div>
+                        <div className="favorite-games-header">Favorite Games</div>
                         <div className="favorite-games-slider-container">
-                            <FavoriteGamesCards username={username}/>
+                            <FavoriteGamesCards username={username} />
                         </div>
+                        <div className="see-all-favorite-games">See All</div>
+
+                        {showPosts ?
+                            <div className="bottom-header-container">
+                                <div className="select-posts">
+                                    <a href="#" style={{ textDecoration: "underline" }} onClick={handlePostClick}>Posts</a>
+                                </div>
+                                <div className="select-friends">
+                                    <a href="#" style={{ textDecoration: "none" }} onClick={handleFriendsClick}>Friends <p className="friend-count">&nbsp;19</p></a>
+                                </div>
+                            </div>
+                            : <div className="bottom-header-container">
+                                <div className="select-posts" >
+                                    <a href="#" style={{ textDecoration: "none" }} onClick={handlePostClick}>Posts</a>
+                                </div>
+                                <div className="select-friends">
+                                    <a href="#" style={{ textDecoration: "underline" }} onClick={handleFriendsClick}>Friends <p className="friend-count">&nbsp;19</p></a>
+                                </div>
+                            </div>}
                     </div>
                     <div className="profile-feed">
                         <WritePost user={user} wallPostUrl={wallPostUrl} />
