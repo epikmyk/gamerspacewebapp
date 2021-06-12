@@ -14,7 +14,10 @@ const PostCards = props => {
         <div>
             <div className="post-username">
                 <a href={"/profile/" + post.username}>
-                    <FaUserCircle size={32} color={"#293E4A"}></FaUserCircle> {post.username}
+                    <FaUserCircle size={32} color={"#293E4A"}></FaUserCircle> 
+                </a>
+                <a href={"/profile/" + post.username}>
+                    <p className="post-username-text">{post.username}</p>
                 </a>
             </div>
             <div className="post-container">

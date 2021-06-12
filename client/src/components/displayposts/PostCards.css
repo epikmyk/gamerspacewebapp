@@ -15,10 +15,29 @@
 }
 
 .post-username {
+    display: flex;
+    flex-direction: row;
+   
     font-weight: 500;
     margin-top: 10px;
     margin-left: 15px;
     margin-bottom: 10px;
+}
+
+.post-username-text {
+    margin-left: 10px;
+}
+
+.post-username a {
+    color: #555555;
+}
+
+.post-username a:hover {
+    color: #555555;
+}
+
+.post-username a:focus {
+    color: #555555;
 }
 
 .post-text {
