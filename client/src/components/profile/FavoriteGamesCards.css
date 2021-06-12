@@ -1,0 +1,26 @@
+.game-container {
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.game-name {
+    white-space: nowrap;
+    overflow: hidden;
+    width: 180px;
+}
+
+.game-image img {
+    object-fit: cover;
+    width: 180px;
+    height: 110px;
+}
+
+.favorite-games-cards-slider {
+    padding-left: 10px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #555555 !important;
+}
