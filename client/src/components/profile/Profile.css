@@ -1,10 +1,49 @@
-.main-profile {
-    background-color: purple;
-   
+@font-face {
+    font-family: "San Francisco";
+    font-weight: 400;
+    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+  }
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+
+.main-profile-root-container {
+    color: #555555;
+    background-color: #eeeeee;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    
+}
+
+.main-profile-content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-header-container {
+    padding: 15px 15px 15px 15px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    width: 700px;
+    margin: auto;
 }
 
 .profile-feed {
-    background-color: yellow;
-    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    width: 700px; 
+}
+
+.profile-header-username {
+    font-size: x-large;
+    font-weight: 500;
+}
+
+.favorite-games-slider-container {
     
+    padding: 0px 40px 0px 40px;
 }
