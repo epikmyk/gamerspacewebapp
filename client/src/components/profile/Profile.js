@@ -111,7 +111,7 @@ const Profile = props => {
                             {username === loggedInUser.username || loggedInUser.username === undefined ?
                                 null
                                 : <div>
-                                    {friendStatus !== 1 ?
+                                    {friendStatus !== 1 && friendStatus !== undefined ?
                                         <div>{friendStatus === 2 ?
                                             <div className="profile-header-add-friend">
                                                 <Button className="add-friend-button" variant="primary" type="submit" onClick={e => addFriend(e)}>Add Friend</Button>
