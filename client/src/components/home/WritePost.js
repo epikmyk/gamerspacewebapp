@@ -3,7 +3,6 @@ import './WritePost.css';
 import { Button, Form, FormControl } from 'react-bootstrap';
 import { FaUserCircle } from 'react-icons/fa'
 import HomeWallPosts from '../displayposts/HomeWallPosts';
-var isPosted = false;
 
 const WritePost = props => {
 
@@ -15,7 +14,7 @@ const WritePost = props => {
 
     let textAreaRef = React.createRef;
 
-    const getHomeWallPosts = () => {
+    const getWallPosts = () => {
         fetch(wallPostUrl)
             .then(res => res.json())
             .then(res => setListOfWallPosts(res))
@@ -29,8 +28,8 @@ const WritePost = props => {
     })
 
     useEffect(() => {
-        getHomeWallPosts();
-    }, [wallPostUrl])
+        getWallPosts();
+    }, [wallPostUrl, user])
 
     const handleTextAreaChange = (e) => {
         e.style.height = "auto";
@@ -49,6 +48,11 @@ const WritePost = props => {
             setPostText(postString)
             setImage(" ")
         }
+    }
+
+    const removeImage = () => {
+        setImage(" ");
+        console.log(document.getElementById("post-text-area").value = postText)
     }
 
     const submitPost = (e) => {
@@ -95,11 +99,14 @@ const WritePost = props => {
                         </Form.Group>
                     </Form>
                 </div>
-                <div className="post-image-container">
-                    {image != " " ?
-                        <img className="post-image" src={image} width="90%"></img>
-                        : null}
-                </div>
+
+                {image != " " ?
+                    <div className="post-image-container">
+                        <Button className="remove-image-button" variant="primary" type="submit" onClick={removeImage}>X</Button>
+                        <img className="write-post-image" src={image} width="90%"></img>
+                    </div>
+                    : null}
+
                 <div className="write-post-bottom-container">
                     <Button className="post-button" variant="primary" type="submit" onClick={e => submitPost(e)}>Post</Button>
                 </div>
