@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Nav, Button, Form, FormControl, NavDropdown, InputGroup } from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl, InputGroup } from 'react-bootstrap';
 import '../common/NavBar.css';
 import { FaUserCircle, FaRegUserCircle, FaUserFriends, FaComment, FaRegComment, FaBell, FaRegBell, FaCog } from 'react-icons/fa';
 import { AiFillHome, AiOutlineHome } from 'react-icons/ai';
@@ -10,8 +10,17 @@ import { HiCog, HiOutlineCog } from 'react-icons/hi'
 const NavBar = props => {
 
     const [url, setUrl] = useState('');
+    const [user, setUser] = useState({})
+
     const search = e => {
-        console.log("seraching")
+        console.log("searching")
+    }
+
+    const getLoggedInUser = () => {
+        fetch('/api/users/getLoggedInUser')
+            .then(res => res.json())
+            .then(res => setUser(res))
+            .catch(err => err)
     }
 
     const getCurrentDirectory = () => {
@@ -24,12 +33,13 @@ const NavBar = props => {
 
     useEffect(() => {
         setUrl(getCurrentDirectory());
-    })
+        getLoggedInUser();
+    }, [])
 
     return (
         <>
             <Navbar className="nav-bar" expand="lg" sticky="top" >
-                <Navbar.Brand className="nav-bar-brand" href="/home"><img src={"images/navbar-gamerspace-logo.png"}></img> GamerSpace</Navbar.Brand>
+                <Navbar.Brand className="nav-bar-brand"><a href="/home"><img src={"/images/navbar-gamerspace-logo.png"}></img> GamerSpace</a></Navbar.Brand>
                 <Navbar.Toggle aria-controla="basic-navbar-nav" />
                 <Navbar.Collapse id="nav-bar-collapse">
                     <Nav className="icons-container">
@@ -52,9 +62,9 @@ const NavBar = props => {
                                 <FaRegComment size={22}></FaRegComment>
                             </div>
                         </Nav.Link>
-                        <Nav.Link href="/profile">
+                        <Nav.Link href={"/profile/" + user.username}>
                             <div className="icon-container">
-                                {url == "profile" ?
+                                {window.location.href.includes(user.username) ?
                                     <FaUserCircle size={22}></FaUserCircle>
                                     : <FaRegUserCircle size={22}></FaRegUserCircle>
                                 }
