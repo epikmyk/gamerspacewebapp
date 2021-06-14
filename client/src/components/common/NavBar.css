@@ -1,13 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'); 
 
-
 .nav-bar {
     justify-content: space-between !important;
     font-family: 'Poppins', sans-serif;
     background-color: #293E4A;
     box-shadow: 0 2px 4px 0 #222222;
-   
-
 }
 
 #nav-bar-collapse {
@@ -22,18 +19,21 @@
     text-shadow: 1px 1px #555555;
 }
 
+.nav-bar-brand a {
+    color: #ffffff !important;
+}
+
 .icons-container {
     width: 50%;
     justify-content: center;
 }
+
 .icon-container {
     color: #ffffff;
-    
 }
 
 .search-input {
     border-radius: 20px 20px 20px 20px !important;
-    
 }
 
 @media screen and (min-width: 1200px) {
@@ -42,9 +42,7 @@
         margin-left: 25px;
     }
 
-
     .search-input {
-        
         width: 350px !important;
     }
 }
