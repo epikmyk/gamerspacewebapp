@@ -1,0 +1,67 @@
+.favorite-games-modal { 
+    height: 500px !important;
+    width: 800px !important;
+}
+
+.game-cards-container {
+    height: 700px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: rgb(250, 250, 250);
+    border-radius: 2px;
+}
+
+.game-cards-container::-webkit-scrollbar {
+    display: none;
+}
+
+.game-card-container {
+    display: inline-block;
+    width: 33%;
+    text-align: center;
+}
+.game-card-container img{
+    object-fit: cover;
+    width: 80%;
+    height: 110px;
+    border-radius: 10px;
+}
+
+.done-button-container {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.game-card-image {
+    width: 80%;
+    height: 110px;
+    position: relative;
+}
+
+.select-overlay {
+    position: absolute;
+    top: -200%;
+    right: 0;
+    width: 100%;
+    height: 110px;
+    background-color: rgba(22, 22, 22, 0.6);
+    text-align: right;
+    border-radius: 10px;
+  }
+
+.check-mark {
+    font-size: 20px;
+    font-weight: bold;
+    color: #eeeeee;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+
+.done-button {
+    font-family: 'Poppins', sans-serif;
+    background-color: #293e4a !important;
+    border: #2c3531 !important;
+    border-radius: 15px !important;
+    width: 150px;
+    height: 35px !important;
+}
