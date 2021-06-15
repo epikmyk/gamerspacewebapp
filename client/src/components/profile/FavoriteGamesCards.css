@@ -8,12 +8,14 @@
     white-space: nowrap;
     overflow: hidden;
     width: 195px;
+    margin-left: 10px
 }
 
 .game-image img {
     object-fit: cover;
     width: 200px;
     height: 110px;
+    border-radius: 10px;
 }
 
 .favorite-games-cards-slider {
