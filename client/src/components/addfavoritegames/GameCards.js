@@ -51,7 +51,7 @@ const GameCards = props => {
     const gameCards = listOfGames.map(game =>
         <div className="game-card-container">
             <div className="game-card-name">{game.name}</div>
-            <a id={game.name} className="game-card-image" href="#" onClick={() => addGameToFavorites(game)}>
+            <a id={game.name} className="game-card-image" onClick={() => addGameToFavorites(game)}>
                 {listOfFavoriteGames.includes(game) ?
                     <div className="select-overlay">
                         <p className="check-mark">&#10003;</p>
@@ -69,7 +69,7 @@ const GameCards = props => {
                 {gameCards}
             </div>
             <div className="done-button-container">
-                <Button className="done-button" variant="primary" type="submit" onClick={() => {addGamesToFavorites();  props.onDone()}}>Done</Button>
+                <Button className="done-button" variant="primary" type="submit" onClick={() => {addGamesToFavorites();  props.onDone(); props.onClose();}}>Done</Button>
             </div>
         </>
     )

@@ -19,7 +19,7 @@ const Games = props => {
 
     return (
         <>
-            <GameCards listOfGames={listOfGames} onDone={props.onDone}/>
+            <GameCards listOfGames={listOfGames} onDone={props.onDone} onClose={props.onClose}/>
         </>
     )
 }

@@ -6,6 +6,7 @@ import { Button, Form, FormControl } from 'react-bootstrap';
 import WritePost from '../home/WritePost';
 import FavoriteGamesCards from '../profile/FavoriteGamesCards';
 import UserContext from '../common/UserContext';
+import AddFavoriteGamesModal from '../addfavoritegames/AddFavoriteGamesModal';
 const Profile = props => {
 
     const [user, setUser] = useState({})
@@ -14,6 +15,7 @@ const Profile = props => {
     const [showFriends, setShowFriends] = useState(false);
     const [loggedInUser] = useContext(UserContext);
     const [friendStatus, setFriendStatus] = useState();
+    const [showGamesModal, setShowGamesModal] = useState(false);
     const wallPostUrl = "/api/posts/getRecentPostsToUser/" + username;
 
     const getUser = () => {
@@ -21,6 +23,10 @@ const Profile = props => {
             .then(res => res.json())
             .then(res => setUser(res))
             .catch(err => err)
+    }
+
+    const handleGamesModalClose = () => {
+        setShowGamesModal(false);
     }
 
     const getFriendStatus = () => {
@@ -98,7 +104,7 @@ const Profile = props => {
         setUsername(getUsernameFromUrl)
         getUser();
         getFriendStatus();
-    }, [loggedInUser, friendStatus])
+    }, [loggedInUser, friendStatus, showGamesModal])
 
     return (
         <div>
@@ -108,7 +114,7 @@ const Profile = props => {
                     <div className="profile-header-container">
                         <div className="profile-header-top-container">
                             <div className="profile-header-username"><FaUserCircle size={65} color={"#293E4A"}></FaUserCircle> {username}</div>
-                            {username === loggedInUser.username || loggedInUser.username === undefined ?
+                            {username === loggedInUser.username && loggedInUser.username !== undefined ?
                                 null
                                 : <div>
                                     {friendStatus !== 1 && friendStatus !== undefined ?
@@ -122,7 +128,20 @@ const Profile = props => {
                                         : null}
                                 </div>}
                         </div>
-                        <div className="favorite-games-header">Favorite Games</div>
+                        <div className="favorite-games-header-container">
+                            <div className="favorite-games-header">Favorite Games</div>
+                            {username === loggedInUser.username && loggedInUser.username !== undefined ?
+                                
+                                    <a className="add-games-button" onClick={() => setShowGamesModal(true)}>Add Games +</a>
+                                
+                                : null}
+                        </div>
+                        {showGamesModal ?
+                                <div>
+                                    <AddFavoriteGamesModal onClose={handleGamesModalClose} show={true} />
+                                </div>
+                                : null
+                            }
                         <div className="favorite-games-slider-container">
                             <FavoriteGamesCards username={username} />
                         </div>

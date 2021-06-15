@@ -13,12 +13,12 @@ const AddFavoriteGamesModal = props => {
 
     return (
         <>
-            <Modal dialogClassName="favorite-games-modal" size="lg" show={show} onHide={handleClose} centered>
+            <Modal dialogClassName="favorite-games-modal" size="lg" show={show} onHide={()=>{handleClose(); props.onClose();}} centered>
                 <Modal.Header closeButton>
                     <Modal.Title>Add some of your favorite games.</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Games onDone={handleClose}/>
+                    <Games onDone={handleClose} onClose={props.onClose}/>
                 </Modal.Body>
             </Modal>
         </>
