@@ -13,11 +13,11 @@ const PostModal = {
         WHERE u.username=? \
         ORDER BY p.created DESC';*/
 
-        let baseSQL = 'WITH UserPosts AS (SELECT p.post_id, p.post, p.created, p.user_poster_id, p.user_receiver_id, u.username, p.image\
+        let baseSQL = 'WITH UserPosts AS (SELECT p.post_id, p.post, p.created, p.user_poster_id, p.user_receiver_id, u.username, p.image, u.profile_pic\
             FROM posts p \
             JOIN users u on p.user_receiver_id=u.user_id \
             WHERE u.username=?)\
-            (SELECT p.post_id, p.post, p.created, p.user_poster_id, p.user_receiver_id, u.username, p.image\
+            (SELECT p.post_id, p.post, p.created, p.user_poster_id, p.user_receiver_id, u.username, p.image, u.profile_pic\
             FROM UserPosts p\
             JOIN users u on p.user_poster_id=u.user_id)\
             ORDER BY p.created DESC';
@@ -33,11 +33,11 @@ const PostModal = {
         WHERE f.user_id=? AND p.user_receiver_id=? AND f.status=1\
         ORDER BY p.created DESC';*/
 
-        let baseSQL = 'WITH UserFriends AS (SELECT DISTINCT f.user_id, u.username, f.status\
+        let baseSQL = 'WITH UserFriends AS (SELECT DISTINCT f.user_id, u.username, f.status, u.profile_pic\
             FROM friends f \
             JOIN users u on f.user_id=u.user_id\
             WHERE f.user_id = ? or friend_id = ?)\
-            (SELECT p.post_id, p.post, p.created, p.user_poster_id, p.user_receiver_id, u.username, p.image\
+            (SELECT p.post_id, p.post, p.created, p.user_poster_id, p.user_receiver_id, u.username, p.image, u.profile_pic\
             FROM posts p \
             JOIN UserFriends u on p.user_poster_id=u.user_id \
             WHERE p.user_receiver_id = p.user_poster_id AND u.status = 1\
