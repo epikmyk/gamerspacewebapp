@@ -86,7 +86,7 @@ const WritePost = props => {
         <div>
             <div className="write-post-container">
                 <div className="write-post-top-container">
-                    <div className="profile-pic"> <FaUserCircle size={32} color={"#293E4A"}></FaUserCircle></div>
+                    <div className="profile-pic"> <img src={user.profile_pic}></img></div>
                     <Form className="write-post-form">
                         <Form.Group controlId="form-post" size="lg">
                             <textarea as="textarea"
