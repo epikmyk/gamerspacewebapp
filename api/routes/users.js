@@ -14,6 +14,10 @@ router.post('/logout', (req, res, next) => {
   UserController.logOut(req, res, next);
 })
 
+router.patch('/updateProfilePic', (req, res, next) => {
+  UserController.updateProfilePic(req, res, next);
+})
+
 router.get('/getLoggedInUser', (req, res, next) => {
   UserController.getLoggedInUser(req, res, next);
 })
@@ -25,4 +29,5 @@ router.get('/getUser/:username', (req, res, next) => {
 router.get('/search/:searchTerm', (req, res, next) => {
   UserController.searchUsers(req, res, next);
 })
+
 module.exports = router;

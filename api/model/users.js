@@ -85,6 +85,15 @@ const UserModel = {
         WHERE u.username LIKE ? OR f.name LIKE ?';
 
         return db.query(baseSQL, [searchTerm, searchTerm])
+    },
+    changeProfilePic: function (profile_pic, _id) {
+        let baseSQL = 'UPDATE users \
+        SET profile_pic = ? \
+        WHERE user_id = ?';
+        return db.execute(baseSQL, [profile_pic, _id])
+        .catch((err) => {
+            throw err;
+        })
     }
 
 }

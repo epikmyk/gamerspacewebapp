@@ -120,6 +120,23 @@ const UserController = {
             res.json(results);
         })
         .catch((err) => next(err))
+    },
+    updateProfilePic: function (req, res, next) {
+        let _id = req.session.userID;
+        let profile_pic = req.body.profile_pic;
+
+        UserModel.changeProfilePic(profile_pic, _id)
+        .then(([results]) => {
+            if(results && results.affectedRows) {
+                res.status(204).send();
+            } 
+            else {
+                res.json({ message: "Profile picture could not be changed"})
+            }
+        })
+        .catch((err) => {
+            throw err;
+        })
     }
 }
 
