@@ -184,6 +184,9 @@ const Profile = props => {
                             <FavoriteGamesCards username={username} />
                         </div>
                         <div className="see-all-favorite-games">See All</div>
+                        <div className="profile-header-seperator-container">
+                            <hr className="profile-header-seperator"></hr>
+                        </div>
 
                         {showPosts ?
                             <div className="bottom-header-container">
