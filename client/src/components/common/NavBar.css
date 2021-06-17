@@ -32,6 +32,27 @@
     color: #ffffff;
 }
 
+#drop-down-settings-button {
+    background-color: transparent !important;
+    outline: none !important;
+    border: none;
+}
+
+#drop-down-settings-button:hover, #drop-down-settings-button:focus {
+    background-color: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.dropdown-toggle:after { 
+    display: none !important;
+    background-color: black !important;
+}
+
+.logout-button {
+    color: #555555 !important;
+}
+
 .search-input {
     border-radius: 20px 20px 20px 20px !important;
 }

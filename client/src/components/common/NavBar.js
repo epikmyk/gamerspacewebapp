@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Nav, Form, FormControl, InputGroup } from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 import '../common/NavBar.css';
 import { FaUserCircle, FaRegUserCircle, FaUserFriends, FaComment, FaRegComment, FaBell, FaRegBell, FaCog } from 'react-icons/fa';
 import { AiFillHome, AiOutlineHome } from 'react-icons/ai';
@@ -29,6 +29,24 @@ const NavBar = props => {
         url = url.pop();
 
         return url;
+    }
+
+    const logout = () => {
+        console.log("logging out");
+        fetch('/api/users/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: '',
+        })
+        .then(data => {
+            console.log(data);
+            window.location.href = "/";
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
 
     useEffect(() => {
@@ -75,11 +93,13 @@ const NavBar = props => {
                                 <FaRegBell size={22}></FaRegBell>
                             </div>
                         </Nav.Link>
-                        <Nav.Link href="/">
+                        <DropdownButton id="drop-down-settings-button" className="drop-down-settings-button dropdown-toggle" title={<HiOutlineCog size={22}></HiOutlineCog>}>
                             <div className="icon-container">
                                 <HiOutlineCog size={22}></HiOutlineCog>
                             </div>
-                        </Nav.Link>
+                            <Dropdown.Item className="logout-button" onClick={logout}>Logout</Dropdown.Item>
+                        </DropdownButton>
+                        
                     </Nav>
                     <Nav className="search">
                         <Form inline className="search-form">
