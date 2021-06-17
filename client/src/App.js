@@ -30,7 +30,7 @@ function App() {
 
   return (
     <main>
-      <style>{'body { height: 100%; margin: 0; overflow: scroll'}</style>
+      <style>{'body { height: 100%; margin: 0; overflow-y: scroll'}</style>
       <Switch>
         <UserContext.Provider value={provideUser}>
           <Route path='/' component={StartupPage} exact />
