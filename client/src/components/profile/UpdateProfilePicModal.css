@@ -1,0 +1,110 @@
+.profile-pic-search-form-group {
+    display: flex;
+    position: relative;
+    height: 60px;
+}
+
+.profile-pic-search-input {
+    border-radius: 20px !important;
+}
+
+.profile-pic-search-button {
+    position: absolute;
+    right: 0;
+    height: 45px !important;
+    width: 60px !important;
+    border-radius: 0px 20px 20px 0px !important;
+    background-color: rgba(22, 22, 22, 0) !important;
+    outline: none !important;
+    border-color: rgba(22, 22, 22, 0) !important;
+    color: #555555 !important;
+}
+
+.profile-pic-search-button:active, .profile-pic-search-button:focus, .profile-pic-search-button:hover {
+    box-shadow: none !important;
+}
+
+.profile-pic-cards-container {
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: rgb(250, 250, 250);
+    border-radius: 2px;
+    text-align: center;
+}
+
+.profile-pic-cards-container::-webkit-scrollbar {
+    display: none;
+}
+
+.profile-pic-card-container {
+    display: inline-block;
+    width: 19%;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.profile-pic-card-container img{
+    object-fit: cover;
+    width: 80%;
+    height: 110px;
+    border-radius: 80px;
+}
+
+.profile-pic-card-container-image {
+    width: 80%;
+    height: 110px;
+    position: relative;
+    cursor: pointer;
+}
+
+.selected-profile-pic img {
+    object-fit: cover;
+    width: 110px;
+    height: 110px;
+    border-radius: 60px;
+    margin-top: 20px;
+}
+
+.update-profile-pic-modal-top {
+   text-align: center;
+}
+
+.update-pic-button-container {
+    text-align: center;
+}
+
+.profile-pic-select-overlay {
+    position: absolute;
+    top: -200%;
+    right: 0;
+    width: 100%;
+    height: 110px;
+    background-color: rgba(22, 22, 22, 0.6);
+    text-align: right;
+    border-radius: 60px;
+}
+
+.profile-pic-check-mark {
+    font-size: 20px;
+    font-weight: bold;
+    color: #eeeeee;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
+.update-pic-button {
+    margin-top: 10px;
+    width: 90px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #293e4a !important;
+    border: #2c3531 !important;
+    border-radius: 15px !important;
+}
