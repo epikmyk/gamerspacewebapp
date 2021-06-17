@@ -67,10 +67,37 @@
     height: 40px !important;
 }
 
-.profile-header-username {
+.profile-header-username, .update-profile-pic-header-username {
     margin-left: 20px;
-    font-size: x-large;
+    font-size: xx-large;
     font-weight: 500;
+}
+
+.profile-header-username img, .update-profile-pic-header-username img {
+    object-fit: cover;
+    width: 90px;
+    height: 90px;
+    border-radius: 45px;
+    margin-right: 10px;
+}
+
+.update-profile-pic-header-username img:hover {
+    cursor: pointer;
+}
+
+.update-profile-pic-button-container {
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    top: 70px;
+    left: 75px;
+    background-color: #dadada;
+    padding: 0px 5px 0px 5px;
+    border-radius: 15px;
+}
+
+.update-profile-pic-button-container:hover {
+    cursor: pointer;
+    background-color: #cccccc;
 }
 
 .favorite-games-header-container {

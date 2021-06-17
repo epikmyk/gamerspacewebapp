@@ -3,10 +3,12 @@ import NavBar from '../common/NavBar';
 import '../profile/Profile.css';
 import { FaUserCircle } from 'react-icons/fa'
 import { Button, Form, FormControl } from 'react-bootstrap';
+import { AiFillEdit } from 'react-icons/ai'
 import WritePost from '../home/WritePost';
 import FavoriteGamesCards from '../profile/FavoriteGamesCards';
 import UserContext from '../common/UserContext';
 import AddFavoriteGamesModal from '../addfavoritegames/AddFavoriteGamesModal';
+import UpdateProfilePicModal from './UpdateProfilePicModal';
 const Profile = props => {
 
     const [user, setUser] = useState({})
@@ -16,6 +18,7 @@ const Profile = props => {
     const [loggedInUser] = useContext(UserContext);
     const [friendStatus, setFriendStatus] = useState();
     const [showGamesModal, setShowGamesModal] = useState(false);
+    const [showUpdateProfilePicModal, setShowUpdateProfilePicModal] = useState(false);
     const wallPostUrl = "/api/posts/getRecentPostsToUser/" + username;
 
     const getUser = () => {
@@ -27,6 +30,10 @@ const Profile = props => {
 
     const handleGamesModalClose = () => {
         setShowGamesModal(false);
+    }
+
+    const handleUpdateProfilePicModalClose = () => {
+        setShowUpdateProfilePicModal(false);
     }
 
     const getFriendStatus = () => {
@@ -113,10 +120,30 @@ const Profile = props => {
                 <div className="main-profile-content-container">
                     <div className="profile-header-container">
                         <div className="profile-header-top-container">
-                            <div className="profile-header-username"><FaUserCircle size={65} color={"#293E4A"}></FaUserCircle> {username}</div>
                             {username === loggedInUser.username && loggedInUser.username !== undefined ?
-                                null
+                                <div>
+                                    <div className="update-profile-pic-header-username">
+                                        <a><img onClick={() => setShowUpdateProfilePicModal(true)} src={user.profile_pic}></img></a>
+                                        {username}
+                                    </div>
+                                    <div className="update-profile-pic-button-container">
+                                        <a onClick={() => setShowUpdateProfilePicModal(true)}><AiFillEdit size={18}></AiFillEdit></a>
+
+                                        <UpdateProfilePicModal onClose={handleUpdateProfilePicModalClose} show={showUpdateProfilePicModal} />
+                                        {showUpdateProfilePicModal ?
+                                            <div>
+                                                <UpdateProfilePicModal onClose={handleUpdateProfilePicModalClose} show={true} />
+                                            </div>
+                                            : null
+                                        }
+                                    </div>
+                                </div>
+
                                 : <div>
+                                    <div className="profile-header-username">
+                                        <a><img src={user.profile_pic}></img></a>
+                                        {username}
+                                    </div>
                                     {friendStatus !== 1 && friendStatus !== undefined ?
                                         <div>{friendStatus === 2 ?
                                             <div className="profile-header-add-friend">
@@ -131,17 +158,17 @@ const Profile = props => {
                         <div className="favorite-games-header-container">
                             <div className="favorite-games-header">Favorite Games</div>
                             {username === loggedInUser.username && loggedInUser.username !== undefined ?
-                                
-                                    <a className="add-games-button" onClick={() => setShowGamesModal(true)}>Add Games +</a>
-                                
+
+                                <a className="add-games-button" onClick={() => setShowGamesModal(true)}>Add Games +</a>
+
                                 : null}
                         </div>
                         {showGamesModal ?
-                                <div>
-                                    <AddFavoriteGamesModal onClose={handleGamesModalClose} show={true} />
-                                </div>
-                                : null
-                            }
+                            <div>
+                                <AddFavoriteGamesModal onClose={handleGamesModalClose} show={true} />
+                            </div>
+                            : null
+                        }
                         <div className="favorite-games-slider-container">
                             <FavoriteGamesCards username={username} />
                         </div>
