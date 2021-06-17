@@ -19,6 +19,7 @@ const Profile = props => {
     const [friendStatus, setFriendStatus] = useState();
     const [showGamesModal, setShowGamesModal] = useState(false);
     const [showUpdateProfilePicModal, setShowUpdateProfilePicModal] = useState(false);
+    const [friendCount, setFriendCount] = useState();
     const wallPostUrl = "/api/posts/getRecentPostsToUser/" + username;
 
     const getUser = () => {
@@ -40,6 +41,13 @@ const Profile = props => {
         fetch('/api/friends/getFriendStatus/' + loggedInUser.username + '/' + username)
             .then(res => res.json())
             .then(res => { setFriendStatus(res.status) })
+            .catch(err => err)
+    }
+
+    const getFriendCount = () => {
+        fetch('/api/friends/getUserFriends/' + user.user_id)
+            .then(res => res.json())
+            .then(res => setFriendCount(res.length))
             .catch(err => err)
     }
 
@@ -111,7 +119,8 @@ const Profile = props => {
         setUsername(getUsernameFromUrl)
         getUser();
         getFriendStatus();
-    }, [loggedInUser, friendStatus, showGamesModal])
+        getFriendCount();
+    }, [loggedInUser, friendStatus, showGamesModal, friendCount])
 
     return (
         <div>
@@ -180,7 +189,7 @@ const Profile = props => {
                                     <a href="#" style={{ textDecoration: "underline" }} onClick={handlePostClick}>Posts</a>
                                 </div>
                                 <div className="select-friends">
-                                    <a href="#" style={{ textDecoration: "none" }} onClick={handleFriendsClick}>Friends <p className="friend-count">&nbsp;19</p></a>
+                                    <a href="#" style={{ textDecoration: "none" }} onClick={handleFriendsClick}>Friends <p className="friend-count">&nbsp;{friendCount}</p></a>
                                 </div>
                             </div>
                             : <div className="bottom-header-container">
@@ -188,7 +197,7 @@ const Profile = props => {
                                     <a href="#" style={{ textDecoration: "none" }} onClick={handlePostClick}>Posts</a>
                                 </div>
                                 <div className="select-friends">
-                                    <a href="#" style={{ textDecoration: "underline" }} onClick={handleFriendsClick}>Friends <p className="friend-count">&nbsp;19</p></a>
+                                    <a href="#" style={{ textDecoration: "underline" }} onClick={handleFriendsClick}>Friends <p className="friend-count">&nbsp;{friendCount}</p></a>
                                 </div>
                             </div>}
                     </div>

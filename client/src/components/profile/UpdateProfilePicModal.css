@@ -30,7 +30,13 @@
     overflow-x: hidden;
     background-color: rgb(250, 250, 250);
     border-radius: 2px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.profile-pic-cards-inner-container {
+    width: 95%;
 }
 
 .profile-pic-cards-container::-webkit-scrollbar {
@@ -39,7 +45,7 @@
 
 .profile-pic-card-container {
     display: inline-block;
-    width: 19%;
+    width: 20%;
     text-align: center;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -107,4 +113,45 @@
     background-color: #293e4a !important;
     border: #2c3531 !important;
     border-radius: 15px !important;
+}
+
+@media screen and (max-width: 990px) {
+    .profile-pic-card-container {
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 110px;
+        height: 110px;
+        border-radius: 60px;
+    }
+
+    .profile-pic-card-container img {
+        width: 110px;
+        height: 110px;
+        border-radius: 60px;
+    }
+
+    .profile-pic-cards-inner-container {
+        width: 78%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .profile-pic-card-container {
+        
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 110px;
+        height: 110px;
+        border-radius: 60px;
+    }
+
+    .profile-pic-card-container img {
+        width: 110px;
+        height: 110px;
+        border-radius: 60px;
+    }
+
+    .profile-pic-cards-inner-container {
+        width: 60%;
+    }
 }

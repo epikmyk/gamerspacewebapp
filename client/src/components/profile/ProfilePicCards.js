@@ -49,17 +49,23 @@ const ProfilePicCards = props => {
     }
 
     const profilePicCards = listOfGames.map(game =>
-        <div className="profile-pic-card-container">
-            <a id={game.name} className="game-card-image" onClick={() => addGameToFavorites(game)}>
-                {gameName === game.name ?
-                    <div className="profile-pic-select-overlay">
-                        <p className="profile-pic-check-mark">&#10003;</p>
-                    </div>
-                    : null
-                }
-                <img src={game.background_image}></img>
-            </a>
-        </div>
+
+        <>
+            {game.background_image !== null ?
+                <div className="profile-pic-card-container">
+                    <a id={game.name} className="game-card-image" onClick={() => addGameToFavorites(game)}>
+                        {gameName === game.name ?
+                            <div className="profile-pic-select-overlay">
+                                <p className="profile-pic-check-mark">&#10003;</p>
+                            </div>
+                            : null
+                        }
+                        <img src={game.background_image}></img>
+                    </a>
+                </div>
+                : null}
+        </>
+
     )
 
     return (
@@ -87,7 +93,9 @@ const ProfilePicCards = props => {
                     <hr className="games-seperator"></hr>
                 </div>
                 <div className="profile-pic-cards-container">
-                    {profilePicCards}
+                    <div className="profile-pic-cards-inner-container">
+                        {profilePicCards}
+                    </div>
                 </div>
             </div>
         </>
