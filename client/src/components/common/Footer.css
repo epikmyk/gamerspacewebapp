@@ -1,0 +1,26 @@
+.footer {
+    font-size: 14px;
+    position: fixed;
+    color: #555555;
+    bottom: 10px;
+    width: 1100px;
+}
+
+.footer-content-container a:visited {
+    color:#555555;
+}
+
+.footer-content-container a:hover {
+    color: #888888;
+    text-decoration: none;
+}
+
+.rawg-back-link {
+    margin-left: 0px;
+    width: 200px;
+}
+
+.gamerspace-copyright {
+    margin-left: 0px;
+    width: 150px;
+}
