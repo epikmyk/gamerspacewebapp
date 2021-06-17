@@ -158,8 +158,12 @@ const Profile = props => {
                                             <div className="profile-header-add-friend">
                                                 <Button className="add-friend-button" variant="primary" type="submit" onClick={e => addFriend(e)}>Add Friend</Button>
                                             </div>
-                                            : <div className="profile-header-add-friend">
-                                                <Button className="cancel-request-button" variant="primary" type="submit" onClick={e => cancelFriendRequest(e)}>Cancel Request</Button>
+                                            : <div>
+                                                {friendStatus === 0 ?
+                                                    <div className="profile-header-add-friend">
+                                                        <Button className="cancel-request-button" variant="primary" type="submit" onClick={e => cancelFriendRequest(e)}>Cancel Request</Button>
+                                                    </div>
+                                                    : null}
                                             </div>} </div>
                                         : null}
                                 </div>}
@@ -167,9 +171,7 @@ const Profile = props => {
                         <div className="favorite-games-header-container">
                             <div className="favorite-games-header">Favorite Games</div>
                             {username === loggedInUser.username && loggedInUser.username !== undefined ?
-
                                 <a className="add-games-button" onClick={() => setShowGamesModal(true)}>Add Games +</a>
-
                                 : null}
                         </div>
                         {showGamesModal ?
