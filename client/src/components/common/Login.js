@@ -9,7 +9,6 @@ const Login = props => {
     const [errorMessage, setErrorMessage] = useState("");
 
     const login = (e) => {
-        console.log("logging in")
         e.preventDefault();
 
         const data = {
