@@ -130,6 +130,15 @@ const FriendsController = {
             })
             .catch((err) => { next(err) })
 
+    },
+    getFriendsByUserId: function (req, res, next) {
+        let user_id = req.params.user_id;
+
+        return FriendsModel.retrieveFriends(user_id)
+            .then(([results]) => {
+                res.json(results)
+            })
+            .catch((err) => { next(err) })
     }
 }
 

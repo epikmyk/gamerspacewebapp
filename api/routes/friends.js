@@ -27,4 +27,8 @@ router.get('/getFriends', (req, res, next) => {
   FriendsController.getFriends(req, res, next);
 })
 
+router.get('/getUserFriends/:user_id', (req, res, next) => {
+  FriendsController.getFriendsByUserId(req, res, next);
+})
+
 module.exports = router;
