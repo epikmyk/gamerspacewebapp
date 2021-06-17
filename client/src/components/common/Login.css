@@ -47,7 +47,7 @@
 .login-form {
     font-family: 'Poppins', sans-serif;
     background-color: #eeeeef;
-    padding: 50px;
+    padding: 10px 50px 50px 50px;
     margin: 0 auto;
     border-radius: 0px 5px 5px 0;
 }
@@ -63,6 +63,12 @@
 .login-right {
     color: #555555 !important;
     padding-bottom: 50px;
+}
+
+.login-error-message {
+    color: red;
+    margin-top: 25px;
+    height: 50px;
 }
 
 .login-left {
@@ -84,9 +90,11 @@
         flex-direction: column;
         border-radius: 5px 5px 5px 5px;
     }
+
     .login {
         flex-direction: row;
     }
+
     .login-left {
         font-family: 'Poppins', sans-serif;
         background-color: #293e4a;
@@ -98,6 +106,7 @@
         padding-left: 60px;
         border-radius: 5px 0px 0px 5px;
     }
+
     .login-right {
         background-color: #eeeeef;
         display: flex;
@@ -122,18 +131,21 @@
         background-color: #293e4a;
         border-radius: 5px 0px 0px 5px;
     }
+
     .login-left, .signup-right {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
+
     .login-right {
         background-color: #eeeeef;
         display: flex;
         flex-direction: column;
         border-radius: 0px 0px 5px 5px;
     }
+    
     .login-button {
         width: 300px;
     }
