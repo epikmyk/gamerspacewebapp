@@ -137,7 +137,50 @@ const UserController = {
         .catch((err) => {
             throw err;
         })
-    }
+    },
+    checkEmail: function (req, res, next) {
+        let email = req.body.email;
+
+        UserModel.emailExists(email)
+            .then((emailDoesNotExist) => {
+                if (emailDoesNotExist) {
+                    res.json({ status: "OK", message: "Email okay", "redirect": '/' });
+                }
+                else {
+                    throw new Error("Email already taken.")
+                }
+            })
+            .catch((err) => {
+                if (err instanceof Error) {
+                    res.json({ status: "OK", message: err.message, "redirect": '/' });
+                }
+                else {
+                    next(err);
+                }
+            });
+    },
+    checkUsername: function (req, res, next) {
+        let username = req.body.username;
+
+        UserModel.usernameExists(username)
+            .then((usernameDoesNotExist) => {
+                if (usernameDoesNotExist) {
+                    res.json({ status: "OK", message: "Username okay", "redirect": '/' });
+                }
+                else {
+                    throw new Error("Username already taken.")
+                }
+            })
+            .catch((err) => {
+                if (err instanceof Error) {
+                    res.json({ status: "OK", message: err.message, "redirect": '/' });
+                }
+                else {
+                    next(err);
+                }
+            });
+    },
+
 }
 
 module.exports = UserController;

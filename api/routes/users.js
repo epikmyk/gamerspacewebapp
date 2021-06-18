@@ -30,4 +30,12 @@ router.get('/search/:searchTerm', (req, res, next) => {
   UserController.searchUsers(req, res, next);
 })
 
+router.post('/checkUsername', (req, res, next) => {
+  UserController.checkUsername(req, res, next);
+})
+
+router.post('/checkEmail', (req, res, next) => {
+  UserController.checkEmail(req, res, next);
+})
+
 module.exports = router;
