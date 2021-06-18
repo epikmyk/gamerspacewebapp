@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Nav, Form, FormControl, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl, InputGroup, DropdownButton, Dropdown, Button } from 'react-bootstrap';
 import '../common/NavBar.css';
 import { FaUserCircle, FaRegUserCircle, FaUserFriends, FaComment, FaRegComment, FaBell, FaRegBell, FaCog } from 'react-icons/fa';
 import { AiFillHome, AiOutlineHome } from 'react-icons/ai';
 import { MdPeople, MdPeopleOutline } from 'react-icons/md';
 import { HiCog, HiOutlineCog } from 'react-icons/hi'
-
+import { FiSearch } from 'react-icons/fi'
 
 const NavBar = props => {
 
@@ -99,12 +99,12 @@ const NavBar = props => {
                             </div>
                             <Dropdown.Item className="logout-button" onClick={logout}>Logout</Dropdown.Item>
                         </DropdownButton>
-                        
                     </Nav>
                     <Nav className="search">
-                        <Form inline className="search-form">
-                            <InputGroup>
+                        <Form onSubmit={search}>
+                            <InputGroup className="search-form-group">
                                 <FormControl type="text" placeholder="Search Gamerspace" className="search-input"></FormControl>
+                                <Button className="search-button" onClick={search}><FiSearch size={22}></FiSearch></Button>
                             </InputGroup>
                         </Form>
                     </Nav>

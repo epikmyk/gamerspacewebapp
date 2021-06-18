@@ -53,8 +53,31 @@
     color: #555555 !important;
 }
 
+.search-form-group {
+    display: flex;
+    position: relative;
+}
+
 .search-input {
     border-radius: 20px 20px 20px 20px !important;
+}
+
+.search-button {
+    position: absolute;
+    right: 0;
+    height: 45px !important;
+    width: 60px !important;
+    border-radius: 0px 20px 20px 0px !important;
+    background-color: rgba(22, 22, 22, 0) !important;
+    outline: none !important;
+    border-color: rgba(22, 22, 22, 0) !important;
+    color: #555555 !important;
+    z-index: 3;
+}
+
+.search-button:active, .search-button:focus, .search-button:hover {
+    box-shadow: none !important;
+    
 }
 
 @media screen and (min-width: 1200px) {
