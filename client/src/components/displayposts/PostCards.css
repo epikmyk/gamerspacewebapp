@@ -28,6 +28,18 @@
     margin-left: 10px;
 }
 
+.bullet {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+.post-date {
+    display: flex;
+    font-weight: normal;
+    color: #888888;
+}
+
 .post-username a {
     color: #555555;
 }
