@@ -82,6 +82,28 @@
     height: 45px !important;
 }
 
+.email-form-control {
+    margin-bottom: 10px;
+}
+
+.username-form-control {
+    margin-bottom: 45px;
+}
+
+.username-exists {
+    color: red;
+    height: 20px;
+    margin-bottom: 10px;
+    
+}
+
+.email-exists {
+    color: red;
+    height: 20px;
+    margin-bottom: 10px;
+    
+}
+
 @media screen and (min-width: 900px) {
     .create-an-account {
         color: #555555;
