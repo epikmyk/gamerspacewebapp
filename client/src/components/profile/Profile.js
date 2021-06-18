@@ -1,33 +1,26 @@
 import React, { useState, useEffect, useContext } from 'react';
-import NavBar from '../common/NavBar';
-import '../profile/Profile.css';
-import { FaUserCircle } from 'react-icons/fa'
-import { Button, Form, FormControl } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { AiFillEdit } from 'react-icons/ai'
+import NavBar from '../common/NavBar';
 import WritePost from '../home/WritePost';
 import FavoriteGamesCards from '../profile/FavoriteGamesCards';
 import UserContext from '../common/UserContext';
 import AddFavoriteGamesModal from '../addfavoritegames/AddFavoriteGamesModal';
 import UpdateProfilePicModal from './UpdateProfilePicModal';
+import '../profile/Profile.css';
+
 const Profile = props => {
 
+    const [loggedInUser] = useContext(UserContext);
     const [user, setUser] = useState({})
     const [username, setUsername] = useState("");
     const [showPosts, setShowPosts] = useState(true);
     const [showFriends, setShowFriends] = useState(false);
-    const [loggedInUser] = useContext(UserContext);
-    const [friendStatus, setFriendStatus] = useState();
     const [showGamesModal, setShowGamesModal] = useState(false);
     const [showUpdateProfilePicModal, setShowUpdateProfilePicModal] = useState(false);
+    const [friendStatus, setFriendStatus] = useState();
     const [friendCount, setFriendCount] = useState();
     const wallPostUrl = "/api/posts/getRecentPostsToUser/" + username;
-
-    const getUser = () => {
-        fetch('/api/users/getUser/' + username)
-            .then(res => res.json())
-            .then(res => setUser(res))
-            .catch(err => err)
-    }
 
     const handleGamesModalClose = () => {
         setShowGamesModal(false);
@@ -35,6 +28,31 @@ const Profile = props => {
 
     const handleUpdateProfilePicModalClose = () => {
         setShowUpdateProfilePicModal(false);
+    }
+
+    const handlePostClick = () => {
+        setShowPosts(true);
+        setShowFriends(false);
+    }
+
+    const handleFriendsClick = () => {
+        setShowPosts(false);
+        setShowFriends(true);
+    }
+
+    const getUsernameFromUrl = () => {
+        let url = window.location.href;
+        url = url.split('/');
+        url = url.pop();
+
+        return url;
+    }
+
+    const getUser = () => {
+        fetch('/api/users/getUser/' + username)
+            .then(res => res.json())
+            .then(res => setUser(res))
+            .catch(err => err)
     }
 
     const getFriendStatus = () => {
@@ -51,28 +69,7 @@ const Profile = props => {
             .catch(err => err)
     }
 
-    const getUsernameFromUrl = () => {
-        let url = window.location.href;
-        url = url.split('/');
-        url = url.pop();
-
-        return url;
-    }
-
-    const handlePostClick = () => {
-        setShowPosts(true);
-        setShowFriends(false);
-    }
-
-    const handleFriendsClick = () => {
-        setShowPosts(false);
-        setShowFriends(true);
-    }
-
     const addFriend = () => {
-        console.log("adding friend");
-        console.log("user_id" + user.user_id)
-
         const data = {
             friend_id: user.user_id,
         }
@@ -95,9 +92,6 @@ const Profile = props => {
     }
 
     const cancelFriendRequest = () => {
-        console.log("adding friend");
-        console.log("user_id" + user.user_id)
-
         fetch('/api/friends/declineFriendRequest/' + loggedInUser.user_id + '/' + user.user_id, {
             method: 'DELETE',
             headers: {
