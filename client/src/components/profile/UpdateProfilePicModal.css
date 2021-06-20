@@ -28,15 +28,9 @@
     height: 500px;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: rgb(250, 250, 250);
     border-radius: 2px;
-    display: flex;
-    justify-content: center;
+    background-color: rgb(250, 250, 250);
     
-}
-
-.profile-pic-cards-inner-container {
-    width: 95%;
 }
 
 .profile-pic-cards-container::-webkit-scrollbar {
@@ -57,18 +51,13 @@
     user-select: none;
 }
 
-.profile-pic-card-container img{
-    object-fit: cover;
-    width: 100%;
-    height: 110px;
-    border-radius: 80px;
-}
-
 .profile-pic-card-container-image {
-    width: 80%;
+    width: 100%;
     height: 110px;
     position: relative;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
 }
 
 .selected-profile-pic img {
@@ -79,19 +68,26 @@
     margin-top: 20px;
 }
 
-.update-profile-pic-modal-top {
-   text-align: center;
+.profile-game-card-image {
+    width: 100%;
+    height: 110px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
 }
 
-.update-pic-button-container {
-    text-align: center;
+.profile-pic-card-container img{
+    object-fit: cover;
+    width: 75%;
+    height: 110px;
+    border-radius: 90px;
 }
 
 .profile-pic-select-overlay {
     position: absolute;
     top: 0;
-    right: 0;
-    width: 100%;
+    width: 75%;
     height: 110px;
     background-color: rgba(22, 22, 22, 0.6);
     text-align: right;
@@ -104,6 +100,14 @@
     color: #eeeeee;
     margin-right: 15px;
     margin-top: 15px;
+}
+
+.update-profile-pic-modal-top {
+   text-align: center;
+}
+
+.update-pic-button-container {
+    text-align: center;
 }
 
 .update-pic-button {

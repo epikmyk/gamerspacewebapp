@@ -53,7 +53,7 @@ const ProfilePicCards = props => {
         <>
             {game.background_image !== null ?
                 <div className="profile-pic-card-container">
-                    <a id={game.name} className="game-card-image" onClick={() => addGameToFavorites(game)}>
+                    <a id={game.name} className="profile-game-card-image" onClick={() => addGameToFavorites(game)}>
                         {gameName === game.name ?
                             <div className="profile-pic-select-overlay">
                                 <p className="profile-pic-check-mark">&#10003;</p>

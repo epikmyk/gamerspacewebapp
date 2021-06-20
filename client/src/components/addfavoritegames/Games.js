@@ -7,7 +7,7 @@ const Games = props => {
     const [listOfGames, setListOfGames] = useState([]);
 
     const getGames = () => {
-        fetch('https://api.rawg.io/api/games?key=09da1e9cbb9b49f5982d84dcd0cbcf55&page_size=39&search=' + props.searchTerm)
+        fetch('https://api.rawg.io/api/games?key=09da1e9cbb9b49f5982d84dcd0cbcf55&page_size=33&search=' + props.searchTerm)
             .then(res => res.json())
             .then(res => setListOfGames(res.results))
             .catch(err => err)
