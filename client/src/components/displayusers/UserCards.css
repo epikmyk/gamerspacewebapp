@@ -1,0 +1,43 @@
+.user-username {
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    flex-direction: row;
+   
+    font-weight: 500;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    
+}
+
+.user-profile-pic img {
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 35px;
+}
+
+.user-username-text {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.user-username a {
+    color: #555555;
+}
+
+.user-username a:hover {
+    color: #555555;
+}
+
+.user-username a:focus {
+    color: #555555;
+}
+
+.user-seperator {
+    border-top: 1px solid #cccccc;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}

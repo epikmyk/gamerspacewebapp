@@ -11,9 +11,16 @@ const NavBar = props => {
 
     const [url, setUrl] = useState('');
     const [user, setUser] = useState({})
+    const [searchTerm, setSearchTerm] = useState("");
 
-    const search = e => {
-        console.log("searching")
+    const search = (e) => {
+        e.preventDefault();
+        window.location.assign("/search/" + searchTerm);
+    }
+
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+        console.log(e.target.value)
     }
 
     const getLoggedInUser = () => {
@@ -40,13 +47,13 @@ const NavBar = props => {
             },
             body: '',
         })
-        .then(data => {
-            console.log(data);
-            window.location.href = "/";
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+            .then(data => {
+                console.log(data);
+                window.location.href = "/";
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     useEffect(() => {
@@ -103,7 +110,7 @@ const NavBar = props => {
                     <Nav className="search">
                         <Form onSubmit={search}>
                             <InputGroup className="search-form-group">
-                                <FormControl type="text" placeholder="Search Gamerspace" className="search-input"></FormControl>
+                                <FormControl type="text" placeholder="Search Gamerspace" id="search-input" className="search-input" onChange={handleSearchChange}></FormControl>
                                 <Button className="search-button" onClick={search}><FiSearch size={22}></FiSearch></Button>
                             </InputGroup>
                         </Form>
