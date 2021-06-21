@@ -9,6 +9,7 @@ import Profile from './components/profile/Profile';
 import LoginPage from './components/startup/LoginPage';
 import StartupPage from './components/startup/StartupPage';
 import UserContext from './components/common/UserContext';
+import SearchPage from './components/searchpage/SearchPage';
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
           <Route path='/chat' component={Chat} exact />
           <Route path='/profile/:username' component={Profile} exact />
           <Route path='/login' component={LoginPage} exact />
+          <Route path='/search/:searchterm' component={SearchPage} exact />
         </UserContext.Provider>
       </Switch>
     </main>
