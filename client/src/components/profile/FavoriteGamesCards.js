@@ -32,6 +32,18 @@ const FavoriteGamesCards = props => {
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 700,
+                settings: {
+                    infinite: true,
+                    speed: 500,
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                  
+                }
+            }
+        ]
       
     };
 

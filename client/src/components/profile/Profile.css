@@ -162,3 +162,13 @@
 .select-friends {
     margin-left: 10px;
 }
+
+@media screen and (max-width: 700px) {
+
+    .profile-header-container {
+        width: 100%; 
+    }
+    .profile-feed {
+        width: 100%; 
+    }
+}
