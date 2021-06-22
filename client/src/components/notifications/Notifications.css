@@ -1,16 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
 .main-notifications-root-container {
     position: relative;
     background-color: #eeeeee;
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    
 }
 
 .main-notifications-root-content-container {
     position: relative;
     display: flex;
     justify-content: center;
+}
+
+.notifications-header {
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 500;
 }
 
 .main-notifications-content-container {

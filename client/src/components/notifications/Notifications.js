@@ -10,11 +10,15 @@ const Notifications = props => {
 
     const [user, setUser] = useContext(UserContext);
     const [listOfFriendRequests, setListOfFriendRequests] = useState([]);
+    const [friendRequestCount, setFriendRequestCount] = useState();
 
     const getFriendRequests = () => {
         fetch('/api/friends/getFriendRequests')
             .then(res => res.json())
-            .then(res => (setListOfFriendRequests(res)))
+            .then(res => {
+                setListOfFriendRequests(res);
+                setFriendRequestCount(res.length);
+            })
             .catch(err => err);
     }
 
@@ -27,9 +31,11 @@ const Notifications = props => {
             <div className='main-notifications-root-container'>
                 <NavBar username={user.username} />
                 <div className="main-notifications-root-content-container">
-                    <div className="main-notifications-content-container">
-                        <div><FriendRequestCards listOfFriendRequests={listOfFriendRequests} /></div>
-                    </div>
+                    {friendRequestCount === 0 ?
+                        <div className="notifications-header">No new notifications</div>
+                        : <div className="main-notifications-content-container">
+                            <div><FriendRequestCards listOfFriendRequests={listOfFriendRequests} /></div>
+                        </div>}
                 </div>
             </div>
         </div>
