@@ -11,11 +11,16 @@ const FavoriteGamesCards = props => {
 
     const [listOfFavoriteGames, setListOfFavoriteGames] = useState([]);
     const [username, setUsername] = useState("");
+    const [favoriteGamesCount, setFavoriteGamesCount] = useState(0);
+    const [sliderCount, setSliderCount] = useState(1);
 
     const getFavoriteGames = () => {
         fetch('/api/games/getFavoriteGames/' + username)
             .then(res => res.json())
-            .then(res => setListOfFavoriteGames(res))
+            .then(res => {
+                setListOfFavoriteGames(res);
+                setFavoriteGamesCount(res.length);
+            })
             .catch(err => err)
     }
 
@@ -30,7 +35,7 @@ const FavoriteGamesCards = props => {
     var settings = {
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: sliderCount,
         slidesToScroll: 1,
         responsive: [
             {
@@ -44,13 +49,21 @@ const FavoriteGamesCards = props => {
                 }
             }
         ]
-      
     };
 
     useEffect(() => {
         setUsername(getUsernameFromUrl)
         getFavoriteGames();
-    }, [username])
+        if (favoriteGamesCount === 1) {
+            setSliderCount(1);
+        }
+        else if (favoriteGamesCount === 2) {
+            setSliderCount(2);
+        }
+        else {
+            setSliderCount(3);
+        }
+    }, [username, sliderCount, favoriteGamesCount])
 
     const favoriteGamesCards = listOfFavoriteGames.map(game =>
         <div className="game-container">
