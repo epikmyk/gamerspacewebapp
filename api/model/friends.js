@@ -19,11 +19,19 @@ const FriendsModel = {
 
         return db.query(baseSql, [user_id, friend_id])
     },
+    retrieveAllFriendStatus: function (user_id) {
+        let baseSql = 'SELECT f.user_id, f.friend_id, f.status \
+        FROM friends f\
+        JOIN users u on f.user_id = u.user_id \
+        WHERE f.user_id = ? OR f.friend_id = ?;'
+
+        return db.query(baseSql, [user_id, friend_id])
+    },
     retrieveFriendRequests: function (user_id) {
         let baseSql = 'WITH FriendRequests AS (SELECT f.status, f.user_id, f.friend_id, f.created \
             FROM friends f \
             WHERE f.friend_id = ? AND f.status = 0) \
-            (SELECT f.status, f.user_id, f.friend_id, u.username, f.created \
+            (SELECT f.status, f.user_id, f.friend_id, u.username, f.created, u.profile_pic \
             FROM users u \
             JOIN FriendRequests f on u.user_id = f.user_id\
             WHERE u.user_id = f.user_id \
