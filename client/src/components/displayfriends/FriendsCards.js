@@ -1,18 +1,30 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { FaUserCircle, FaRegComment, FaRegHeart, FaHeart } from 'react-icons/fa'
 import UserContext from '../common/UserContext';
-import './UserCards.css'
+import '../displayusers/UserCards.css'
 
-const UserCards = props => {
-    const [listOfUsers, setListOfUsers] = useState(props.listOfUsers);
+const FriendsCards = props => {
+  
     const [loggedInUser] = useContext(UserContext);
+    const [friendStatus, setFriendStatus] = useState();
+    const [listOfFriends, setListOfFriends] = useState([]);
+    const [user, setUser] = useState(props.user);
+
+    const getFriends = () => {
+        fetch('/api/friends/getUserFriends/' + user.user_id)
+            .then(res => res.json())
+            .then(res => {
+                setListOfFriends(res);
+            })
+            .catch(err => err)
+    }
 
     useEffect(() => {
-        setListOfUsers(props.listOfUsers);
-        console.log(listOfUsers)
-    })
+        setUser(props.user);
+        getFriends();
+    }, [])
 
-    const userCards = listOfUsers.map(user =>
+    const userCards = listOfFriends.map(user =>
         <div>
             <div className="user-username">
                 <a href={"/profile/" + user.username}>
@@ -35,4 +47,4 @@ const UserCards = props => {
     )
 }
 
-export default UserCards;
+export default FriendsCards;

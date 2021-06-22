@@ -7,6 +7,7 @@ import FavoriteGamesCards from '../profile/FavoriteGamesCards';
 import UserContext from '../common/UserContext';
 import AddFavoriteGamesModal from '../addfavoritegames/AddFavoriteGamesModal';
 import UpdateProfilePicModal from './UpdateProfilePicModal';
+import FriendsCards from '../displayfriends/FriendsCards';
 import '../profile/Profile.css';
 
 const Profile = props => {
@@ -185,24 +186,28 @@ const Profile = props => {
                         {showPosts ?
                             <div className="bottom-header-container">
                                 <div className="select-posts">
-                                    <a href="#" style={{ textDecoration: "underline" }} onClick={handlePostClick}>Posts</a>
+                                    <a style={{ textDecoration: "underline" }} onClick={handlePostClick}>Posts</a>
                                 </div>
                                 <div className="select-friends">
-                                    <a href="#" style={{ textDecoration: "none" }} onClick={handleFriendsClick}>Friends <p className="friend-count">&nbsp;{friendCount}</p></a>
+                                    <a style={{ textDecoration: "none" }} onClick={handleFriendsClick}>Friends <p className="friend-count">&nbsp;{friendCount}</p></a>
                                 </div>
                             </div>
                             : <div className="bottom-header-container">
                                 <div className="select-posts" >
-                                    <a href="#" style={{ textDecoration: "none" }} onClick={handlePostClick}>Posts</a>
+                                    <a style={{ textDecoration: "none" }} onClick={handlePostClick}>Posts</a>
                                 </div>
                                 <div className="select-friends">
-                                    <a href="#" style={{ textDecoration: "underline" }} onClick={handleFriendsClick}>Friends <p className="friend-count">&nbsp;{friendCount}</p></a>
+                                    <a style={{ textDecoration: "underline" }} onClick={handleFriendsClick}>Friends <p className="friend-count">&nbsp;{friendCount}</p></a>
                                 </div>
                             </div>}
                     </div>
-                    <div className="profile-feed">
-                        <WritePost user={user} wallPostUrl={wallPostUrl} />
-                    </div>
+                    {showPosts ?
+                        <div className="profile-feed">
+                            <WritePost user={user} wallPostUrl={wallPostUrl} />
+                        </div>
+                        : <div className="profile-feed">
+                            <FriendsCards user={user}/>
+                        </div>}
                 </div>
             </div>
         </div>

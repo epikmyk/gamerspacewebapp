@@ -13,25 +13,10 @@ const WritePost = props => {
     const [loggedInUser] = useContext(UserContext)
     const [listOfWallPosts, setListOfWallPosts] = useState([]);
     const [wallPostUrl, setWallPostUrl] = useState("");
+    const [friendStatus, setFriendStatus] = useState();
+    const [url, setUrl] = useState("");
 
     let textAreaRef = React.createRef;
-
-    const getWallPosts = () => {
-        fetch(wallPostUrl)
-            .then(res => res.json())
-            .then(res => setListOfWallPosts(res))
-            .catch(err => err);
-    }
-
-    useEffect(() => {
-        setUser(props.user);
-        setWallPostUrl(props.wallPostUrl);
-        console.log(wallPostUrl)
-    })
-
-    useEffect(() => {
-        getWallPosts();
-    }, [wallPostUrl, user])
 
     const handleTextAreaChange = (e) => {
         e.style.height = "auto";
@@ -55,6 +40,28 @@ const WritePost = props => {
     const removeImage = () => {
         setImage(" ");
         console.log(document.getElementById("post-text-area").value = postText)
+    }
+
+    const getUrl = () => {
+        let url = window.location.href;
+        url = url.split('/');
+        url = url.pop();
+
+        return url;
+    }
+
+    const getWallPosts = () => {
+        fetch(wallPostUrl)
+            .then(res => res.json())
+            .then(res => setListOfWallPosts(res))
+            .catch(err => err);
+    }
+
+    const getFriendStatus = () => {
+        fetch('/api/friends/getFriendStatus/' + loggedInUser.username + '/' + user.username)
+            .then(res => res.json())
+            .then(res => { setFriendStatus(res.status) })
+            .catch(err => err)
     }
 
     const submitPost = (e) => {
@@ -84,36 +91,51 @@ const WritePost = props => {
         setImage(" ");
     }
 
+    useEffect(() => {
+        setUser(props.user);
+        setWallPostUrl(props.wallPostUrl);
+        setUrl(getUrl);
+        console.log(wallPostUrl)
+    })
+
+    useEffect(() => {
+        getWallPosts();
+        getFriendStatus();
+    }, [wallPostUrl, user])
+
     return (
         <div>
-            <div className="write-post-container">
-                <div className="write-post-top-container">
-                    <div className="profile-pic"> <img src={loggedInUser.profile_pic}></img></div>
-                    <Form className="write-post-form">
-                        <Form.Group controlId="form-post" size="lg">
-                            <textarea as="textarea"
-                                ref={textAreaRef}
-                                placeholder="Have something to say?"
-                                name="post"
-                                id="post-text-area"
-                                onChange={(e) => handleTextAreaChange(e.target)}
-                                required />
-                        </Form.Group>
-                    </Form>
-                </div>
-
-                {image != " " ?
-                    <div className="post-image-container">
-                        <Button className="remove-image-button" variant="primary" type="submit" onClick={removeImage}>X</Button>
-                        <img className="write-post-image" src={image} width="90%"></img>
+            {loggedInUser.username === url || url === "home" || friendStatus === 1 ?
+                <div className="write-post-container">
+                    <div className="write-post-top-container">
+                        <div className="profile-pic"> <img src={loggedInUser.profile_pic}></img></div>
+                        <Form className="write-post-form">
+                            <Form.Group controlId="form-post" size="lg">
+                                <textarea as="textarea"
+                                    ref={textAreaRef}
+                                    placeholder="Have something to say?"
+                                    name="post"
+                                    id="post-text-area"
+                                    onChange={(e) => handleTextAreaChange(e.target)}
+                                    required />
+                            </Form.Group>
+                        </Form>
                     </div>
-                    : null}
 
-                <div className="write-post-bottom-container">
-                    <Button className="post-button" variant="primary" type="submit" onClick={e => submitPost(e)}>Post</Button>
+                    {image != " " ?
+                        <div className="post-image-container">
+                            <Button className="remove-image-button" variant="primary" type="submit" onClick={removeImage}>X</Button>
+                            <img className="write-post-image" src={image} width="90%"></img>
+                        </div>
+                        : null}
+
+                    <div className="write-post-bottom-container">
+                        <Button className="post-button" variant="primary" type="submit" onClick={e => submitPost(e)}>Post</Button>
+                    </div>
+                    <hr className="write-post-seperator"></hr>
                 </div>
-            </div>
-            <hr className="write-post-seperator"></hr>
+                : null}
+
             <div><HomeWallPosts listOfHomeWallPosts={listOfWallPosts} /></div>
         </div>
     )
