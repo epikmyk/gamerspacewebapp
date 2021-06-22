@@ -95,7 +95,7 @@ const NavBar = props => {
                                 }
                             </div>
                         </Nav.Link>
-                        <Nav.Link href="/">
+                        <Nav.Link href="/notifications">
                             <div className="icon-container">
                                 <FaRegBell size={22}></FaRegBell>
                             </div>
