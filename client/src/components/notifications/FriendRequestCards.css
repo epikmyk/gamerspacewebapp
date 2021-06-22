@@ -1,0 +1,65 @@
+.friend-request-username {
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    flex-direction: row;
+   
+    font-weight: 500;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    
+}
+
+.friend-request-profile-pic img {
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 35px;
+}
+
+.friend-request-username-text {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.friend-request-username a {
+    color: #555555;
+}
+
+.friend-request-username a:hover {
+    color: #555555;
+}
+
+.friend-request-username a:focus {
+    color: #555555;
+}
+
+.friend-request-buttons {
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    padding-right: 15px;
+}
+
+.accept-request-button {
+    margin-right: 20px;
+}
+
+.accept-request-button, .decline-request-button {
+    font-family: 'Poppins', sans-serif;
+    background-color: #293e4a !important;
+    border: #2c3531 !important;
+    border-radius: 15px !important;
+    width: 100px;
+    height: 35px !important;
+}
+
+.friend-request-seperator {
+    border-top: 1px solid #cccccc;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+

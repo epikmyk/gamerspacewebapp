@@ -10,6 +10,7 @@ import LoginPage from './components/startup/LoginPage';
 import StartupPage from './components/startup/StartupPage';
 import UserContext from './components/common/UserContext';
 import SearchPage from './components/searchpage/SearchPage';
+import Notifications from './components/notifications/Notifications';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
           <Route path='/profile/:username' component={Profile} exact />
           <Route path='/login' component={LoginPage} exact />
           <Route path='/search/:searchterm' component={SearchPage} exact />
+          <Route path='/notifications' component={Notifications} exact />
         </UserContext.Provider>
       </Switch>
     </main>
