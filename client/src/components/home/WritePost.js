@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './WritePost.css';
 import { Button, Form, FormControl } from 'react-bootstrap';
 import { FaUserCircle } from 'react-icons/fa'
 import HomeWallPosts from '../displayposts/HomeWallPosts';
+import UserContext from '../common/UserContext';
 
 const WritePost = props => {
 
     const [image, setImage] = useState(" ");
     const [postText, setPostText] = useState("");
     const [user, setUser] = useState({});
+    const [loggedInUser] = useContext(UserContext)
     const [listOfWallPosts, setListOfWallPosts] = useState([]);
     const [wallPostUrl, setWallPostUrl] = useState("");
 
@@ -86,7 +88,7 @@ const WritePost = props => {
         <div>
             <div className="write-post-container">
                 <div className="write-post-top-container">
-                    <div className="profile-pic"> <img src={user.profile_pic}></img></div>
+                    <div className="profile-pic"> <img src={loggedInUser.profile_pic}></img></div>
                     <Form className="write-post-form">
                         <Form.Group controlId="form-post" size="lg">
                             <textarea as="textarea"
