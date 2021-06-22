@@ -46,7 +46,7 @@ const FriendsModel = {
         return db.query(baseSQL, [user_id, friend_id, user_id, friend_id])
     },
     retrieveFriends: function (user_id) {
-        let baseSQL = 'SELECT u.user_id, u.username, u.created, f.status\
+        let baseSQL = 'SELECT u.user_id, u.username, u.created, f.status, u.profile_pic\
         FROM users u\
         JOIN friends f on f.friend_id = u.user_id\
         WHERE f.user_id = ? AND f.status = 1'
