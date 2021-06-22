@@ -12,6 +12,7 @@ const NavBar = props => {
     const [url, setUrl] = useState('');
     const [user, setUser] = useState({})
     const [searchTerm, setSearchTerm] = useState("");
+    const [friendRequestCount, setFriendRequestCount] = useState();
 
     const search = (e) => {
         e.preventDefault();
@@ -28,6 +29,16 @@ const NavBar = props => {
             .then(res => res.json())
             .then(res => setUser(res))
             .catch(err => err)
+    }
+
+    const getFriendRequests = () => {
+        fetch('/api/friends/getFriendRequests')
+            .then(res => res.json())
+            .then(res => {
+                setFriendRequestCount(res.length);
+                localStorage.setItem("notificationcount", res.length);
+            })
+            .catch(err => err);
     }
 
     const getCurrentDirectory = () => {
@@ -49,6 +60,7 @@ const NavBar = props => {
         })
             .then(data => {
                 console.log(data);
+                localStorage.setItem("notificationcount", 0);
                 window.location.href = "/";
             })
             .catch((err) => {
@@ -58,6 +70,10 @@ const NavBar = props => {
 
     useEffect(() => {
         setUrl(getCurrentDirectory());
+        getFriendRequests();
+        if (localStorage.getItem("notificationcount")) {
+            setFriendRequestCount(localStorage.getItem("notificationcount"))
+        }
         getLoggedInUser();
     }, [])
 
@@ -97,7 +113,12 @@ const NavBar = props => {
                         </Nav.Link>
                         <Nav.Link href="/notifications">
                             <div className="icon-container">
-                                <FaRegBell size={22}></FaRegBell>
+                                <div className="notification-icon-container">
+                                    <FaRegBell size={22}></FaRegBell>
+                                    {friendRequestCount > 0 ?
+                                        <div className='friend-request-count'>{friendRequestCount}</div>
+                                        : null}
+                                </div>
                             </div>
                         </Nav.Link>
                         <DropdownButton id="drop-down-settings-button" className="drop-down-settings-button dropdown-toggle" title={<HiOutlineCog size={22}></HiOutlineCog>}>
