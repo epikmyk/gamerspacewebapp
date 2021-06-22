@@ -11,7 +11,7 @@ const FavoriteGamesCards = props => {
 
     const [listOfFavoriteGames, setListOfFavoriteGames] = useState([]);
     const [username, setUsername] = useState("");
-    const [favoriteGamesCount, setFavoriteGamesCount] = useState(0);
+    const [favoriteGamesCount, setFavoriteGamesCount] = useState();
     const [sliderCount, setSliderCount] = useState(1);
 
     const getFavoriteGames = () => {
@@ -45,7 +45,7 @@ const FavoriteGamesCards = props => {
                     speed: 500,
                     slidesToShow: 2,
                     slidesToScroll: 1,
-                  
+
                 }
             }
         ]
@@ -76,9 +76,13 @@ const FavoriteGamesCards = props => {
 
     return (
         <>
-            <Slider className="favorite-games-cards-slider" {...settings}>
-                {favoriteGamesCards}
-            </Slider>
+            <div>
+                {favoriteGamesCount !== undefined ?
+                    <Slider className="favorite-games-cards-slider" {...settings}>
+                        {favoriteGamesCards}
+                    </Slider>
+                    : null}
+            </div>
         </>
     )
 }
