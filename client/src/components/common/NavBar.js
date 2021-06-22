@@ -114,7 +114,10 @@ const NavBar = props => {
                         <Nav.Link href="/notifications">
                             <div className="icon-container">
                                 <div className="notification-icon-container">
-                                    <FaRegBell size={22}></FaRegBell>
+                                    {url == "notifications" ?
+                                        <FaBell size={22}></FaBell>
+                                        : <FaRegBell size={22}></FaRegBell>
+                                    }
                                     {friendRequestCount > 0 ?
                                         <div className='friend-request-count'>{friendRequestCount}</div>
                                         : null}
