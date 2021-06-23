@@ -26,14 +26,11 @@ const PostCards = props => {
             diff.minutes = Math.floor(elapsed / 60 % 60);
             diff.seconds = Math.floor(elapsed % 60);
 
-            if (diff.days > 2) {
+            if (diff.days > 1) {
                 return month + " " + day;
             }
-            else if (diff.days === 2) {
-                return "yesterday"
-            }
             else if (diff.days === 1) {
-                return diff.days + "d";
+                return "yesterday"
             }
             else if (diff.days < 1 && diff.hours >= 1) {
                 return diff.hours + "h";
