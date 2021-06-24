@@ -69,12 +69,15 @@ const NavBar = props => {
     }
 
     useEffect(() => {
+        if (!document.cookie.includes('cookieKey')) {
+            window.location.assign('/');
+        }
         setUrl(getCurrentDirectory());
         getFriendRequests();
+        getLoggedInUser();
         if (localStorage.getItem("notificationcount")) {
             setFriendRequestCount(localStorage.getItem("notificationcount"))
         }
-        getLoggedInUser();
     }, [])
 
     return (
