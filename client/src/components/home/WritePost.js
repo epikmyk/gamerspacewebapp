@@ -136,7 +136,7 @@ const WritePost = props => {
                 </div>
                 : null}
 
-            <div><HomeWallPosts listOfHomeWallPosts={listOfWallPosts} /></div>
+            <div><HomeWallPosts wallPostUrl={wallPostUrl} listOfHomeWallPosts={listOfWallPosts} /></div>
         </div>
     )
 }

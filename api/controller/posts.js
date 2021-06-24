@@ -21,10 +21,10 @@ const PostController = {
             .catch((err) => { next(err)})
     },
     getRecentPostsToUser: function (req, res, next) {
-       // let _id = req.session.userID;
+       let _id = req.session.userID;
        let username = req.params.username;
         console.log(req.session.userID)
-        return PostModal.retrieveRecentPostsToUser(username)
+        return PostModal.retrieveRecentPostsToUser(username, _id)
         .then(([results]) => {
             res.json(results);
         })
@@ -41,7 +41,7 @@ const PostController = {
                 res.json(results);
             }
             else {
-                return PostModal.retrieveRecentPostsToUser(username)
+                return PostModal.retrieveRecentPostsToUser(username, _id)
                 .then(([results]) => {
                     if(results) {
                         res.json(results);

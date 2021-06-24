@@ -1,16 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Button } from 'react-bootstrap';
 import { FaUserCircle, FaRegComment, FaRegHeart, FaHeart } from 'react-icons/fa'
+import UserContext from '../common/UserContext';
 import './PostCards.css';
 
 const PostCards = props => {
-    const [listOfPosts, setListOfPosts] = useState([]);
+    const [listOfPosts, setListOfPosts] = useState(props.listOfPosts);
+    const [loggedInUser] = useContext(UserContext);
+    const [wallPostUrl, setWallPostUrl] = useState(props.wallPostUrl)
+    const [listOfLikes, setListOfLikes] = useState([]);
 
-    useEffect(() => {
-        setListOfPosts(props.listOfPosts);
-    })
+    const likePost = (post, index) => {
+
+        listOfLikes[index] === 1 ? listOfLikes[index] = 0 : listOfLikes[index] = 1;
+
+        const data = {
+            like_post: 0,
+            user_id: loggedInUser.user_id,
+            post_id: post.post_id
+        }
+        fetch('/api/likes/createLike', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => {
+                return fetch(props.wallPostUrl)
+            })
+            .then(res => res.json())
+            .then(res => setListOfPosts(res))
+            .catch(err => err);
+    }
 
     const datePosted = created => {
-        
+
         var milliSeconds = Date.parse(created);
         const since = milliSeconds;
         var elapsed = (new Date().getTime() - since) / 1000;
@@ -47,7 +72,14 @@ const PostCards = props => {
         }
     }
 
-    const postCards = listOfPosts.map(post =>
+    useEffect(() => {
+        setListOfPosts(props.listOfPosts);
+        props.listOfPosts.map(post => {
+            setListOfLikes(listOfLikes => [...listOfLikes, post.like_post]);
+        })
+    }, [props.listOfPosts])
+
+    const postCards = listOfPosts.map((post, index) =>
 
         <div>
             <div className="post-username">
@@ -77,7 +109,14 @@ const PostCards = props => {
                     <p><FaRegComment size={18} color={"#888888"}></FaRegComment> 0 Comments</p>
                 </div>
                 <div className="num-of-likes">
-                    <p><FaRegHeart size={18} color={"#888888"}></FaRegHeart> 0 Likes</p>
+                    <div className="likes-container">
+                        {listOfLikes[index] === 1 ?
+                        <a className="red-heart" onClick={() => likePost(post, index)}><FaHeart size={18} color={"#C41E3A"}></FaHeart></a>
+                        : <a onClick={() => likePost(post, index)}><FaRegHeart size={18} color={"#888888"}></FaRegHeart></a>}
+                        <div className="like-count">{post.likes}</div>
+                        {post.likes === 1 ?
+                            (" like")
+                            : (" likes")}</div>
                 </div>
             </div>
             <hr className="post-seperator"></hr>

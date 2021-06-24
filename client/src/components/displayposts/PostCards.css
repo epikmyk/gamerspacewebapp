@@ -88,3 +88,20 @@
     margin-right: 15px;
 }
 
+.likes-container {
+    display: flex;
+}
+
+.likes-container a {
+    cursor: pointer;
+}
+
+.red-heart {
+    color: red;
+}
+
+.like-count {
+    margin-left: 5px;
+    margin-right: 3px;
+}
+

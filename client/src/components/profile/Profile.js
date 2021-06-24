@@ -21,6 +21,7 @@ const Profile = props => {
     const [showUpdateProfilePicModal, setShowUpdateProfilePicModal] = useState(false);
     const [friendStatus, setFriendStatus] = useState();
     const [friendCount, setFriendCount] = useState();
+    const [listOfFriends, setListOfFriends] = useState([]);
     const wallPostUrl = "/api/posts/getRecentPostsToUser/" + username;
 
     const handleGamesModalClose = () => {
@@ -66,7 +67,10 @@ const Profile = props => {
     const getFriendCount = () => {
         fetch('/api/friends/getUserFriends/' + user.user_id)
             .then(res => res.json())
-            .then(res => setFriendCount(res.length))
+            .then(res => { 
+                setListOfFriends(res);
+                setFriendCount(res.length); 
+            })
             .catch(err => err)
     }
 

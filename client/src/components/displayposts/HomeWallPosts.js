@@ -3,6 +3,7 @@ import PostCards from './PostCards';
 
 const HomeWallPosts = props => {
     const [listOfHomeWallPosts, setListOfHomeWallPosts] = useState([]);
+    const [wallPostUrl, setWallPostUrl] = useState()
 
     const getHomeWallPosts = () => {
         fetch('/api/posts/getUserPostsAndFriendsPosts')
@@ -13,12 +14,12 @@ const HomeWallPosts = props => {
 
     useEffect(() => {
         getHomeWallPosts();
-    }, [])
+    }, [props.wallPostUrl])
 
     return (
         <>
             <div className="posts">
-                <PostCards listOfPosts={props.listOfHomeWallPosts} />
+                <PostCards wallPostUrl={props.wallPostUrl} listOfPosts={props.listOfHomeWallPosts} />
             </div>
         </>
     )
