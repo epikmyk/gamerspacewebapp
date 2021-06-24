@@ -116,6 +116,7 @@ const Signup = props => {
             <div className="signup">
                 <div className="signup-left">
                     <h1>Sign Up</h1>
+                    <p className="defining-purpose">A social network for gamers.</p>
                     <p className="slogan">Meet gamers who play the same games you play.</p>
                     <p className="get-started">Get Started now.</p>
                     <p className="logo"><img src={"images/gamerspace-logo.png"}></img> Gamerspace</p>
