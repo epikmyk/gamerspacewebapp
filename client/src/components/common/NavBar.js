@@ -95,9 +95,13 @@ const NavBar = props => {
                                 }
                             </div>
                         </Nav.Link>
-                        <Nav.Link href="/">
+                        <Nav.Link href="/friends">
                             <div className="icon-container">
-                                <MdPeopleOutline size={22}></MdPeopleOutline>
+                                {url == "friends" ?
+                                    <MdPeople size={22}></MdPeople>
+                                    : <MdPeopleOutline size={22}></MdPeopleOutline>
+                                }
+
                             </div>
                         </Nav.Link>
 

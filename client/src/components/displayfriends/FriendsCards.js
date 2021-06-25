@@ -11,7 +11,7 @@ const FriendsCards = props => {
     const [user, setUser] = useState(props.user);
 
     const getFriends = () => {
-        fetch('/api/friends/getUserFriends/' + user.user_id)
+        fetch('/api/friends/getUserFriends/' + props.user.user_id)
             .then(res => res.json())
             .then(res => {
                 setListOfFriends(res);
@@ -22,7 +22,9 @@ const FriendsCards = props => {
     useEffect(() => {
         setUser(props.user);
         getFriends();
-    }, [])
+    }, [props.user])
+
+    
 
     const userCards = listOfFriends.map(user =>
         <div>
