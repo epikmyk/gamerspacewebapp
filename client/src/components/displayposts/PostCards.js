@@ -118,7 +118,7 @@ const PostCards = props => {
                                     : <a onClick={() => likePost(post, index)}><FaHeart size={18} color={"#C41E3A"}></FaHeart></a>}
                             </div>
 
-                            : <a onClick={() => likePost(post, index)}><FaRegHeart size={18} color={"#888888"}></FaRegHeart></a>}
+                            : <a onClick={() => likePost(post, index)}><FaRegHeart className="heart-outline" size={18} color={"#888888"}></FaRegHeart></a>}
                         <div className="like-count">{post.likes}</div>
                         {post.likes === 1 ?
                             <div className="like-text">like</div>
