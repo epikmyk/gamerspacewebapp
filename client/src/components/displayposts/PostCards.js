@@ -13,7 +13,6 @@ const PostCards = props => {
 
     const likePost = (post, index) => {
 
-        listOfLikes[index] === 1 ? listOfLikes[index] = 0 : listOfLikes[index] = 1;
         listOfLoadedLikeButtons[index] = true;
 
         const data = {
@@ -77,7 +76,6 @@ const PostCards = props => {
     useEffect(() => {
         setListOfPosts(props.listOfPosts);
         props.listOfPosts.map(post => {
-            setListOfLikes(listOfLikes => [...listOfLikes, post.like_post]);
             setListOfLoadedLikeButtons(listOfLoadedLikeButtons => [...listOfLoadedLikeButtons, false])
         })
     }, [props.listOfPosts])
@@ -113,7 +111,7 @@ const PostCards = props => {
                 </div>
                 <div className="num-of-likes">
                     <div className="likes-container">
-                        {listOfLikes[index] === 1 ?
+                        {post.like_post === 1 ?
                             <div>
                                 {listOfLoadedLikeButtons[index] ?
                                     <a onClick={() => likePost(post, index)}><FaHeart className="red-heart" size={18} color={"#C41E3A"}></FaHeart></a>
