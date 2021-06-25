@@ -9,10 +9,12 @@ const PostCards = props => {
     const [loggedInUser] = useContext(UserContext);
     const [wallPostUrl, setWallPostUrl] = useState(props.wallPostUrl)
     const [listOfLikes, setListOfLikes] = useState([]);
+    const [listOfLoadedLikeButtons, setListOfLoadedLikeButtons] = useState([]);
 
     const likePost = (post, index) => {
 
         listOfLikes[index] === 1 ? listOfLikes[index] = 0 : listOfLikes[index] = 1;
+        listOfLoadedLikeButtons[index] = true;
 
         const data = {
             like_post: 0,
@@ -76,6 +78,7 @@ const PostCards = props => {
         setListOfPosts(props.listOfPosts);
         props.listOfPosts.map(post => {
             setListOfLikes(listOfLikes => [...listOfLikes, post.like_post]);
+            setListOfLoadedLikeButtons(listOfLoadedLikeButtons => [...listOfLoadedLikeButtons, false])
         })
     }, [props.listOfPosts])
 
@@ -111,8 +114,13 @@ const PostCards = props => {
                 <div className="num-of-likes">
                     <div className="likes-container">
                         {listOfLikes[index] === 1 ?
-                        <a className="red-heart" onClick={() => likePost(post, index)}><FaHeart size={18} color={"#C41E3A"}></FaHeart></a>
-                        : <a onClick={() => likePost(post, index)}><FaRegHeart size={18} color={"#888888"}></FaRegHeart></a>}
+                            <div>
+                                {listOfLoadedLikeButtons[index] ?
+                                    <a onClick={() => likePost(post, index)}><FaHeart className="red-heart" size={18} color={"#C41E3A"}></FaHeart></a>
+                                    : <a onClick={() => likePost(post, index)}><FaHeart size={18} color={"#C41E3A"}></FaHeart></a>}
+                            </div>
+
+                            : <a onClick={() => likePost(post, index)}><FaRegHeart size={18} color={"#888888"}></FaRegHeart></a>}
                         <div className="like-count">{post.likes}</div>
                         {post.likes === 1 ?
                             <div className="like-text">like</div>

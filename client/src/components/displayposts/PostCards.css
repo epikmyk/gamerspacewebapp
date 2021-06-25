@@ -97,7 +97,16 @@
 }
 
 .red-heart {
-    color: red;
+    animation:fa-beat .5s ease;
+}
+
+@keyframes fa-beat {
+    50% {
+        transform: scale(1.25);
+    }
+    70% {
+        transform: scale(1);
+    }
 }
 
 .like-count {
