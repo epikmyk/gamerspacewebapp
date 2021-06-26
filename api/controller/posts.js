@@ -37,7 +37,6 @@ const PostController = {
         return PostModal.retrieveUserPostsAndFriendsPostsByUserId(_id)
         .then(([results]) => {
             if(results.length > 0) {
-                console.log("throwing")
                 res.json(results);
             }
             else {
@@ -61,7 +60,6 @@ const PostController = {
             }
         })
         .catch((err) => { 
-            console.log("HEREEEEE")
             if(err instanceof Error) {
                 res.json({ status: "OK", message: err.message, "redirect": '/' });
             }
@@ -69,6 +67,17 @@ const PostController = {
                 res.json({ status: "OK", message: "err", "redirect": '/' });
             }
         })
+    },
+    getPostById: function (req, res, next) {
+
+        let post_id = req.params.id;
+        let user_id = req.session.userID;
+
+        return PostModal.retrievePostById(user_id, post_id)
+        .then(([results]) => {
+            res.json(results[0]);
+        })
+        .catch((err) => { next(err)});
     }
 }
 

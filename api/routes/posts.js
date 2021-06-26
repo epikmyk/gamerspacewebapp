@@ -14,4 +14,8 @@ router.get('/getUserPostsAndFriendsPosts', (req, res, next) => {
     PostController.getUserPostsAndFriendsPostsByUserId(req, res, next);
 })
 
+router.get('/getPostById/:id', (req, res, next) => {
+    PostController.getPostById(req, res, next);
+})
+
 module.exports = router;
