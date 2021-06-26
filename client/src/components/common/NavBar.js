@@ -82,12 +82,12 @@ const NavBar = props => {
 
     return (
         <>
-            <Navbar className="nav-bar" expand="lg" sticky="top" >
+            <Navbar className="nav-bar" expand="lg" sticky="top" variant="dark">
                 <Navbar.Brand className="nav-bar-brand"><a href="/home"><img src={"/images/navbar-gamerspace-logo.png"}></img> GamerSpace</a></Navbar.Brand>
-                <Navbar.Toggle aria-controla="basic-navbar-nav" />
+                <Navbar.Toggle className="custom-toggler" aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="nav-bar-collapse">
                     <Nav className="icons-container">
-                        <Nav.Link href="/home">
+                        <Nav.Link title="home" href="/home">
                             <div className="icon-container">
                                 {url == "home" ?
                                     <AiFillHome size={22}></AiFillHome>
@@ -95,7 +95,7 @@ const NavBar = props => {
                                 }
                             </div>
                         </Nav.Link>
-                        <Nav.Link href="/friends">
+                        <Nav.Link title="friends "href="/friends">
                             <div className="icon-container">
                                 {url == "friends" ?
                                     <MdPeople size={22}></MdPeople>
@@ -105,12 +105,12 @@ const NavBar = props => {
                             </div>
                         </Nav.Link>
 
-                        <Nav.Link href="/chat">
+                        <Nav.Link title="chat" href="/chat">
                             <div className="icon-container">
                                 <FaRegComment size={22}></FaRegComment>
                             </div>
                         </Nav.Link>
-                        <Nav.Link href={"/profile/" + user.username}>
+                        <Nav.Link title="profile" href={"/profile/" + user.username}>
                             <div className="icon-container">
                                 {window.location.href.includes(user.username) ?
                                     <FaUserCircle size={22}></FaUserCircle>
@@ -118,7 +118,7 @@ const NavBar = props => {
                                 }
                             </div>
                         </Nav.Link>
-                        <Nav.Link href="/notifications">
+                        <Nav.Link title="notifications" href="/notifications">
                             <div className="icon-container">
                                 <div className="notification-icon-container">
                                     {url == "notifications" ?
@@ -131,10 +131,7 @@ const NavBar = props => {
                                 </div>
                             </div>
                         </Nav.Link>
-                        <DropdownButton id="drop-down-settings-button" className="drop-down-settings-button dropdown-toggle" title={<HiOutlineCog size={22}></HiOutlineCog>}>
-                            <div className="icon-container">
-                                <HiOutlineCog size={22}></HiOutlineCog>
-                            </div>
+                        <DropdownButton id="drop-down-settings-button" className="drop-down-settings-button dropdown-toggle" title={<HiOutlineCog title="settings" size={22}></HiOutlineCog>}>
                             <Dropdown.Item className="logout-button" onClick={logout}>Logout</Dropdown.Item>
                         </DropdownButton>
                     </Nav>
