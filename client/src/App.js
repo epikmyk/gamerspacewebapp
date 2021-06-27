@@ -44,7 +44,6 @@ function App() {
           <Route path='/profile/:username' component={Profile} exact />
           <Route path='/login' component={LoginPage} exact />
           <Route path='/search/:searchterm' component={SearchPage} exact />
-          <Route path='/search/:searchterm' component={SearchPage} exact />
           <Route path='/friends' component={Friends} exact />
           <Route path='/notifications' component={Notifications} exact />
           <Route path='/post/:postId' component={ViewPost} exact />
