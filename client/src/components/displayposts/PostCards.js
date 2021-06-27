@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Button } from 'react-bootstrap';
-import { FaUserCircle, FaRegComment, FaRegHeart, FaHeart } from 'react-icons/fa'
-import { MdRoom } from 'react-icons/md';
+import { FaRegComment, FaRegHeart, FaHeart } from 'react-icons/fa'
 import UserContext from '../common/UserContext';
 import './PostCards.css';
 
@@ -106,7 +104,13 @@ const PostCards = props => {
             </div>
             <div className="post-stats-container">
                 <div className="num-of-comments">
-                    <p><FaRegComment size={18} color={"#888888"}></FaRegComment> 0 Comments</p>
+                    <div className="comments-container">
+                        <a><FaRegComment size={18} color={"#888888"}></FaRegComment></a>
+                        <div className="comment-count">{post.comments}</div>
+                        {post.comments === 1 ?
+                            <div className="comment-text">Comment</div>
+                            : <div className="comment-text">Comments</div>}
+                    </div>
                 </div>
                 <div className="num-of-likes">
                     <div className="likes-container">
