@@ -16,12 +16,19 @@ const PostModal = {
             from posts p\
             LEFT OUTER JOIN likes l on l.post_id=p.post_id\
             WHERE l.like_post=1\
+            GROUP BY p.post_id),\
+            CommentCount as (\
+             SELECT COUNT(*) as comments, p.post_id\
+            from posts p\
+            LEFT OUTER JOIN comments c on c.post_id=p.post_id\
+            WHERE c.comment_id iS NOT NULL\
             GROUP BY p.post_id)\
-            (SELECT DISTINCT p.post_id, p.post, p.created, p.user_poster_id, p.user_receiver_id, u.username, p.image, u.profile_pic, IFNULL(l.like_post, 0) as like_post, IFNULL(lc.likes, 0) as likes\
+            (SELECT DISTINCT p.post_id, p.post, p.created, p.user_poster_id, p.user_receiver_id, u.username, p.image, u.profile_pic, IFNULL(l.like_post, 0) as like_post, IFNULL(lc.likes, 0) as likes, IFNULL(c.comments, 0) as comments\
             FROM UserPosts p\
             JOIN users u on p.user_poster_id=u.user_id\
             LEFT OUTER JOIN likes l on l.user_id=? AND p.post_id=l.post_id\
-            LEFT OUTER JOIN LikeCount lc on lc.post_id=p.post_id)\
+            LEFT OUTER JOIN LikeCount lc on lc.post_id=p.post_id\
+            LEFT OUTER JOIN CommentCount c on c.post_id=p.post_id)\
             ORDER BY p.created DESC';
 
         return db.query(baseSQL, [username, _id])
@@ -37,12 +44,18 @@ const PostModal = {
             from posts p\
             LEFT OUTER JOIN likes l on l.post_id=p.post_id\
             WHERE l.like_post=1\
+            GROUP BY p.post_id),\
+            CommentCount as (\
+            SELECT COUNT(*) as comments, p.post_id\
+            from posts p\
+            JOIN comments c on c.post_id=p.post_id\
             GROUP BY p.post_id)\
-            (SELECT p.post_id, p.post, p.created, p.user_poster_id, p.user_receiver_id, u.username, p.image, u.profile_pic, IFNULL(l.like_post, 0) as like_post, IFNULL(lc.likes, 0) as likes\
+            (SELECT p.post_id, p.post, p.created, p.user_poster_id, p.user_receiver_id, u.username, p.image, u.profile_pic, IFNULL(l.like_post, 0) as like_post, IFNULL(lc.likes, 0) as likes, IFNULL(c.comments, 0) as comments\
             FROM posts p\
             JOIN UserFriends u on p.user_poster_id=u.user_id\
             LEFT OUTER JOIN likes l on l.user_id=? AND p.post_id=l.post_id\
             LEFT OUTER JOIN LikeCount lc on lc.post_id=p.post_id\
+            LEFT OUTER JOIN CommentCount c on c.post_id=p.post_id\
             WHERE p.user_receiver_id = p.user_poster_id AND u.status = 1\
             ORDER BY p.created DESC)';
 
@@ -54,12 +67,18 @@ const PostModal = {
             from posts p\
             LEFT OUTER JOIN likes l on l.post_id=p.post_id\
             WHERE l.like_post=1\
+            GROUP BY p.post_id),\
+            CommentCount as (\
+            SELECT COUNT(*) as comments, p.post_id\
+            from posts p\
+            JOIN comments c on c.post_id=p.post_id\
             GROUP BY p.post_id)\
-            Select p.post_id, p.post, p.created, p.user_poster_id, p.user_receiver_id, u.username, p.image, u.profile_pic, IFNULL(l.like_post, 0) as like_post, IFNULL(lc.likes, 0) as likes\
+            Select p.post_id, p.post, p.created, p.user_poster_id, p.user_receiver_id, u.username, p.image, u.profile_pic, IFNULL(l.like_post, 0) as like_post, IFNULL(lc.likes, 0) as likes, IFNULL(c.comments, 0) as comments\
             FROM posts p\
             JOIN users u on p.user_poster_id=u.user_id\
             LEFT OUTER JOIN likes l on l.user_id=? AND p.post_id=l.post_id\
             LEFT OUTER JOIN LikeCount lc on lc.post_id=p.post_id\
+            LEFT OUTER JOIN CommentCount c on c.post_id=p.post_id\
             WHERE p.post_id = ?'
 
         return db.query(baseSQL, [user_id, post_id])
