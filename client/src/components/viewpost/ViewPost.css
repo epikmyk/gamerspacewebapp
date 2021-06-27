@@ -1,0 +1,32 @@
+.main-post-root-container {
+    position: relative;
+    background-color: #eeeeee;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.main-post-root-content-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.main-post-content-container {
+    background-color: #ffffff;
+    border-top: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-left: 1px solid #dddddd;
+    width: 700px; 
+    margin:auto;
+    
+}
+
+.post-feed {
+    margin: auto;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    width: 700px; 
+    position: relative;
+}

@@ -12,6 +12,8 @@ import UserContext from './components/common/UserContext';
 import SearchPage from './components/searchpage/SearchPage';
 import Notifications from './components/notifications/Notifications';
 import Friends from './components/friends/Friends';
+import ViewPost from './components/viewpost/ViewPost';
+
 
 function App() {
 
@@ -45,6 +47,8 @@ function App() {
           <Route path='/search/:searchterm' component={SearchPage} exact />
           <Route path='/friends' component={Friends} exact />
           <Route path='/notifications' component={Notifications} exact />
+          <Route path='/post/:postId' component={ViewPost} exact />
+          
         </UserContext.Provider>
       </Switch>
     </main>
