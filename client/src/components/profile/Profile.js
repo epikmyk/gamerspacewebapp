@@ -8,6 +8,7 @@ import UserContext from '../common/UserContext';
 import AddFavoriteGamesModal from '../addfavoritegames/AddFavoriteGamesModal';
 import UpdateProfilePicModal from './UpdateProfilePicModal';
 import FriendsCards from '../displayfriends/FriendsCards';
+import DisplayFavoriteMutualGamesCount from './DisplayFavoriteMutualGamesCount';
 import '../profile/Profile.css';
 
 const Profile = props => {
@@ -67,9 +68,9 @@ const Profile = props => {
     const getFriendCount = () => {
         fetch('/api/friends/getUserFriends/' + user.user_id)
             .then(res => res.json())
-            .then(res => { 
+            .then(res => {
                 setListOfFriends(res);
-                setFriendCount(res.length); 
+                setFriendCount(res.length);
             })
             .catch(err => err)
     }
@@ -172,6 +173,11 @@ const Profile = props => {
                             {username === loggedInUser.username && loggedInUser.username !== undefined ?
                                 <a className="add-games-button" onClick={() => setShowGamesModal(true)}>Add Games +</a>
                                 : null}
+                            {username !== loggedInUser.username && loggedInUser.username !== undefined ?
+                                <div className="favorite-mutual-games-count">
+                                    <DisplayFavoriteMutualGamesCount loggedInUser={loggedInUser} user={user} />
+                                </div>
+                                : null}
                         </div>
                         {showGamesModal ?
                             <div>
@@ -210,7 +216,7 @@ const Profile = props => {
                             <WritePost user={user} wallPostUrl={wallPostUrl} />
                         </div>
                         : <div className="profile-feed">
-                            <FriendsCards user={user}/>
+                            <FriendsCards user={user} />
                         </div>}
                 </div>
             </div>

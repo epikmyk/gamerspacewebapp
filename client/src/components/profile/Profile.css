@@ -123,6 +123,12 @@
     text-decoration: none;
 }
 
+.favorite-mutual-games-count {
+    margin: 25px 15px 10px 25px;
+    font-weight: 500;
+    color: #555555;
+}
+
 .favorite-games-slider-container {
     margin: 0px 15px 0px 15px;
     padding: 0px 20px 0px 20px;
