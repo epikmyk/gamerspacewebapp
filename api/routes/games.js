@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var FriendsController = require('../controller/friends');
 var GameController = require('../controller/games')
-
 
 router.post('/addGame', (req, res, next) => {
   GameController.createGame(req, res, next);
@@ -19,6 +17,10 @@ router.post('/addUserGame', (req, res, next) => {
 
 router.get('/getFavoriteGames/:username', (req, res, next) => {
   GameController.getFavoriteGames(req, res, next);
+})
+
+router.get('/getMutualFavoriteGames/:user_id/:profile_user_id', (req, res, next) => {
+  GameController.getMutualFavoriteGames(req, res, next);
 })
 
 module.exports = router;

@@ -21,16 +21,6 @@ const GameModal = {
 
         return db.query(baseSQL)
     },
-    /*
-    retrieveGamesByUserId: function (user_id) {
-        let baseSQL = 'SELECT g.name, g.image \
-        FROM games g \
-        JOIN UserGames f on g.game_id = f.game_id \
-        JOIN users u on f.user_id=u.user_id \
-        WHERE u.user_id = ?' 
-
-        return db.query(baseSQL, [user_id]);
-    }*/
     retrieveGamesByUserId: function (username) {
         let baseSQL = 'SELECT DISTINCT f.slug, f.name, f.background_image \
         FROM FavoriteGames f \
@@ -38,9 +28,16 @@ const GameModal = {
         WHERE u.username = ?' 
 
         return db.query(baseSQL, [username]);
-    }
-    
+    },
+    retrieveMutualFavoriteGames: function (user_id, profile_user_id) {
+        let baseSQL = 'SELECT f.name\
+        From FavoriteGames f\
+        WHERE f.user_id = ? or f.user_id = ?\
+        GROUP BY f.name\
+        HAVING COUNT(*) > 1'
 
+        return db.query(baseSQL, [user_id, profile_user_id])
+    }
 }
 
 module.exports = GameModal

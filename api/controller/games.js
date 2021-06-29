@@ -9,7 +9,6 @@ const GameController = {
         let name = req.body.name;
         let image = req.body.image;
         let user_id = req.session.userID;
-        let game_id = 0;
 
         return GameModal.create(slug, name, image, user_id)
             .then(([results]) => {
@@ -23,60 +22,6 @@ const GameController = {
                 }
             })
             .catch((err) => { next(err)})
-
-        /*
-        return GameModal.retrieveGameByName(name)
-            .then(([results]) => {
-                if (results.length == 0) {
-                    //game_id = results[0].game_id
-                    console.log(results[0])
-                    return GameModal.create(slug, name, image)
-                        .then((results) => {
-                            if (results) {
-                                return GameModal.retrieveLatestInsertion()
-                                    .then(([results]) => {
-                                        return GameModal.createUserGame(results[0].game_id, user_id)
-                                            .then(([results]) => {
-                                                if (results && results.affectedRows) {
-                                                    console.log("Game added to user games")
-                                                    res.json({ status: "OK", message: "Game added successfully", "redirect": "/" })
-                                                }
-                                                else {
-                                                    console.log("Game not added to user games")
-                                                    res.json({ status: "OK", message: "Game added unsuccessful", "redirect": "/" })
-                                                }
-                                            })
-                                            .catch((err) => { next(err) })
-                                    })
-                                    .catch((err) => { next(err) })
-                            }
-                            else {
-                                return Error("game could not be added")
-                            }
-                        })
-                        .catch((err) => { next(err) })
-                }
-                else {
-                    console.log(results[0])
-                    return GameModal.createUserGame(results[0].game_id, user_id)
-                        .then(([results]) => {
-                            if (results && results.affectedRows) {
-                                console.log("Game added to user games")
-                                res.json({ status: "OK", message: "Game added successfully", "redirect": "/" })
-                            }
-                            else {
-                                console.log("Game not added to user games")
-                                res.json({ status: "OK", message: "Game added unsuccessful", "redirect": "/" })
-                            }
-                        })
-                        .catch((err) => { next(err) })
-                }
-            })
-            .catch((err) => { next(err) })*/
-
-            
-
-
 
     },
     createUserGame: function (req, res, next) {
@@ -96,7 +41,6 @@ const GameController = {
             })
             .catch((err) => { next(err) })
     },
-
     getGame: function (req, res, next) {
         let game = req.params.game;
 
@@ -106,7 +50,6 @@ const GameController = {
             })
             .catch((err) => { next(err) })
     },
-
     getFavoriteGames: function (req, res, next) {
         let username = req.params.username;
 
@@ -115,7 +58,17 @@ const GameController = {
                 res.json(results);
             })
             .catch((err) => { next(err) })
+    },
+    getMutualFavoriteGames: function (req, res, next) {
+        let user_id = req.params.user_id;
+        let profile_user_id = req.params.profile_user_id;
+
+        return GameModal.retrieveMutualFavoriteGames(user_id, profile_user_id)
+        .then(([results]) => {
+            res.json(results);
+        })
+        .catch((err) => { next(err) })
     }
-}
+ }
 
 module.exports = GameController
