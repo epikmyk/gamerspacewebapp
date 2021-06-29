@@ -8,7 +8,7 @@ import UserContext from '../common/UserContext';
 import AddFavoriteGamesModal from '../addfavoritegames/AddFavoriteGamesModal';
 import UpdateProfilePicModal from './UpdateProfilePicModal';
 import FriendsCards from '../displayfriends/FriendsCards';
-import DisplayFavoriteMutualGamesCount from './DisplayFavoriteMutualGamesCount';
+import DisplayMutualFavoriteGamesCount from './DisplayMutualFavoriteGamesCount';
 import '../profile/Profile.css';
 
 const Profile = props => {
@@ -175,7 +175,7 @@ const Profile = props => {
                                 : null}
                             {username !== loggedInUser.username && loggedInUser.username !== undefined ?
                                 <div className="favorite-mutual-games-count">
-                                    <DisplayFavoriteMutualGamesCount loggedInUser={loggedInUser} user={user} />
+                                    <DisplayMutualFavoriteGamesCount loggedInUser={loggedInUser} user={user} />
                                 </div>
                                 : null}
                         </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
+import './DisplayMutualFavoriteGamesCount.css';
 
-const DisplayFavoriteMutualGamesCount = props => {
+const DisplayMutualFavoriteGamesCount = props => {
 
     const [favoriteMutualGamesCount, setFavoriteMutualGamesCount] = useState();
 
@@ -20,10 +21,15 @@ const DisplayFavoriteMutualGamesCount = props => {
     return (
         <>
             {favoriteMutualGamesCount !== undefined ?
-                <div>{favoriteMutualGamesCount + " Mutual Games"}</div>
+                <div className="favorite-mutual-games-count-container">
+                    {favoriteMutualGamesCount}
+                    {favoriteMutualGamesCount !== 1 ?
+                        <div className="mutual-game-text">Mutual Games</div>
+                        : <div className="mutual-game-text">Mutual Game</div>}
+                </div>
                 : null}
         </>
     )
 }
 
-export default DisplayFavoriteMutualGamesCount;
+export default DisplayMutualFavoriteGamesCount;
