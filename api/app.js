@@ -12,6 +12,7 @@ var friendsRouter = require('./routes/friends');
 var gamesRouter = require('./routes/games');
 var likesRouter = require('./routes/likes');
 var commentsRouter = require('./routes/comments');
+var chatRouter = require('./routes/chat')
 
 var app = express();
 
@@ -47,6 +48,7 @@ app.use('/friends', friendsRouter);
 app.use('/games', gamesRouter);
 app.use('/likes', likesRouter);
 app.use('/comments', commentsRouter);
+app.use('/chat', chatRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
