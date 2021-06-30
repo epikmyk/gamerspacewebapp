@@ -41,6 +41,7 @@ function App() {
           <Route path='/' component={StartupPage} exact />
           <Route path='/home' component={Homepage} exact />
           <Route path='/chat' component={Chat} exact />
+          <Route path='/chat/:chatId' component={Chat} exact />
           <Route path='/profile/:username' component={Profile} exact />
           <Route path='/login' component={LoginPage} exact />
           <Route path='/search/:searchterm' component={SearchPage} exact />
