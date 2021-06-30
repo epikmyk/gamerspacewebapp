@@ -1,25 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
 .chat-container {
     /*background-color: green;*/
     color: #dde8e2;
+    height: 100vh;
+    
+    background-color: #ffffff;
+    display: flex;
+    flex-flow: column;
     
 }
-.chat-content {
-    max-height: 80vh;
-    /*background-color: orange;*/
-    min-height: 89.2vh;
-    max-height: 89.2vh;
-}
-.chat {
+.chat-content-container {
+    
+    display: flex;
     width: 100%;
     height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.chats {
+    border-right: 1px solid #dddddd;
+    width: 450px;
+   
+}
+
+.chats-header {
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
+    color: #555555;
+    height: 40px;
+    /*border-bottom: 1px solid #dddddd;*/
+}
+.chat {
     /*background-color: red;*/
+   
     display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.chat-name-header {
+    width: 100%;
 }
 
 .chat-form {
     width: 100%;
     padding: 15px;
+    position: absolute;
+    bottom: 0;
+    height: 80px;
+    display: flex;
 }
+
+.chat-input {
+    border-radius: 20px 20px 20px 20px !important;
+}
+
 .chat-textarea {
     border-radius: 60px;
     overflow-x: auto;
@@ -40,5 +78,68 @@
 }
 
 .send-message-button {
-    float: right;
+   margin-left: 15px;
 }
+
+.send-message-button:hover {
+    cursor: pointer;
+ }
+
+.people {
+    position: relative;
+    height: 100%;
+    width: 450px;
+    border-left: 1px solid #dddddd;
+}
+
+.people-header {
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
+    color: #555555;
+    margin-bottom: 10px;
+}
+
+.people-search {
+    display: flex;
+    justify-content: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 60px;
+    width: 100%;
+    /*border-bottom: 1px solid #dddddd;*/
+}
+
+.people-search-form {
+   width: 100%;
+}
+
+.people-search-input {
+   width: 100%;
+   border-radius: 20px 20px 20px 20px !important;
+}
+
+.people-container {
+    position: relative;
+    max-height: 86vh;
+    overflow-y:auto;
+    top:0;
+    bottom: 0;
+}
+.people-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.people-container::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+    border-radius: 10px;
+}
+
+@media screen and (orientation:portrait){
+    .people-container {
+        
+        max-height: 90vh;
+        
+    }
+}
+
