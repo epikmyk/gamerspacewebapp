@@ -1,0 +1,15 @@
+.chat-header-container {
+    color: #555555;
+    font-weight: 500;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.chat-header-username {
+    margin-top: 10px;
+    margin-left: 10px;
+}

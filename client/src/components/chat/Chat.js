@@ -4,6 +4,7 @@ import { IoMdSend } from 'react-icons/io'
 import NavBar from '../common/NavBar';
 import DisplayFriends from './DisplayFriends';
 import DisplaySearchResults from './DisplaySearchResults';
+import ChatHeader from './ChatHeader';
 import '../chat/Chat.css'
 
 const Chat = props => {
@@ -24,6 +25,7 @@ const Chat = props => {
                     </div>
                     <div className="chat">
                         <div className="chat-name-header">
+                           <ChatHeader chatId={props.match.params.chatId}/>
                         </div>
                         <Form className="chat-form">
                             <FormControl type="text" placeholder="Send a message..." className="chat-input"></FormControl>
