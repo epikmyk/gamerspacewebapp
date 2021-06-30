@@ -1,0 +1,23 @@
+.chat-user-username {
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-bottom: 10px; 
+}
+
+.chat-user-username a {
+    color: #555555 !important;
+    cursor: pointer;
+}
+
+.chat-user-username a:hover {
+    color: #555555;
+    text-decoration: underline !important;
+}
+
+.chat-user-username a:focus {
+    color: #555555;
+}

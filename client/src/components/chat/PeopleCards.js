@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import UserContext from '../common/UserContext';
-import '../displayusers/UserCards.css'
+import '../displayusers/UserCards.css';
+import './PeopleCards.css';
 
 const PeopleCards = props => {
 
@@ -54,12 +55,12 @@ const PeopleCards = props => {
 
     const userCards = listOfPeople.map(user =>
         <div>
-            <div className="user-username">
+            <div className="chat-user-username">
                 <a onClick={() => openChat(user)}>
                     <div className="user-profile-pic"> <img src={user.profile_pic}></img></div>
                 </a>
                 <div className="user-stats">
-                    <a href={"/profile/" + user.username}>
+                    <a onClick={() => openChat(user)}>
                         <p className="user-username-text">{user.username}</p>
                     </a>
                 </div>
