@@ -45,20 +45,20 @@ const ChatController = {
         let user2_id = req.params.user2_id;
 
         return ChatModel.retrieveChatId(user1_id, user2_id)
-        .then(([results]) => {
-            res.json(results[0]);
-        })
-        .catch((err) => { next(err)});
+            .then(([results]) => {
+                res.json(results[0]);
+            })
+            .catch((err) => { next(err) });
     },
     getChats: function (req, res, next) {
 
         let user_id = req.session.userID;
 
         return ChatModel.retrieveChats(user_id)
-        .then(([results]) => {
-            res.json(results);
-        })
-        .catch((err) => { next(err)});
+            .then(([results]) => {
+                res.json(results);
+            })
+            .catch((err) => { next(err) });
     },
     getUserFromChat: function (req, res, next) {
 
@@ -68,11 +68,29 @@ const ChatController = {
         console.log("userID: " + user_id)
 
         return ChatModel.retrieveUserFromChat(post_id, user_id)
-        .then(([results]) => {
-            res.json(results[0]);
-        })
-        .catch((err) => { next(err)});
+            .then(([results]) => {
+                res.json(results[0]);
+            })
+            .catch((err) => { next(err) });
     },
+    updateChatStatus: function (req, res, next) {
+
+        let active = req.body.active;
+        let chat_id = req.body.chat_id;
+
+        ChatModel.changeChatStatus(active, chat_id)
+            .then(([results]) => {
+                if (results && results.affectedRows) {
+                    res.status(204).send();
+                }
+                else {
+                    res.json({ message: "Status could not be changed" })
+                }
+            })
+            .catch((err) => {
+                throw err;
+            })
+    }
 
 
 }

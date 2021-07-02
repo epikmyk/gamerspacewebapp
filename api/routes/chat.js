@@ -18,4 +18,8 @@ router.get('/getUserFromChat/:post_id', (req, res, next) => {
     ChatController.getUserFromChat(req, res, next);
 })
 
+router.patch('/updateChatStatus', (req, res, next) => {
+    ChatController.updateChatStatus(req, res, next);
+})
+
 module.exports = router;

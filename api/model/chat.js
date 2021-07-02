@@ -32,7 +32,7 @@ const ChatModel = {
         let baseSQL = 'WITH UserChat AS (SELECT c.chat_id, c.user1_id, c.user2_id, u.user_id, u.username\
             FROM chat c\
             JOIN users u on u.user_id = c.user1_id or u.user_id = c.user2_id\
-            WHERE u.user_id = ?),\
+            WHERE u.user_id = ? and c.active = 1),\
             UserChatFirstResult AS (SELECT c.chat_id, c.user1_id, c.user2_id, u.username, u.user_id, u.profile_pic\
             FROM chat c\
             JOIN UserChat uc on uc.user2_id = c.user2_id\
@@ -59,13 +59,15 @@ const ChatModel = {
 
         return db.query(baseSQL, [chat_id, user_id])
     },
-    retrieveMessages: function (chat_id) {
-        let baseSQL = 'SELECT m.message, m.created, m.user_id, m.chat_id \
-        FROM messages m\
-        JOIN chat c ON c.chat_id = m.chat_id';
-
-        return db.query(baseSQL, [chat_id])
-    },
+    changeChatStatus: function (active, chat_id) {
+        let baseSQL = 'UPDATE chat \
+        SET active = ? \
+        WHERE chat_id = ?';
+        return db.execute(baseSQL, [active, chat_id])
+        .catch((err) => {
+            throw err;
+        })
+    }
 }
 
 module.exports = ChatModel;
