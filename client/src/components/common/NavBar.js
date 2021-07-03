@@ -6,6 +6,7 @@ import { AiFillHome, AiOutlineHome } from 'react-icons/ai';
 import { MdPeople, MdPeopleOutline } from 'react-icons/md';
 import { HiCog, HiOutlineCog } from 'react-icons/hi'
 import { FiSearch } from 'react-icons/fi'
+import Logout from './Logout';
 
 const NavBar = props => {
 
@@ -49,25 +50,6 @@ const NavBar = props => {
         return url;
     }
 
-    const logout = () => {
-        console.log("logging out");
-        fetch('/api/users/logout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: '',
-        })
-            .then(data => {
-                console.log(data);
-                localStorage.setItem("notificationcount", 0);
-                window.location.href = "/";
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }
-
     useEffect(() => {
         if (!document.cookie.includes('cookieKey')) {
             window.location.assign('/');
@@ -101,10 +83,8 @@ const NavBar = props => {
                                     <MdPeople size={22}></MdPeople>
                                     : <MdPeopleOutline size={22}></MdPeopleOutline>
                                 }
-
                             </div>
                         </Nav.Link>
-
                         <Nav.Link title="chat" href="/chat">
                             <div className="icon-container">
                                 <FaRegComment size={22}></FaRegComment>
@@ -132,7 +112,7 @@ const NavBar = props => {
                             </div>
                         </Nav.Link>
                         <DropdownButton id="drop-down-settings-button" className="drop-down-settings-button dropdown-toggle" title={<HiOutlineCog title="settings" size={22}></HiOutlineCog>}>
-                            <Dropdown.Item className="logout-button" onClick={logout}>Logout</Dropdown.Item>
+                            <Logout />
                         </DropdownButton>
                     </Nav>
                     <Nav className="search">
