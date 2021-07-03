@@ -45,11 +45,13 @@ const ChatModel = {
             WHERE uc.user1_id != ?)\
             (SELECT chat_id, user_id, username, profile_pic\
             FROM UserChatFirstResult ucf\
+            WHERE user1_id = ? OR user2_id = ?\
             UNION\
             SELECT chat_id, user_id, username, profile_pic \
-            FROM UserChatSecondResult ucs)';
+            FROM UserChatSecondResult ucs\
+            WHERE user1_id = ? OR user2_id = ?)';
 
-        return db.query(baseSQL, [user_id, user_id, user_id])
+        return db.query(baseSQL, [user_id, user_id, user_id, user_id, user_id, user_id, user_id])
     },
     retrieveUserFromChat: function (chat_id, user_id) {
         let baseSQL = 'SELECT u.user_id, u.username, u.profile_pic\
