@@ -1,8 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState, useMemo, useContext } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-
+import {  Route, Switch } from 'react-router-dom'
 import Homepage from './components/home/Homepage';
 import Chat from './components/chat/Chat';
 import Profile from './components/profile/Profile';
@@ -14,11 +13,9 @@ import Notifications from './components/notifications/Notifications';
 import Friends from './components/friends/Friends';
 import ViewPost from './components/viewpost/ViewPost';
 
-
 function App() {
 
   const [user, setUser] = useState({})
-
   const provideUser = useMemo(() => ({ user, setUser }, [user, setUser]));
 
   const getLoggedInUser = () => {
@@ -35,7 +32,7 @@ function App() {
 
   return (
     <main>
-      <style>{'body { height: 100%; margin: 0; overflow-y: scroll'}</style>
+      <style>{'body { height: 100%; width: 100%, margin: 0; overflow-y: scroll'}</style>
       <Switch>
         <UserContext.Provider value={provideUser}>
           <Route path='/' component={StartupPage} exact />
@@ -48,7 +45,6 @@ function App() {
           <Route path='/friends' component={Friends} exact />
           <Route path='/notifications' component={Notifications} exact />
           <Route path='/post/:postId' component={ViewPost} exact />
-          
         </UserContext.Provider>
       </Switch>
     </main>
