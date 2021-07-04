@@ -5,6 +5,7 @@ import NavBar from '../common/NavBar';
 import DisplayFriends from './DisplayFriends';
 import DisplaySearchResults from './DisplaySearchResults';
 import DisplayUserChats from './DisplayUserChats';
+import DisplayChat from './DisplayChat';
 import ChatHeader from './ChatHeader';
 import '../chat/Chat.css'
 
@@ -45,15 +46,16 @@ const Chat = props => {
                 <div className="chat-content-container">
                     <div className="chats">
                         <div className="chats-header">Chats</div>
-                        <DisplayUserChats initializeChat={initializeChat} chatId={props.match.params.chatId}/>
+                        <DisplayUserChats initializeChat={initializeChat} chatId={props.match.params.chatId} />
                     </div>
                     <div className="chat">
                         <div className="chat-name-header">
                             <ChatHeader chatId={props.match.params.chatId} />
+                            <DisplayChat chatId={props.match.params.chatId}/>
                         </div>
                         <Form className="chat-form">
                             <FormControl type="text" placeholder="Send a message..." className="chat-input" onChange={handleMessageChange}></FormControl>
-                            <a className="send-message-button" onClick={() => {sendMessage(); setInitializeChat(true)}}>
+                            <a className="send-message-button" onClick={() => { sendMessage(); setInitializeChat(true) }}>
                                 <IoMdSend color={"#293E4A"} size={40}></IoMdSend>
                             </a>
                         </Form>
