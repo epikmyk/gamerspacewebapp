@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Form, FormControl } from 'react-bootstrap';
 import { IoMdSend } from 'react-icons/io'
 import NavBar from '../common/NavBar';
@@ -7,6 +7,8 @@ import DisplaySearchResults from './DisplaySearchResults';
 import DisplayUserChats from './DisplayUserChats';
 import DisplayChat from './DisplayChat';
 import ChatHeader from './ChatHeader';
+import UserContext from '../common/UserContext';
+import { io } from 'socket.io-client';
 import '../chat/Chat.css'
 
 const Chat = props => {
@@ -14,6 +16,9 @@ const Chat = props => {
     const [searchTerm, setSearchTerm] = useState("");
     const [message, setMessage] = useState("");
     const [initializeChat, setInitializeChat] = useState(false);
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const socket = useRef(null);
+    let hostname = window.location.hostname;
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
@@ -24,6 +29,17 @@ const Chat = props => {
     }
 
     const sendMessage = () => {
+        let chatId = props.match.params.chatId;
+        let messageBody = {
+            message: message,
+            created: new Date(),
+            user_id: loggedInUser.user_id,
+            chat_id: chatId,
+            username: loggedInUser.username,
+            profile_pic: loggedInUser.profile_pic
+        }
+        socket.current.emit("sendMessage", chatId, messageBody);
+
         const data = {
             message: message,
             chat_id: props.match.params.chatId
@@ -38,6 +54,20 @@ const Chat = props => {
             .then(data => console.log(data))
             .catch((err) => console.log(err))
     }
+    
+    
+    useEffect(() => {
+        let chatId = props.match.params.chatId;
+
+        socket.current = io("http://" + hostname + "/", {
+            path: '/api/socket.io/',
+            transports: ['websocket']
+        })
+
+        socket.current.on('connect', () => {
+            socket.current.emit("room", chatId);
+        })
+    }, [])
 
     return (
         <>

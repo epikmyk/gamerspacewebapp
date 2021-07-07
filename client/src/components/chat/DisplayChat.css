@@ -1,6 +1,7 @@
 .message-card-container {
     font-weight: normal;
 }
+
 .message-container {
     display: flex;
     color: #333333;
@@ -17,6 +18,7 @@
 }
 
 .message-username {
+    margin-left: 10px;
     margin-right: 6px;
     font-size: smaller;
     padding-bottom: 3px;
@@ -30,12 +32,10 @@
 }
 
 .logged-in-message-container {
-   
     display: flex;
     color: #333333;
     margin: 5px 10px 0px 10px;
     justify-content: flex-end;
-   
 }
 
 .logged-in-user-message {

@@ -1,11 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import UserContext from '../common/UserContext';
+import { io } from 'socket.io-client';
 import './DisplayChat.css'
 
 const DisplayChat = props => {
 
     const [listOfMessages, setListOfMessages] = useState([]);
     const [loggedInUser] = useContext(UserContext);
+    const socket = useRef(null);
+    let hostname = window.location.hostname;
 
     const getMessages = () => {
         fetch('/api/messages/getMessages/' + props.chatId)
@@ -16,7 +19,25 @@ const DisplayChat = props => {
 
     useEffect(() => {
         getMessages();
+
+        let chatId = props.chatId;
+
+        socket.current = io("http://" + hostname + "/", {
+            path: '/api/socket.io/',
+            transports: ['websocket']
+        })
+
+        socket.current.on('connect', () => {
+            socket.current.emit("room", chatId);
+        })
+        socket.current.on('message', message => {
+            setListOfMessages(listOfMessages => [...listOfMessages, message])
+        });
     }, [])
+
+    useEffect(() => {
+        
+    })
 
     const messageCards = listOfMessages.map(message =>
         <div className="message-card-container">
@@ -52,7 +73,7 @@ const DisplayChat = props => {
 
     return (
         <>
-            <div>
+            <div className="chat-content">
                 {messageCards}
             </div>
         </>
