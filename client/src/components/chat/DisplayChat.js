@@ -19,7 +19,7 @@ const DisplayChat = props => {
 
     useEffect(() => {
         getMessages();
-
+/*
         let chatId = props.chatId;
 
         socket.current = io("http://" + hostname + "/", {
@@ -32,7 +32,7 @@ const DisplayChat = props => {
         })
         socket.current.on('message', message => {
             setListOfMessages(listOfMessages => [...listOfMessages, message])
-        });
+        });*/
     }, [])
 
     useEffect(() => {
