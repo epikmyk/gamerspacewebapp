@@ -1,3 +1,17 @@
+.chat-content {
+    height: 84vh;
+    overflow-y: auto;
+}
+
+.chat-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.chat-content::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+    border-radius: 10px;
+}
+
 .message-card-container {
     font-weight: normal;
 }
@@ -51,4 +65,16 @@
     height: 35px;
     border-radius: 35px;
     margin-left: 10px;
+}
+
+@media screen and (max-width: 1920px) {
+    .chat-content {
+        height: 79vh;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .chat-content {
+        height: 88vh;
+    }
 }
