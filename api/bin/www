@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('api:server');
 var http = require('http');
+var socketio = require('socket.io');
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +21,36 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+var io = socketio(server, {
+  transports: [ 'websocket' ],
+  cors: {
+    origin: "http://localhost",
+    methods: ["GET", "POST"],
+  }
+})
+
+let interval;
+
+io.on('connection', (socket) => {
+  console.log('user connected')
+
+  socket.on('room', (room) => {
+    socket.join(room);
+    
+    if(interval) {
+      clearInterval(interval);
+    }
+
+    socket.on('disconnect', () => {
+      clearInterval(interval)
+    })
+  })
+
+  socket.on('sendMessage', (room, message) => {
+    io.to(room).emit('message', message);
+  })
+});
+
 
 /**
  * Listen on provided port, on all network interfaces.
