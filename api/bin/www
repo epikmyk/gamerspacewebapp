@@ -21,9 +21,8 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-/*
 const { Server } = require("socket.io")
-const io = new Server(server);*/
+const io = new Server(server);
 
 /*
 var io = socketio(server, {
@@ -34,18 +33,17 @@ var io = socketio(server, {
   }
 })*/
 
-/*
 let interval;
 
 io.on('connection', (socket) => {
   console.log('user connected')
 
+  if(interval) {
+    clearInterval(interval);
+  }
+
   socket.on('room', (room) => {
     socket.join(room);
-    
-    if(interval) {
-      clearInterval(interval);
-    }
 
     socket.on('disconnect', () => {
       clearInterval(interval)
@@ -55,7 +53,7 @@ io.on('connection', (socket) => {
   socket.on('sendMessage', (room, message) => {
     io.to(room).emit('message', message);
   })
-});*/
+});
 
 
 /**

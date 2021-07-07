@@ -29,8 +29,6 @@ const Chat = props => {
     }
 
     const sendMessage = () => {
-
-        /*
         let chatId = props.match.params.chatId;
         let messageBody = {
             message: message,
@@ -40,7 +38,7 @@ const Chat = props => {
             username: loggedInUser.username,
             profile_pic: loggedInUser.profile_pic
         }
-        socket.current.emit("sendMessage", chatId, messageBody);*/
+        socket.current.emit("sendMessage", chatId, messageBody);
 
         const data = {
             message: message,
@@ -60,16 +58,19 @@ const Chat = props => {
     
     useEffect(() => {
         let chatId = props.match.params.chatId;
+        let url;
 
-        /*
-        socket.current = io("http://" + hostname + "/", {
+        hostname == "localhost" ? url = "http://" + hostname + "/" : url = "wss://" + hostname + "/";
+        console.log(url)
+
+        socket.current = io(url, {
             path: '/api/socket.io/',
             transports: ['websocket']
         })
 
         socket.current.on('connect', () => {
             socket.current.emit("room", chatId);
-        })*/
+        })
     }, [])
 
     return (

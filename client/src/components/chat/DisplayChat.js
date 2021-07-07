@@ -19,10 +19,14 @@ const DisplayChat = props => {
 
     useEffect(() => {
         getMessages();
-/*
-        let chatId = props.chatId;
 
-        socket.current = io("http://" + hostname + "/", {
+        let chatId = props.chatId;
+        let url;
+
+        hostname == "localhost" ? url = "http://" + hostname + "/" : url = "wss://" + hostname + "/";
+        console.log(url)
+
+        socket.current = io(url, {
             path: '/api/socket.io/',
             transports: ['websocket']
         })
@@ -32,7 +36,7 @@ const DisplayChat = props => {
         })
         socket.current.on('message', message => {
             setListOfMessages(listOfMessages => [...listOfMessages, message])
-        });*/
+        });
     }, [])
 
     useEffect(() => {
