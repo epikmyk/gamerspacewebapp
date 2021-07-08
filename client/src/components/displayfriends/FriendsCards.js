@@ -27,7 +27,7 @@ const FriendsCards = props => {
     
 
     const userCards = listOfFriends.map(user =>
-        <div>
+        <div key={user.user_id}>
             <div className="user-username">
                 <a href={"/profile/" + user.username}>
                     <div className="user-profile-pic"> <img src={user.profile_pic}></img></div>
