@@ -14,11 +14,9 @@ const DisplayFriends = props => {
 
                 if (!localStorage.getItem("friends") && loggedInUser.user_id !== undefined) {
                     localStorage.setItem("friends", JSON.stringify(res));
-                    console.log("setting friends")
                     setListOfFriends(res);
                 }
                 else if (localStorage.getItem("friends") && loggedInUser.user_id !== undefined){
-                    console.log("resetting friends")
                     let friends = JSON.parse(localStorage.getItem("friends"))
                     if (toString(res) !== toString(friends)) {
                         localStorage.setItem("friends", JSON.stringify(res));

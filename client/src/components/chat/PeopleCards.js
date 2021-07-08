@@ -54,8 +54,8 @@ const PeopleCards = props => {
     })
 
     const userCards = listOfPeople.map(user =>
-        <div>
-            <div className="chat-user-username">
+       
+            <div key={user.user_id} className="chat-user-username">
                 <a onClick={() => openChat(user)}>
                     <div className="user-profile-pic"> <img src={user.profile_pic}></img></div>
                 </a>
@@ -65,7 +65,7 @@ const PeopleCards = props => {
                     </a>
                 </div>
             </div>
-        </div>
+        
     )
 
     return (

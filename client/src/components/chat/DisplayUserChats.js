@@ -20,10 +20,7 @@ const DisplayUserChats = props => {
 
     const checkChatStatus = () => {
 
-        console.log("active: " + chatActive)
         if (props.initializeChat && chatActive === false) {
-            console.log("initializing chat " + props.chatId)
-
             const data = {
                 active: 1,
                 chat_id: props.chatId

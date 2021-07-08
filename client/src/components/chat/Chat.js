@@ -61,7 +61,6 @@ const Chat = props => {
         let url;
 
         hostname == "localhost" ? url = "http://" + hostname + "/" : url = "wss://" + hostname + "/";
-        console.log(url)
 
         socket.current = io(url, {
             path: '/api/socket.io/',
@@ -99,7 +98,7 @@ const Chat = props => {
                     <div className="people">
                         <div className="people-top">
                             <div className="people-header">People</div>
-                            <div class="people-search">
+                            <div className="people-search">
                                 <Form className="people-search-form">
                                     <FormControl type="text" placeholder="Search Users" className="people-search-input" onChange={handleSearchChange}></FormControl>
                                 </Form>

@@ -24,7 +24,6 @@ const DisplayChat = props => {
         let url;
 
         hostname == "localhost" ? url = "http://" + hostname + "/" : url = "wss://" + hostname + "/";
-        console.log(url)
 
         socket.current = io(url, {
             path: '/api/socket.io/',
