@@ -117,8 +117,12 @@ const Profile = props => {
 
     useEffect(() => {
         setUsername(getUsernameFromUrl)
-        getUser();
-        getFriendStatus();
+        if (username !== "") {
+            getUser();
+        }
+        if (loggedInUser.username !== undefined && username !== "") {
+            getFriendStatus();
+        }
         getFriendCount();
     }, [loggedInUser, friendStatus, showGamesModal, friendCount])
 
@@ -213,7 +217,9 @@ const Profile = props => {
                     </div>
                     {showPosts ?
                         <div className="profile-feed">
-                            <WritePost user={user} wallPostUrl={wallPostUrl} />
+                            {user.user_id !== undefined ?
+                                <WritePost user={user} wallPostUrl={wallPostUrl} />
+                                : null}
                         </div>
                         : <div className="profile-feed">
                             <FriendsCards user={user} />

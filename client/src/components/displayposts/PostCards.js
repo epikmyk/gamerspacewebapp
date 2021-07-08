@@ -42,7 +42,7 @@ const PostCards = props => {
 
     const postCards = listOfPosts.map((post, index) =>
 
-        <div>
+        <div key={index}>
             <div className="post-username">
                 <a href={"/profile/" + post.username}>
                     <div className="profile-pic"> <img src={post.profile_pic}></img></div>

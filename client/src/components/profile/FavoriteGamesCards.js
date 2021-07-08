@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-//import { Carousel } from 'react-bootstrap';
-import { FaUserCircle, FaRegComment, FaRegHeart, FaHeart } from 'react-icons/fa'
 import '../profile/FavoriteGamesCards.css';
 import Slider from 'react-slick';
-// Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -63,7 +60,9 @@ const FavoriteGamesCards = props => {
 
     useEffect(() => {
         setUsername(getUsernameFromUrl)
-        getFavoriteGames();
+        if(username !== "") {
+            getFavoriteGames();
+        }
         if (favoriteGamesCount === 1) {
             setSliderCount(1);
         }
@@ -76,7 +75,7 @@ const FavoriteGamesCards = props => {
     }, [username, sliderCount, favoriteGamesCount])
 
     const favoriteGamesCards = listOfFavoriteGames.map(game =>
-        <div className="game-container">
+        <div key={game} className="game-container">
             <div className="game-name">{game.name}</div>
             <div className="game-image">
                 <img src={game.background_image}></img>
