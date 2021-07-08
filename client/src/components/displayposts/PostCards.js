@@ -52,7 +52,7 @@ const PostCards = props => {
                 </a>
                 <div className="post-date">
                     <p className="bullet">&#183;</p>
-                    <DisplayDate created={post.created}/>
+                    <DisplayDate created={post.created} />
                 </div>
             </div>
             <div className="post-container">
@@ -68,7 +68,9 @@ const PostCards = props => {
             <div className="post-stats-container">
                 <div className="num-of-comments">
                     <div className="comments-container">
-                        <a><FaRegComment size={18} color={"#888888"}></FaRegComment></a>
+                        <a href={"/post/" + post.post_id}>
+                            <FaRegComment size={18} color={"#888888"}></FaRegComment>
+                        </a>
                         <div className="comment-count">{post.comments}</div>
                         {post.comments === 1 ?
                             <div className="comment-text">Comment</div>
