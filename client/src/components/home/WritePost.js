@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import './WritePost.css';
-import { Button, Form, FormControl } from 'react-bootstrap';
-import { FaUserCircle } from 'react-icons/fa'
+import { Button, Form } from 'react-bootstrap';
 import HomeWallPosts from '../displayposts/HomeWallPosts';
 import UserContext from '../common/UserContext';
+import './WritePost.css';
 
 const WritePost = props => {
 
@@ -39,7 +38,6 @@ const WritePost = props => {
 
     const removeImage = () => {
         setImage(" ");
-        console.log(document.getElementById("post-text-area").value = postText)
     }
 
     const getUrl = () => {
@@ -95,7 +93,6 @@ const WritePost = props => {
         setUser(props.user);
         setWallPostUrl(props.wallPostUrl);
         setUrl(getUrl);
-        console.log(wallPostUrl)
     })
 
     useEffect(() => {
@@ -121,7 +118,6 @@ const WritePost = props => {
                             </Form.Group>
                         </Form>
                     </div>
-
                     {image != " " ?
                         <div className="post-image-container">
                             <Button className="remove-image-button" variant="primary" type="submit" onClick={removeImage}>X</Button>
@@ -135,7 +131,6 @@ const WritePost = props => {
                     <hr className="write-post-seperator"></hr>
                 </div>
                 : null}
-
             <div><HomeWallPosts wallPostUrl={wallPostUrl} listOfHomeWallPosts={listOfWallPosts} /></div>
         </div>
     )
