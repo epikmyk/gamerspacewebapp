@@ -1,19 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { FaUserCircle, FaRegComment, FaRegHeart, FaHeart } from 'react-icons/fa'
-import UserContext from '../common/UserContext';
+import React, { useState, useEffect } from 'react';
 import './UserCards.css'
 
 const UserCards = props => {
     const [listOfUsers, setListOfUsers] = useState(props.listOfUsers);
-    const [loggedInUser] = useContext(UserContext);
 
     useEffect(() => {
         setListOfUsers(props.listOfUsers);
-        console.log(listOfUsers)
     })
 
     const userCards = listOfUsers.map(user =>
-        <div>
+        <div key={user.user_id}>
             <div className="user-username">
                 <a href={"/profile/" + user.username}>
                     <div className="user-profile-pic"> <img src={user.profile_pic}></img></div>
