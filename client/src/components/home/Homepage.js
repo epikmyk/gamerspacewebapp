@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import NavBar from '../common/NavBar';
 import UserContext from '../common/UserContext';
-import '../home/Homepage.css'
 import WritePost from '../home/WritePost';
 import AddFavoriteGamesModal from '../addfavoritegames/AddFavoriteGamesModal';
 import Footer from '../common/Footer';
+import GetStarted from './GetStarted';
+import '../home/Homepage.css'
 
 const Homepage = props => {
 
-    //const [user, setUser] = useState({})
     const [user, setUser] = useContext(UserContext);
     const [numOfFavoriteGames, setNumOfFavoriteGames] = useState();
     const [showGamesModal, setShowGamesModal] = useState(true);
@@ -47,10 +47,10 @@ const Homepage = props => {
                             : null}
                         <div className="homepage-feed">
                             <WritePost user={user} wallPostUrl={wallPostUrl} />
+                            <GetStarted />
                         </div>
                         <Footer />
                     </div>
-                    
                 </div>
             </div>
         </div>
