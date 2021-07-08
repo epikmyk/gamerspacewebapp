@@ -47,7 +47,7 @@ const FriendRequestCards = props => {
     }, [props.listOfFriendRequests])
 
     const friendRequestCards = listOfFriendRequests.map(user =>
-        <div>
+        <div key={user.user_id}>
             <div className="friend-request-username">
                 <a href={"/profile/" + user.username}>
                     <div className="friend-request-profile-pic"> <img src={user.profile_pic}></img></div>
