@@ -54,8 +54,8 @@ const Chat = props => {
             .then(data => console.log(data))
             .catch((err) => console.log(err))
     }
-    
-    
+
+
     useEffect(() => {
         let chatId = props.match.params.chatId;
         let url;
@@ -85,14 +85,16 @@ const Chat = props => {
                     <div className="chat">
                         <div className="chat-name-header">
                             <ChatHeader chatId={props.match.params.chatId} />
-                            <DisplayChat chatId={props.match.params.chatId}/>
+                            <DisplayChat chatId={props.match.params.chatId} />
                         </div>
-                        <Form className="chat-form">
-                            <FormControl type="text" placeholder="Send a message..." className="chat-input" onChange={handleMessageChange}></FormControl>
-                            <a className="send-message-button" onClick={() => { sendMessage(); setInitializeChat(true) }}>
-                                <IoMdSend color={"#293E4A"} size={40}></IoMdSend>
-                            </a>
-                        </Form>
+                        {props.match.params.chatId ?
+                            <Form className="chat-form">
+                                <FormControl type="text" placeholder="Send a message..." className="chat-input" onChange={handleMessageChange}></FormControl>
+                                <a className="send-message-button" onClick={() => { sendMessage(); setInitializeChat(true) }}>
+                                    <IoMdSend color={"#293E4A"} size={40}></IoMdSend>
+                                </a>
+                            </Form>
+                            : null}
                     </div>
                     <div className="people">
                         <div className="people-top">
