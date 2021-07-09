@@ -37,7 +37,7 @@ const UpdateProfilePicModal = props => {
                 <Modal.Body>
                     <Form onSubmit={search}>
                         <Form.Group className="profile-pic-search-form-group">
-                            <Form.Control id="profile-pic-search-input" className="profile-pic-game-search-input" type="text" placeholder="Search games" onKeyDown={checkEnterPressed} onChange={handleSearchChange}></Form.Control>
+                            <Form.Control id="profile-pic-search-input" className="profile-pic-search-input" type="text" placeholder="Search games" onKeyDown={checkEnterPressed} onChange={handleSearchChange}></Form.Control>
                             <Button className="profile-pic-search-button" onClick={search}><FiSearch size={22}></FiSearch></Button>
                         </Form.Group>
                     </Form>
