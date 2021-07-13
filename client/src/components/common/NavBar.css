@@ -30,6 +30,7 @@
 
 .icon-container {
     color: #ffffff;
+    cursor: pointer;
 }
 
 .notification-icon-container {

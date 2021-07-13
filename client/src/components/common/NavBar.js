@@ -77,7 +77,7 @@ const NavBar = props => {
                                 }
                             </div>
                         </Nav.Link>
-                        <Nav.Link title="friends "href="/friends">
+                        <Nav.Link title="friends " href="/friends">
                             <div className="icon-container">
                                 {url == "friends" ?
                                     <MdPeople size={22}></MdPeople>
@@ -90,14 +90,23 @@ const NavBar = props => {
                                 <FaRegComment size={22}></FaRegComment>
                             </div>
                         </Nav.Link>
-                        <Nav.Link title="profile" href={"/profile/" + user.username}>
-                            <div className="icon-container">
-                                {window.location.href.includes(user.username) ?
-                                    <FaUserCircle size={22}></FaUserCircle>
-                                    : <FaRegUserCircle size={22}></FaRegUserCircle>
-                                }
-                            </div>
-                        </Nav.Link>
+                        {user.username !== undefined ?
+                            <Nav.Link title="profile" href={"/profile/" + user.username}>
+                                <div className="icon-container">
+                                    {window.location.href.includes(user.username) ?
+                                        <FaUserCircle size={22}></FaUserCircle>
+                                        : <FaRegUserCircle size={22}></FaRegUserCircle>
+                                    }
+                                </div>
+                            </Nav.Link>
+                            : <Nav.Link title="profile">
+                                <div className="icon-container">
+                                    {window.location.href.includes(user.username) ?
+                                        <FaUserCircle size={22}></FaUserCircle>
+                                        : <FaRegUserCircle size={22}></FaRegUserCircle>
+                                    }
+                                </div>
+                            </Nav.Link>}
                         <Nav.Link title="notifications" href="/notifications">
                             <div className="icon-container">
                                 <div className="notification-icon-container">
