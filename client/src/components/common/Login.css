@@ -127,6 +127,9 @@
 
 @media screen and (max-width: 899px) {
     
+    .login-form {
+        width: 100%;
+    }
     .login-left {
         background-color: #293e4a;
         border-radius: 5px 0px 0px 5px;
@@ -147,6 +150,6 @@
     }
     
     .login-button {
-        width: 300px;
+        width: 100%
     }
 }
