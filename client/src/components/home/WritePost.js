@@ -38,6 +38,7 @@ const WritePost = props => {
 
     const removeImage = () => {
         setImage(" ");
+        document.getElementById("post-text-area").value = postText
     }
 
     const getUrl = () => {
