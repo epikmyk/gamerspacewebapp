@@ -13,7 +13,7 @@ import '../profile/Profile.css';
 
 const Profile = props => {
 
-    const [loggedInUser] = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [user, setUser] = useState({})
     const [username, setUsername] = useState("");
     const [showPosts, setShowPosts] = useState(true);
@@ -31,6 +31,7 @@ const Profile = props => {
 
     const handleUpdateProfilePicModalClose = () => {
         setShowUpdateProfilePicModal(false);
+        setLoggedInUser(UserContext);
     }
 
     const handlePostClick = () => {

@@ -34,8 +34,6 @@ const ProfilePicCards = props => {
             .catch((err) => {
                 console.log(err);
             })
-
-        console.log("updating profile pic to: " + selectedGame.name);
     }
 
     useEffect(() => {
