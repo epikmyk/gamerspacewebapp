@@ -144,7 +144,7 @@ const Profile = props => {
                             {username === loggedInUser.username && loggedInUser.username !== undefined ?
                                 <div>
                                     <div className="update-profile-pic-header-username">
-                                        <a><img onClick={() => setShowUpdateProfilePicModal(true)} src={user.profile_pic}></img></a>
+                                        <a><img onClick={() => setShowUpdateProfilePicModal(true)} src={loggedInUser.profile_pic}></img></a>
                                         {username}
                                     </div>
                                     <div className="update-profile-pic-button-container">
