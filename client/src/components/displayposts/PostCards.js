@@ -45,7 +45,9 @@ const PostCards = props => {
         <div key={index}>
             <div className="post-username">
                 <a href={"/profile/" + post.username}>
-                    <div className="profile-pic"> <img src={post.profile_pic}></img></div>
+                    {post.username === loggedInUser.username ?
+                        <div className="profile-pic"> <img src={loggedInUser.profile_pic}></img></div>
+                        : <div className="profile-pic"> <img src={post.profile_pic}></img></div>}
                 </a>
                 <a href={"/profile/" + post.username}>
                     <p className="post-username-text">{post.username}</p>
