@@ -31,7 +31,7 @@ const Profile = props => {
 
     const handleUpdateProfilePicModalClose = () => {
         setShowUpdateProfilePicModal(false);
-        setLoggedInUser(UserContext);
+        getLoggedInUser();
     }
 
     const handlePostClick = () => {
@@ -58,6 +58,13 @@ const Profile = props => {
             .then(res => setUser(res))
             .catch(err => err)
     }
+
+    const getLoggedInUser = () => {
+        fetch('/api/users/getLoggedInUser')
+          .then(res => res.json())
+          .then(res => setLoggedInUser(res))
+          .catch(err => err)
+      }
 
     const getFriendStatus = () => {
         fetch('/api/friends/getFriendStatus/' + loggedInUser.username + '/' + username)
