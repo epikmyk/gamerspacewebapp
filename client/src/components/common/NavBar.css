@@ -33,6 +33,10 @@
     cursor: pointer;
 }
 
+.icon-title {
+    display: none;
+}
+
 .notification-icon-container {
     display: flex;
     position: relative;
@@ -113,5 +117,23 @@
     .icon-container {
         margin-right: 10px;
         margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .icon-container {
+        margin-right: 10px;
+        margin-left: 10px;
+        display: flex;
+    }
+
+    .icon-title {
+        display: flex;
+        margin-left: 10px;
+    }
+
+    .settings-icon-container {
+        color: #ffffff;
+        display: flex;
     }
 }

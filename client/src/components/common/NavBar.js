@@ -75,6 +75,8 @@ const NavBar = props => {
                                     <AiFillHome size={22}></AiFillHome>
                                     : <AiOutlineHome size={22}></AiOutlineHome>
                                 }
+                                <div className="icon-title">Home</div>
+
                             </div>
                         </Nav.Link>
                         <Nav.Link title="friends " href="/friends">
@@ -83,11 +85,13 @@ const NavBar = props => {
                                     <MdPeople size={22}></MdPeople>
                                     : <MdPeopleOutline size={22}></MdPeopleOutline>
                                 }
+                                <div className="icon-title">Friends</div>
                             </div>
                         </Nav.Link>
                         <Nav.Link title="chat" href="/chat">
                             <div className="icon-container">
                                 <FaRegComment size={22}></FaRegComment>
+                                <div className="icon-title">Chat</div>
                             </div>
                         </Nav.Link>
                         {user.username !== undefined ?
@@ -97,6 +101,7 @@ const NavBar = props => {
                                         <FaUserCircle size={22}></FaUserCircle>
                                         : <FaRegUserCircle size={22}></FaRegUserCircle>
                                     }
+                                    <div className="icon-title">Profile</div>
                                 </div>
                             </Nav.Link>
                             : <Nav.Link title="profile">
@@ -117,12 +122,15 @@ const NavBar = props => {
                                     {friendRequestCount > 0 ?
                                         <div className='friend-request-count'>{friendRequestCount}</div>
                                         : null}
+                                    <div className="icon-title">Notifications</div>
                                 </div>
                             </div>
                         </Nav.Link>
-                        <DropdownButton id="drop-down-settings-button" className="drop-down-settings-button dropdown-toggle" title={<HiOutlineCog title="settings" size={22}></HiOutlineCog>}>
-                            <Logout />
-                        </DropdownButton>
+                        <div className="settings-icon-container">
+                            <DropdownButton id="drop-down-settings-button" className="drop-down-settings-button dropdown-toggle" title={<div className="settings-icon-container">{<HiOutlineCog title="settings" size={22}></HiOutlineCog>}<div className="icon-title">Settings</div></div>}>
+                                <Logout />
+                            </DropdownButton>
+                        </div>
                     </Nav>
                     <Nav className="search">
                         <Form onSubmit={search}>
