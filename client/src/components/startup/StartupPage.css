@@ -9,12 +9,10 @@
 
 .main {
     font-family: 'Poppins', sans-serif;
-    background-color: black;
-    height: 100vh;
     background-repeat: no-repeat; 
     background-attachment: fixed; background-image: linear-gradient(to bottom, #333333, #13547a);
     background-attachment: fixed; background-image: linear-gradient(to bottom, #293e4a, #3c5a6d);
-    background-color: #eeeeee;
+    height: 100vh;
     justify-content: center;
 }
 
