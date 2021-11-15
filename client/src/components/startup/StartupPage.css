@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'); 
 
+
 .main-startup-page {
     padding: 25px;
     text-align: center;
     font-family: 'Poppins', sans-serif;
     color: #eeeeee;
+    background-attachment: fixed; background-image: linear-gradient(to bottom, #293e4a, #3c5a6d);
 }
 
 .main {
