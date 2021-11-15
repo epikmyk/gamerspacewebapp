@@ -134,9 +134,16 @@
     }
 }
 
-@media screen and (max-width: 1920px) {
+@media screen and (max-width: 1000px) {
     .people-container {
         max-height: 82vh;  
+    }
+    .people {
+        width: 22%;
+    }
+    .chats {
+        width: 35%;
+        overflow-x: hidden;
     }
 }
 
