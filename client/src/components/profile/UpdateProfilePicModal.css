@@ -120,42 +120,35 @@
 }
 
 @media screen and (max-width: 990px) {
-    .profile-pic-card-container {
-        margin-left: 5px;
-        margin-right: 5px;
-        width: 110px;
-        height: 110px;
-        border-radius: 60px;
+    .profile-pic-cards-container {
+       height: 45vh;
+       display: flex;
+       justify-content: center;
+        
     }
 
-    .profile-pic-card-container img {
-        width: 110px;
-        height: 110px;
-        border-radius: 60px;
-    }
-
-    .profile-pic-cards-inner-container {
-        width: 78%;
-    }
-}
-
-@media screen and (max-width: 500px) {
     .profile-pic-card-container {
         
         margin-left: 5px;
         margin-right: 5px;
-        width: 110px;
-        height: 110px;
+        width: 120px;
+        height: 120px;
         border-radius: 60px;
     }
 
     .profile-pic-card-container img {
-        width: 110px;
-        height: 110px;
+        width: 120px;
+        height: 120px;
+        border-radius: 60px;
+    }
+
+    .profile-pic-select-overlay {
+        width: 120px;
+        height: 120px;
         border-radius: 60px;
     }
 
     .profile-pic-cards-inner-container {
-        width: 60%;
+        width: 260px;
     }
 }
