@@ -35,6 +35,7 @@ const WriteComment = props => {
 
     const removeImage = () => {
         setImage(" ");
+        document.getElementById("post-text-area").value = commentText;
     }
 
     const submitComment = (e) => {
