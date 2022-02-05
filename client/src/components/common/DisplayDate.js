@@ -8,6 +8,9 @@ const DisplayDate = props => {
         var elapsed = (new Date().getTime() - since) / 1000;
         const date = new Date(Math.floor(since));
         const month = date.toLocaleString('default', { month: 'long' });
+        const year = date.toLocaleString('default', { year: 'numeric' });
+        let currentTime = new Date();
+        const currentYear = currentTime.getFullYear();
         const day = date.getDate();
 
         if (elapsed >= 0) {
@@ -18,7 +21,10 @@ const DisplayDate = props => {
             diff.minutes = Math.floor(elapsed / 60 % 60);
             diff.seconds = Math.floor(elapsed % 60);
 
-            if (diff.days > 1) {
+            if (diff.days > 1 && year !== currentYear) {
+                return month + " " + day + ", " + year;
+            }
+            else if (diff.days > 1 && year === currentYear) {
                 return month + " " + day;
             }
             else if (diff.days === 1) {
