@@ -13,6 +13,8 @@ const DisplayDate = props => {
         const currentYear = currentTime.getFullYear();
         const day = date.getDate();
 
+        console.log("YEAR: " + year);
+        console.log("CURRENT_YEAR: " + currentYear);
         if (elapsed >= 0) {
             const diff = {};
 
@@ -21,10 +23,10 @@ const DisplayDate = props => {
             diff.minutes = Math.floor(elapsed / 60 % 60);
             diff.seconds = Math.floor(elapsed % 60);
 
-            if (diff.days > 1 && year !== currentYear) {
+            if (diff.days > 1 && year != currentYear) {
                 return month + " " + day + ", " + year;
             }
-            else if (diff.days > 1 && year === currentYear) {
+            else if (diff.days > 1 && year == currentYear) {
                 return month + " " + day;
             }
             else if (diff.days === 1) {
